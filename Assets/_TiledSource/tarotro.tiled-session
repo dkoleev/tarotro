@@ -3,8 +3,13 @@
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "hell.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1.5
+        }
     },
-    "last.imagePath": "C:/Users/Dmitry/repositories/tarotro/Assets/_TiledSource/hell_back_light",
+    "last.imagePath": "C:/Users/Dmitry/repositories/tarotro/Assets/_TiledSource",
     "map.fixedSize": false,
     "map.height": 40,
     "map.lastUsedFormat": "tmx",
@@ -13,7 +18,8 @@
     ],
     "project": "tarotro.tiled-project",
     "recentFiles": [
+        "hell.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
-    "tileset.type": 1
+    "tileset.type": 0
 }

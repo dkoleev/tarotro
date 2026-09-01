@@ -1,0 +1,572 @@
+fileFormatVersion: 2
+guid: b31b9d262f22ec74a9a1e07667e7d234
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8004479691346891330
+    second: GandalfHardcore Hell Tiles 32x32_0
+  - first:
+      213: 1058263587159787581
+    second: GandalfHardcore Hell Tiles 32x32_1
+  - first:
+      213: -1486963832608693978
+    second: GandalfHardcore Hell Tiles 32x32_2
+  - first:
+      213: 5649268380422743438
+    second: GandalfHardcore Hell Tiles 32x32_3
+  - first:
+      213: -3912319062695885267
+    second: GandalfHardcore Hell Tiles 32x32_4
+  - first:
+      213: -8542505646622051127
+    second: GandalfHardcore Hell Tiles 32x32_5
+  - first:
+      213: -8897772725054039006
+    second: GandalfHardcore Hell Tiles 32x32_6
+  - first:
+      213: -834342495983038118
+    second: GandalfHardcore Hell Tiles 32x32_7
+  - first:
+      213: -9165986254874829273
+    second: GandalfHardcore Hell Tiles 32x32_8
+  - first:
+      213: -8514374686935773617
+    second: GandalfHardcore Hell Tiles 32x32_9
+  - first:
+      213: 5402309418723715079
+    second: GandalfHardcore Hell Tiles 32x32_10
+  - first:
+      213: 2352138876693611044
+    second: GandalfHardcore Hell Tiles 32x32_11
+  - first:
+      213: 8708508890457749441
+    second: GandalfHardcore Hell Tiles 32x32_12
+  - first:
+      213: -8180031057304973604
+    second: GandalfHardcore Hell Tiles 32x32_13
+  - first:
+      213: -6527090020808768885
+    second: GandalfHardcore Hell Tiles 32x32_14
+  - first:
+      213: -2734356704296680393
+    second: GandalfHardcore Hell Tiles 32x32_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 289
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebda07951206ae090800000000000000
+      internalID: -8004479691346891330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_1
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 95
+        width: 96
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d38c3672025bfae00800000000000000
+      internalID: 1058263587159787581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_2
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 33
+        width: 34
+        height: 255
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6216183c54e3d5be0800000000000000
+      internalID: -1486963832608693978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_3
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 255
+        width: 34
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e85a1ff29ab366e40800000000000000
+      internalID: 5649268380422743438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_4
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 95
+        width: 126
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d26c5047a86a4b9c0800000000000000
+      internalID: -3912319062695885267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_5
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 159
+        width: 32
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9c4f251ef5ce27980800000000000000
+      internalID: -8542505646622051127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_6
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 95
+        width: 33
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22c9ef659d2c48480800000000000000
+      internalID: -8897772725054039006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_7
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 63
+        width: 32
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a511be1abe1db64f0800000000000000
+      internalID: -834342495983038118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_8
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 63
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72e921e8010ebc080800000000000000
+      internalID: -9165986254874829273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_9
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 63
+        width: 30
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4e8d94555dd6d980800000000000000
+      internalID: -8514374686935773617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_10
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 0
+        width: 64
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70826cd2bcbd8fa40800000000000000
+      internalID: 5402309418723715079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_11
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 31
+        width: 32
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42285bf98d974a020800000000000000
+      internalID: 2352138876693611044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_12
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 31
+        width: 33
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c7b01b32b6dad870800000000000000
+      internalID: 8708508890457749441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_13
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 0
+        width: 62
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cde8ca1d711ba7e80800000000000000
+      internalID: -8180031057304973604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_14
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 16
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8242b4453e1b65a0800000000000000
+      internalID: -6527090020808768885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GandalfHardcore Hell Tiles 32x32_15
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 734403f801d9d0ad0800000000000000
+      internalID: -2734356704296680393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      GandalfHardcore Hell Tiles 32x32_0: -8004479691346891330
+      GandalfHardcore Hell Tiles 32x32_1: 1058263587159787581
+      GandalfHardcore Hell Tiles 32x32_10: 5402309418723715079
+      GandalfHardcore Hell Tiles 32x32_11: 2352138876693611044
+      GandalfHardcore Hell Tiles 32x32_12: 8708508890457749441
+      GandalfHardcore Hell Tiles 32x32_13: -8180031057304973604
+      GandalfHardcore Hell Tiles 32x32_14: -6527090020808768885
+      GandalfHardcore Hell Tiles 32x32_15: -2734356704296680393
+      GandalfHardcore Hell Tiles 32x32_2: -1486963832608693978
+      GandalfHardcore Hell Tiles 32x32_3: 5649268380422743438
+      GandalfHardcore Hell Tiles 32x32_4: -3912319062695885267
+      GandalfHardcore Hell Tiles 32x32_5: -8542505646622051127
+      GandalfHardcore Hell Tiles 32x32_6: -8897772725054039006
+      GandalfHardcore Hell Tiles 32x32_7: -834342495983038118
+      GandalfHardcore Hell Tiles 32x32_8: -9165986254874829273
+      GandalfHardcore Hell Tiles 32x32_9: -8514374686935773617
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
