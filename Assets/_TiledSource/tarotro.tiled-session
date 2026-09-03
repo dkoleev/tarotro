@@ -24,22 +24,19 @@
             "scaleInEditor": 0.5
         },
         "hell_back_light.tsx": {
+            "dynamicWrapping": true,
             "scaleInDock": 0.5,
             "scaleInEditor": 0.75
         },
         "level_0.tmx": {
             "expandedObjectLayers": [
-                6,
-                5,
-                7,
-                4,
                 3
             ],
-            "scale": 0.75,
+            "scale": 1,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 20,
-                "y": 147.33333333333326
+                "x": -33,
+                "y": -7.5
             }
         },
         "level_0_0.tmx": {
