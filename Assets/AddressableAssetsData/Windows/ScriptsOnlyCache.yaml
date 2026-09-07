@@ -1,0 +1,14 @@
+ScriptsOnlyBuild:
+  usedScripts:
+    Unity.Addressables.dll:
+    - UnityEngine.AddressableAssets.ResourceProviders.AddressableRootAsset
+  serializedClasses:
+    UnityEngine.CoreModule:
+    - Unity.Loading.LoadableObjectId
+  methodsToPreserve: []
+  sceneClasses: {}
+  scriptHashData: []
+  platform: 19
+  scenePathNames: []
+  nativeClasses: 000000001200000082000000d500000015000000300000005b0000005d00000031000000730000000200000072000000080000004a000000cf0000005f00000019000000d400000001000000040000001c0000001b000000i
+  playerPath: 
