@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357270836429664078}
+  - component: {fileID: -4333472144598610730}
   m_Layer: 0
   m_Name: enemy_demon_eye
   m_TagString: Untagged
@@ -32,6 +33,19 @@ Transform:
   - {fileID: 4012282789749609749}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-4333472144598610730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766522431301875468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278a4091e2ae47d68dcaaf40eb82e63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Game.Enemy
+  Health: 10
 --- !u!1001 &6556106565903460888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,6 +57,14 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: dbaacc6f31228c745ae62acbb8ee1c44, type: 3}
       propertyPath: m_Name
       value: Demon eye
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: dbaacc6f31228c745ae62acbb8ee1c44, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626916397498700004, guid: dbaacc6f31228c745ae62acbb8ee1c44, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1937097903
       objectReference: {fileID: 0}
     - target: {fileID: 7878350319992209165, guid: dbaacc6f31228c745ae62acbb8ee1c44, type: 3}
       propertyPath: m_LocalPosition.x
