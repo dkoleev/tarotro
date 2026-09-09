@@ -1,18 +1,19 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
-using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using VContainer.Unity;
 
 namespace Game {
     public class Boot : IAsyncStartable {
         private readonly SceneLoader _sceneLoader;
+        private readonly Battle _battle;
 
-        public Boot(SceneLoader sceneLoader) {
+        public Boot(SceneLoader sceneLoader, Battle battle) {
             _sceneLoader = sceneLoader;
+            _battle = battle;
         }
         
-        public UniTask StartAsync(CancellationToken cancellation = new()) {
+        public async UniTask StartAsync(CancellationToken cancellation = new()) {
             // try {
             //     Steamworks.SteamClient.Init(252490);
             // }
@@ -20,9 +21,8 @@ namespace Game {
             //     Debug.LogException(e);
             // }
 
-            _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Single).Forget();
-
-            return UniTask.CompletedTask;
+            await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Single);
+            await _battle.StartBattle();            
         }
     }
 }

@@ -4,15 +4,15 @@ using UnityEngine.AddressableAssets;
 
 namespace Game
 {
-    public class Battle : MonoBehaviour {
-        [SerializeField] private string enemyPrefabPath;
+    public class Battle {
+        private const string DefaultEnemy = "Bundles/Enemies/enemy_demon_eye.prefab";
         
-        private void Start() {
-            SpawnEnemy().Forget();
+        public async UniTask StartBattle() {
+            await SpawnEnemy(DefaultEnemy);
         }
 
-        private async UniTask SpawnEnemy() {
-            var handle = Addressables.InstantiateAsync(enemyPrefabPath, null, true, true);
+        private async UniTask SpawnEnemy(string enemyPath) {
+            var handle = Addressables.InstantiateAsync(enemyPath, null, true, true);
             var enemyGo = await handle.Task;
             var enemy = enemyGo.GetComponent<Enemy>();
             Debug.Log(enemy.Health);

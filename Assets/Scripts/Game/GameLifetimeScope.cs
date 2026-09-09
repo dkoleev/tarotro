@@ -6,6 +6,7 @@ namespace Game {
         protected override void Configure(IContainerBuilder builder) {
             builder.RegisterEntryPoint<Boot>();
             builder.Register<SceneLoader>(Lifetime.Singleton);
+            builder.Register<Battle>(Lifetime.Singleton);
         }
     }
 }
