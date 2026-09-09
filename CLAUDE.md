@@ -1,7 +1,13 @@
 # Tarotro - Unity Game Project
 
 ## Project Overview
-Abyss is a 2D battle game built with Unity 6000.6.0f1 that combines tarot card mechanics (Balatro like) with combat systems. The project follows a clean architecture pattern with dependency injection and reactive programming.
+Tarotro is a 2D battle game built with Unity 6000.6.0f1 that combines tarot card mechanics (Balatro-like) with combat systems. The project follows a clean architecture pattern with dependency injection and reactive programming.
+
+## Build & Run
+- Open in Unity 6000.6.0f1
+- Scenes: `Assets/Scenes/game.unity` (main), `Assets/Scenes/level_0.unity`
+- Platform: Windows (Steam via Facepunch Steamworks SDK)
+- No CLI build or test commands — build and play from Unity Editor
 
 ## Technology Stack
 
@@ -14,21 +20,22 @@ Abyss is a 2D battle game built with Unity 6000.6.0f1 that combines tarot card m
 - **VContainer** - Dependency injection framework
 - **UniTask** - High-performance async/await integration
 - **MessagePipe** - High-performance messaging library
-- **DoTween** -  is a fast, efficient, fully type-safe object-oriented animation engine for Unity
+- **DOTween** - Type-safe animation engine for Unity
 - **Addressables** - Asset management system
 - **Unity Localization** - Multi-language support
+- **SuperTiled2Unity** - Tiled map importer
 
 ### 2D Features
 - 2D Animation & Sprite tools
 - Aseprite integration
-- Pixel Perfect Camera From URP package
+- Pixel Perfect Camera from URP package
 - PSD Importer
-- Tilemap & Spriteshape
+- Tilemap & SpriteShape
 
-## Project Structure
+## Project Structure (Target)
 
 ```
-Abyss/
+Tarotro/
 ├── Assets/
 │   ├── Scripts/                    # C# source code
 │   │   ├── Configs/            # Game configuration classes
@@ -42,28 +49,29 @@ Abyss/
 │   │   ├── Views/              # View layer
 │   │   └── UI/                 # UI components
 │   ├── Art/                    # Art assets
-│   ├── Configs/                # Scriptable objects configs
+│   ├── Configs/                # Scriptable object configs
 │   ├── Scenes/                 # Unity scenes
 │   ├── Resources/              # Unity resources
 │   ├── Localization/           # Localization tables
+│   ├── Bundles/                # Addressable prefabs
 │   ├── AddressableAssetsData/  # Addressables configuration
 │   └── Settings/               # Project settings
-│   └── Bundles/                # Project prefabs
 ├── Packages/                    # Package dependencies
 └── ProjectSettings/            # Unity project settings
 ```
 
 ## Development Guidelines
-### Reference projects
+
+### Reference Games
 - Balatro, Slots & Daggers
 
 ### Code Style
 - Follow C# naming conventions
 - Use VContainer's `[Inject]` attribute for dependency injection
 - Prefer async/await with UniTask over coroutines
-- Use var instead of int, float etc on variable declaration
-- Use DoTween for animations
-- Use Avocado.Toolbox.GameLogger instead of Debug. Always use second parameter logCategory in GameLogger. Example: GameLogger.Info($"Item with guid {guid} unequipped.", "Category");
+- Use `var` instead of explicit types on variable declarations
+- Use DOTween for animations
+- Use Avocado.Toolbox.GameLogger instead of Debug. Always use second parameter logCategory in GameLogger. Example: `GameLogger.Info($"Item with guid {guid} unequipped.", "Category");`
 - **Data classes should only contain data** - no business logic methods. Classes in `Configs/` folder (like `FightData`, `EnemyData`, `LevelData`) should only have properties and simple getters. All calculation/logic methods belong in `Logic/` layer (managers, models, etc.)
 
 ### File Organization
@@ -71,7 +79,7 @@ Abyss/
 - Separate concerns: Logic, Presentation, View
 
 ## Platform Targets
-- Steam
+- Steam (Windows)
 
 ## Notes for AI Assistants
 - Always preserve VContainer DI patterns when modifying code
