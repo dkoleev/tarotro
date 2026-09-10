@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using VContainer.Unity;
 
-namespace Game {
+namespace Game.Logic {
     public class Boot : IAsyncStartable {
         private readonly SceneLoader _sceneLoader;
         private readonly Battle _battle;

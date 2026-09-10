@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-namespace Game
+namespace Game.Logic
 {
     public class Battle {
         private const string DefaultEnemy = "Bundles/Enemies/enemy_demon_eye.prefab";

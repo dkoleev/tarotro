@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Game {
+namespace Game.Logic {
     public class Enemy : MonoBehaviour {
         public int Health;
     }

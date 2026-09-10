@@ -3,7 +3,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
 
-namespace Game {
+namespace Game.Logic {
     public class SceneLoader {
         private SceneInstance _currentScene;
 
