@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bb0d60d41451285b0500e56124f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.View.EnemyView
-  healthText: {fileID: 1287296931708148612}
+  _healthText: {fileID: 1287296931708148612}
 --- !u!1 &3769573610874633132
 GameObject:
   m_ObjectHideFlags: 0
