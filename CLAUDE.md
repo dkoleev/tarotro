@@ -82,6 +82,7 @@ Tarotro/
 - Steam (Windows)
 
 ## Notes for AI Assistants
+- **ALWAYS `git fetch` and `git pull` the latest changes from the remote before reading files or making any modifications.** Never assume the local state is up to date.
 - Always preserve VContainer DI patterns when modifying code
 - Use UniTask for async operations, not Unity coroutines
 - Maintain MVP separation of concerns

@@ -12,17 +12,10 @@ namespace Game.Logic {
             _sceneLoader = sceneLoader;
             _battle = battle;
         }
-        
-        public async UniTask StartAsync(CancellationToken cancellation = new()) {
-            // try {
-            //     Steamworks.SteamClient.Init(252490);
-            // }
-            // catch (Exception e) {
-            //     Debug.LogException(e);
-            // }
 
-            await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Single);
-            await _battle.StartBattle();            
+        public async UniTask StartAsync(CancellationToken ct = default) {
+            await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Single, ct);
+            await _battle.StartBattle(ct);
         }
     }
 }

@@ -3,9 +3,9 @@
         public int MaxHealth;
         public string Name;
 
-        public EnemyData(string mame, int maxHealth) {
+        public EnemyData(string name, int maxHealth) {
             MaxHealth = maxHealth;
-            Name = mame;
+            Name = name;
         }
     }
 }
