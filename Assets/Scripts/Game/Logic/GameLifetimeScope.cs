@@ -11,14 +11,9 @@ namespace Game.Logic {
             builder.Register<Battle>(Lifetime.Singleton);
             builder.Register<ScoreManager>(Lifetime.Singleton);
 
-            //===============================================================================
-            // RegisterMessagePipe returns options.
-            var options = builder.RegisterMessagePipe( /* configure option */);
-            // Setup GlobalMessagePipe to enable diagnostics window and global function
+            var options = builder.RegisterMessagePipe();
             builder.RegisterBuildCallback(c => GlobalMessagePipe.SetProvider(c.AsServiceProvider()));
-            
             builder.RegisterMessageBroker<EnemyDiedMessage>(options);
-            //===============================================================================
         }
     }
 }
