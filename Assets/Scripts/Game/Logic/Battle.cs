@@ -24,7 +24,11 @@ namespace Game.Logic
         }
 
         public async UniTask StartBattle(CancellationToken ct = default) {
+            await CreateDesk();
             await SpawnEnemy(DefaultEnemy, ct);
+        }
+
+        private async UniTask CreateDesk() {
         }
 
         private async UniTask SpawnEnemy(string enemyPath, CancellationToken ct) {
@@ -43,7 +47,7 @@ namespace Game.Logic
             model.Died += OnEnemyDied;
             _currentEnemyPresenter = new EnemyPresenter(model, view);
 
-            model.TakeDamage(100);
+            // model.TakeDamage(100);
         }
 
         private void OnEnemyDied(EnemyModel enemyModel) {
