@@ -1,4 +1,5 @@
 ﻿using Game.Core;
+using Game.Data;
 using Game.Messages;
 using MessagePipe;
 using VContainer;
@@ -12,6 +13,7 @@ namespace Game.Logic {
             builder.Register<Battle>(Lifetime.Singleton);
             builder.Register<ScoreManager>(Lifetime.Singleton);
             builder.Register<ConfigLoader>(Lifetime.Singleton);
+            builder.Register<GameData>(Lifetime.Singleton);
 
             //ScoreManager is registered as Lifetime.Singleton, but VContainer only creates singletons when something first
             //So call this for force resolve

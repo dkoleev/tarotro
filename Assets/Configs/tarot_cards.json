@@ -2,133 +2,133 @@
   "fool": {
     "id": "fool",
     "index": 0,
-    "name_loc": "fool",
-    "sprite_path": "fool"
+    "nameLoc": "fool",
+    "spritePath": "fool"
   },
   "magician": {
     "id": "magician",
     "index": 1,
-    "name_loc": "magician",
-    "sprite_path": "magician"
+    "nameLoc": "magician",
+    "spritePath": "magician"
   },
   "high_priestess": {
     "id": "high_priestess",
     "index": 2,
-    "name_loc": "high_priestess",
-    "sprite_path": "high_priestess"
+    "nameLoc": "high_priestess",
+    "spritePath": "high_priestess"
   },
   "empress": {
     "id": "empress",
     "index": 3,
-    "name_loc": "empress",
-    "sprite_path": "empress"
+    "nameLoc": "empress",
+    "spritePath": "empress"
   },
   "emperor": {
     "id": "emperor",
     "index": 4,
-    "name_loc": "emperor",
-    "sprite_path": "emperor"
+    "nameLoc": "emperor",
+    "spritePath": "emperor"
   },
   "hierophant": {
     "id": "hierophant",
     "index": 5,
-    "name_loc": "hierophant",
-    "sprite_path": "hierophant"
+    "nameLoc": "hierophant",
+    "spritePath": "hierophant"
   },
   "lovers": {
     "id": "lovers",
     "index": 6,
-    "name_loc": "lovers",
-    "sprite_path": "lovers"
+    "nameLoc": "lovers",
+    "spritePath": "lovers"
   },
   "chariot": {
     "id": "chariot",
     "index": 7,
-    "name_loc": "chariot",
-    "sprite_path": "chariot"
+    "nameLoc": "chariot",
+    "spritePath": "chariot"
   },
   "strength": {
     "id": "strength",
     "index": 8,
-    "name_loc": "strength",
-    "sprite_path": "strength"
+    "nameLoc": "strength",
+    "spritePath": "strength"
   },
   "hermit": {
     "id": "hermit",
     "index": 9,
-    "name_loc": "hermit",
-    "sprite_path": "hermit"
+    "nameLoc": "hermit",
+    "spritePath": "hermit"
   },
   "wheel_of_fortune": {
     "id": "wheel_of_fortune",
     "index": 10,
-    "name_loc": "wheel_of_fortune",
-    "sprite_path": "wheel_of_fortune"
+    "nameLoc": "wheel_of_fortune",
+    "spritePath": "wheel_of_fortune"
   },
   "justice": {
     "id": "justice",
     "index": 11,
-    "name_loc": "justice",
-    "sprite_path": "justice"
+    "nameLoc": "justice",
+    "spritePath": "justice"
   },
   "hanged_men": {
     "id": "hanged_men",
     "index": 12,
-    "name_loc": "hanged_men",
-    "sprite_path": "hanged_men"
+    "nameLoc": "hanged_men",
+    "spritePath": "hanged_men"
   },
   "death": {
     "id": "death",
     "index": 13,
-    "name_loc": "death",
-    "sprite_path": "death"
+    "nameLoc": "death",
+    "spritePath": "death"
   },
   "temperance": {
     "id": "temperance",
     "index": 14,
-    "name_loc": "temperance",
-    "sprite_path": "temperance"
+    "nameLoc": "temperance",
+    "spritePath": "temperance"
   },
   "devil": {
     "id": "devil",
     "index": 15,
-    "name_loc": "devil",
-    "sprite_path": "devil"
+    "nameLoc": "devil",
+    "spritePath": "devil"
   },
   "tower": {
     "id": "tower",
     "index": 16,
-    "name_loc": "tower",
-    "sprite_path": "tower"
+    "nameLoc": "tower",
+    "spritePath": "tower"
   },
   "star": {
     "id": "star",
     "index": 17,
-    "name_loc": "star",
-    "sprite_path": "star"
+    "nameLoc": "star",
+    "spritePath": "star"
   },
   "moon": {
     "id": "moon",
     "index": 18,
-    "name_loc": "moon",
-    "sprite_path": "moon"
+    "nameLoc": "moon",
+    "spritePath": "moon"
   },
   "sun": {
     "id": "sun",
     "index": 19,
-    "name_loc": "sun",
-    "sprite_path": "sun"
+    "nameLoc": "sun",
+    "spritePath": "sun"
   },
   "judgment": {
     "id": "judgment",
     "index": 20,
-    "name_loc": "judgment",
-    "sprite_path": "judgment"
+    "nameLoc": "judgment",
+    "spritePath": "judgment"
   },
   "world": {
     "id": "world",
     "index": 21,
-    "name_loc": "world",
-    "sprite_path": "world"
+    "nameLoc": "world",
+    "spritePath": "world"
   }
 }

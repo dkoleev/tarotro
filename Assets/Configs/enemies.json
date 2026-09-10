@@ -1,0 +1,8 @@
+{
+  "demon_eye": {
+    "id": "demon_eye",
+    "maxHealth": 80,
+    "nameLoc": "demon_eye_name",
+    "prefabPath": "Bundles/Enemies/enemy_demon_eye.prefab"
+  }
+}

@@ -1,7 +1,6 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Game.Core;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 using VContainer.Unity;
 
@@ -18,7 +17,7 @@ namespace Game.Logic {
         }
 
         public async UniTask StartAsync(CancellationToken ct = default) {
-            var tarotCardData = await _configLoader.LoadTarotCards();
+            await _configLoader.Load();
             await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Single, ct);
             await _battle.StartBattle(ct);
         }

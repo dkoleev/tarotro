@@ -1,11 +1,11 @@
-﻿namespace Game.Data {
-    public class EnemyData {
-        public int MaxHealth;
-        public string Name;
+﻿using System;
 
-        public EnemyData(string name, int maxHealth) {
-            MaxHealth = maxHealth;
-            Name = name;
-        }
+namespace Game.Data {
+    [Serializable]
+    public class EnemyData {
+        public string id;
+        public int maxHealth;
+        public string nameLoc;
+        public string prefabPath;
     }
 }

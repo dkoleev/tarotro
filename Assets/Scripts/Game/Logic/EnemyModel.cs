@@ -9,7 +9,7 @@ namespace Game.Logic {
         public event Action<EnemyModel> Died;
 
         public EnemyModel(EnemyData data) {
-            CurrentHealth = data.MaxHealth;
+            CurrentHealth = data.maxHealth;
         }
 
         public void TakeDamage(int amount) {
