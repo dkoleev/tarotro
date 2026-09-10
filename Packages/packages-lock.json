@@ -318,6 +318,13 @@
         "com.unity.modules.physics": "1.0.0"
       }
     },
+    "com.yogi.unigsc": {
+      "version": "https://github.com/dkoleev/UniGHC.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "456d7d8e45b6413f6b0d5e6e4aa704790f39c46e"
+    },
     "jp.hadashikick.vcontainer": {
       "version": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.19.0",
       "depth": 0,

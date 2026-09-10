@@ -1,0 +1,134 @@
+{
+  "fool": {
+    "id": "fool",
+    "index": 0,
+    "name_loc": "fool",
+    "sprite_path": "fool"
+  },
+  "magician": {
+    "id": "magician",
+    "index": 1,
+    "name_loc": "magician",
+    "sprite_path": "magician"
+  },
+  "high_priestess": {
+    "id": "high_priestess",
+    "index": 2,
+    "name_loc": "high_priestess",
+    "sprite_path": "high_priestess"
+  },
+  "empress": {
+    "id": "empress",
+    "index": 3,
+    "name_loc": "empress",
+    "sprite_path": "empress"
+  },
+  "emperor": {
+    "id": "emperor",
+    "index": 4,
+    "name_loc": "emperor",
+    "sprite_path": "emperor"
+  },
+  "hierophant": {
+    "id": "hierophant",
+    "index": 5,
+    "name_loc": "hierophant",
+    "sprite_path": "hierophant"
+  },
+  "lovers": {
+    "id": "lovers",
+    "index": 6,
+    "name_loc": "lovers",
+    "sprite_path": "lovers"
+  },
+  "chariot": {
+    "id": "chariot",
+    "index": 7,
+    "name_loc": "chariot",
+    "sprite_path": "chariot"
+  },
+  "strength": {
+    "id": "strength",
+    "index": 8,
+    "name_loc": "strength",
+    "sprite_path": "strength"
+  },
+  "hermit": {
+    "id": "hermit",
+    "index": 9,
+    "name_loc": "hermit",
+    "sprite_path": "hermit"
+  },
+  "wheel_of_fortune": {
+    "id": "wheel_of_fortune",
+    "index": 10,
+    "name_loc": "wheel_of_fortune",
+    "sprite_path": "wheel_of_fortune"
+  },
+  "justice": {
+    "id": "justice",
+    "index": 11,
+    "name_loc": "justice",
+    "sprite_path": "justice"
+  },
+  "hanged_men": {
+    "id": "hanged_men",
+    "index": 12,
+    "name_loc": "hanged_men",
+    "sprite_path": "hanged_men"
+  },
+  "death": {
+    "id": "death",
+    "index": 13,
+    "name_loc": "death",
+    "sprite_path": "death"
+  },
+  "temperance": {
+    "id": "temperance",
+    "index": 14,
+    "name_loc": "temperance",
+    "sprite_path": "temperance"
+  },
+  "devil": {
+    "id": "devil",
+    "index": 15,
+    "name_loc": "devil",
+    "sprite_path": "devil"
+  },
+  "tower": {
+    "id": "tower",
+    "index": 16,
+    "name_loc": "tower",
+    "sprite_path": "tower"
+  },
+  "star": {
+    "id": "star",
+    "index": 17,
+    "name_loc": "star",
+    "sprite_path": "star"
+  },
+  "moon": {
+    "id": "moon",
+    "index": 18,
+    "name_loc": "moon",
+    "sprite_path": "moon"
+  },
+  "sun": {
+    "id": "sun",
+    "index": 19,
+    "name_loc": "sun",
+    "sprite_path": "sun"
+  },
+  "judgment": {
+    "id": "judgment",
+    "index": 20,
+    "name_loc": "judgment",
+    "sprite_path": "judgment"
+  },
+  "world": {
+    "id": "world",
+    "index": 21,
+    "name_loc": "world",
+    "sprite_path": "world"
+  }
+}
