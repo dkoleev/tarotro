@@ -17,7 +17,7 @@ namespace Game.Presenters {
         }
 
         private void OnHealthChanged(int health) => _view.UpdateHealth(health);
-        private void OnDied() => _view.PlayDeathAnimation();
+        private void OnDied(EnemyModel enemyModel) => _view.PlayDeathAnimation();
 
         public void Dispose() {
             _model.HealthChanged -= OnHealthChanged;

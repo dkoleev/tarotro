@@ -9,6 +9,7 @@ namespace Game.Logic {
             builder.RegisterEntryPoint<Boot>();
             builder.Register<SceneLoader>(Lifetime.Singleton);
             builder.Register<Battle>(Lifetime.Singleton);
+            builder.Register<ScoreManager>(Lifetime.Singleton);
 
             //===============================================================================
             // RegisterMessagePipe returns options.

@@ -6,7 +6,7 @@ namespace Game.Logic {
         public int CurrentHealth { get; private set; }
 
         public event Action<int> HealthChanged;
-        public event Action Died;
+        public event Action<EnemyModel> Died;
 
         public EnemyModel(EnemyData data) {
             CurrentHealth = data.MaxHealth;
@@ -16,7 +16,7 @@ namespace Game.Logic {
             CurrentHealth -= amount;
             HealthChanged?.Invoke(CurrentHealth);
             if (CurrentHealth <= 0) {
-                Died?.Invoke();
+                Died?.Invoke(this);
             }
         }
     }
