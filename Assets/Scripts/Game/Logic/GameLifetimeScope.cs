@@ -1,4 +1,4 @@
-﻿using Game.Core;
+using Game.Core;
 using Game.Data;
 using Game.Messages;
 using Game.Utils;
@@ -9,7 +9,13 @@ using VContainer.Unity;
 namespace Game.Logic {
     public class GameLifetimeScope : LifetimeScope {
         protected override void Configure(IContainerBuilder builder) {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            builder.Register<GameLogger>(Lifetime.Singleton);
+            builder.Register<Game.DevConsole.DevConsole>(Lifetime.Singleton).As<IGameLogger>().AsSelf();
+            Game.DevConsole.DevConsoleInstaller.Install(builder);
+#else
             builder.Register<GameLogger>(Lifetime.Singleton).As<IGameLogger>();
+#endif
 
             builder.RegisterEntryPoint<Boot>();
             builder.Register<SceneLoader>(Lifetime.Singleton);
