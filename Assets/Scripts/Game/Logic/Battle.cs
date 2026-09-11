@@ -20,18 +20,19 @@ namespace Game.Logic
             public EnemyModel Model { get; }
             public EnemyPresenter Presenter { get; }
             public EnemyView View { get; }
+            public AsyncOperationHandle<GameObject> AddressablesHandle { get; }
 
-            public EnemyWrapper(EnemyModel model, EnemyPresenter presenter, EnemyView view) {
+            public EnemyWrapper(EnemyModel model, EnemyPresenter presenter, EnemyView view, AsyncOperationHandle<GameObject>  addressablesHandle) {
                 Model = model;
                 Presenter = presenter;
                 View = view;
+                AddressablesHandle = addressablesHandle;
             }
         }
         
         private readonly IPublisher<EnemyDiedMessage> _enemyDiedPub;
         private readonly GameData _gameData;
         private readonly IGameLogger _logger;
-        private AsyncOperationHandle<GameObject> _currentEnemyHandle;
         private EnemyWrapper _currentEnemy;
         private CancellationTokenSource _cts;
 
@@ -70,12 +71,11 @@ namespace Game.Logic
                 return;
             }
 
-            _currentEnemyHandle = handle;
             var model = new EnemyModel(enemyData);
             model.Died += OnEnemyDied;
             var presenter = new EnemyPresenter(model, view);
 
-            _currentEnemy = new EnemyWrapper(model, presenter, view);
+            _currentEnemy = new EnemyWrapper(model, presenter, view, handle);
 
             await UniTask.Delay(1000, cancellationToken: ct);
             model.TakeDamage(100);
@@ -95,8 +95,8 @@ namespace Game.Logic
             _currentEnemy.Model.Died -= OnEnemyDied;
             _currentEnemy.Presenter.Dispose();
 
-            if (_currentEnemyHandle.IsValid()) {
-                Addressables.ReleaseInstance(_currentEnemyHandle);
+            if (_currentEnemy.AddressablesHandle.IsValid()) {
+                Addressables.ReleaseInstance(_currentEnemy.AddressablesHandle);
             }
                 
             _currentEnemy = null;
@@ -105,11 +105,13 @@ namespace Game.Logic
         public void Dispose() {
             _cts.Cancel();
             _cts.Dispose();
-            
-            _currentEnemy?.Presenter.Dispose();
 
-            if (_currentEnemyHandle.IsValid()) {
-                Addressables.ReleaseInstance(_currentEnemyHandle);
+            if (_currentEnemy != null) {
+                _currentEnemy.Presenter.Dispose();
+
+                if (_currentEnemy.AddressablesHandle.IsValid()) {
+                    Addressables.ReleaseInstance(_currentEnemy.AddressablesHandle);
+                }
             }
         }
     }
