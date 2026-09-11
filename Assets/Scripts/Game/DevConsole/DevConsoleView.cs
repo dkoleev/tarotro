@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 namespace Game.DevConsole {
@@ -213,7 +214,7 @@ namespace Game.DevConsole {
             _logText.font = TMP_Settings.defaultFontAsset;
             _logText.color = Color.white;
             _logText.richText = true;
-            _logText.enableWordWrapping = true;
+            _logText.textWrappingMode = TextWrappingModes.Normal;
             _logText.overflowMode = TextOverflowModes.Overflow;
 
             var textFitter = textGo.AddComponent<ContentSizeFitter>();
