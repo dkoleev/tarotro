@@ -9,12 +9,11 @@ using VContainer.Unity;
 namespace Game.Logic {
     public class GameLifetimeScope : LifetimeScope {
         protected override void Configure(IContainerBuilder builder) {
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-            builder.Register<GameLogger>(Lifetime.Singleton);
-            builder.Register<Game.DevConsole.DevConsole>(Lifetime.Singleton).As<IGameLogger>().AsSelf();
-            Game.DevConsole.DevConsoleInstaller.Install(builder);
-#else
             builder.Register<GameLogger>(Lifetime.Singleton).As<IGameLogger>();
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            builder.Register<Game.DevConsole.DevConsole>(Lifetime.Singleton);
+            Game.DevConsole.DevConsoleInstaller.Install(builder);
 #endif
 
             builder.RegisterEntryPoint<Boot>();

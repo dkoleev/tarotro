@@ -124,22 +124,12 @@ namespace Game.DevConsole {
 
         private static string FormatEntry(DevConsoleEntry entry) {
             var color = entry.Type switch {
-                DevConsoleEntryType.Warning => "#FFC107",
                 DevConsoleEntryType.Error => "#F44336",
                 DevConsoleEntryType.Command => "#64B5F6",
-                DevConsoleEntryType.Result => "#FFFFFF",
-                _ => "#8BC34A"
+                _ => "#FFFFFF"
             };
 
-            var timestamp = entry.Timestamp.ToString("HH:mm:ss");
-
-            if (entry.Type == DevConsoleEntryType.Command)
-                return $"<color=#888888>[{timestamp}]</color> <color={color}>{entry.Message}</color>";
-
-            if (entry.Type == DevConsoleEntryType.Result)
-                return $"<color={color}>{entry.Message}</color>";
-
-            return $"<color=#888888>[{timestamp}]</color> <color=#AAAAAA>[{entry.Category}]</color> <color={color}>{entry.Message}</color>";
+            return $"<color={color}>{entry.Message}</color>";
         }
 
         private void BuildUI() {
