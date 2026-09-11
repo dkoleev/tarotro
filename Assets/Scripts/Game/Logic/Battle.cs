@@ -15,12 +15,23 @@ using Random = UnityEngine.Random;
 namespace Game.Logic
 {
     public class Battle : IDisposable {
-        private const string DefaultEnemy = "Bundles/Enemies/enemy_demon_eye.prefab";
+        private class EnemyWrapper {
+            public EnemyModel Model { get; }
+            public EnemyPresenter Presenter { get; }
+            public EnemyView View { get; }
 
+            public EnemyWrapper(EnemyModel model, EnemyPresenter presenter, EnemyView view) {
+                Model = model;
+                Presenter = presenter;
+                View = view;
+            }
+        }
+        
         private readonly IPublisher<EnemyDiedMessage> _enemyDiedPub;
         private readonly GameData _gameData;
-        private EnemyPresenter _currentEnemyPresenter;
         private AsyncOperationHandle<GameObject> _currentEnemyHandle;
+        private EnemyWrapper _currentEnemy;
+        private CancellationTokenSource _cts;
 
         public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData) {
             _enemyDiedPub = enemyDiedPub;
@@ -28,6 +39,8 @@ namespace Game.Logic
         }
 
         public async UniTask StartBattle(CancellationToken ct = default) {
+            _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
+            
             await CreateDesk();
             await SpawnRandomEnemy(ct);
         }
@@ -56,27 +69,43 @@ namespace Game.Logic
             _currentEnemyHandle = handle;
             var model = new EnemyModel(enemyData);
             model.Died += OnEnemyDied;
-            _currentEnemyPresenter = new EnemyPresenter(model, view);
+            var presenter = new EnemyPresenter(model, view);
 
-            // model.TakeDamage(100);
+            _currentEnemy = new EnemyWrapper(model, presenter, view);
+
+            await UniTask.Delay(1000);
+            model.TakeDamage(100);
+        }
+        
+        private void OnEnemyDied() {
+            
+            HandleEnemyDeath(_cts.Token).Forget();
         }
 
-        private void OnEnemyDied(EnemyModel enemyModel) {
-            _enemyDiedPub.Publish(new EnemyDiedMessage { Enemy = enemyModel });
+        private async UniTask HandleEnemyDeath(CancellationToken ct) {
+            await _currentEnemy.View.PlayDeathAnimation(ct);
+            
+            _enemyDiedPub.Publish(new EnemyDiedMessage { Enemy = _currentEnemy.Model });
 
-            enemyModel.Died -= OnEnemyDied;
-            _currentEnemyPresenter.Dispose();
-            _currentEnemyPresenter = null;
+            _currentEnemy.Model.Died -= OnEnemyDied;
+            _currentEnemy.Presenter.Dispose();
 
-            if (_currentEnemyHandle.IsValid())
+            if (_currentEnemyHandle.IsValid()) {
                 Addressables.ReleaseInstance(_currentEnemyHandle);
+            }
+                
+            _currentEnemy = null;
         }
 
         public void Dispose() {
-            _currentEnemyPresenter?.Dispose();
+            _cts.Cancel();
+            _cts.Dispose();
+            
+            _currentEnemy?.Presenter.Dispose();
 
-            if (_currentEnemyHandle.IsValid())
+            if (_currentEnemyHandle.IsValid()) {
                 Addressables.ReleaseInstance(_currentEnemyHandle);
+            }
         }
     }
 }

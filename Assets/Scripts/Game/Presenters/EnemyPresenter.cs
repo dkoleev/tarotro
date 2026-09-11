@@ -11,17 +11,17 @@ namespace Game.Presenters {
             _model = model;
             _view = view;
             _model.HealthChanged += OnHealthChanged;
-            _model.Died += OnDied;
+            // _model.Died += OnDied;
             
             _view.SetHealth(_model.CurrentHealth);
         }
 
         private void OnHealthChanged(int health) => _view.UpdateHealth(health);
-        private void OnDied(EnemyModel enemyModel) => _view.PlayDeathAnimation();
+        // private void OnDied() => _view.PlayDeathAnimation();
 
         public void Dispose() {
             _model.HealthChanged -= OnHealthChanged;
-            _model.Died -= OnDied;
+            // _model.Died -= OnDied;
         }
     }
 }

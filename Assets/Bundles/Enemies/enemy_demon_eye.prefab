@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a1bb0d60d41451285b0500e56124f5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Game.View.EnemyView
-  _healthText: {fileID: 1287296931708148612}
+  healthText: {fileID: 1287296931708148612}
+  animator: {fileID: 5395754291751643088}
 --- !u!1 &3769573610874633132
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,5 +297,10 @@ PrefabInstance:
 --- !u!4 &4012282789749609749 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: dbaacc6f31228c745ae62acbb8ee1c44, type: 3}
+  m_PrefabInstance: {fileID: 6556106565903460888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5395754291751643088 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1160356261127867848, guid: dbaacc6f31228c745ae62acbb8ee1c44, type: 3}
   m_PrefabInstance: {fileID: 6556106565903460888}
   m_PrefabAsset: {fileID: 0}
