@@ -77,7 +77,7 @@ namespace Game.Logic
 
             _currentEnemy = new EnemyWrapper(model, presenter, view);
 
-            await UniTask.Delay(1000);
+            await UniTask.Delay(1000, cancellationToken: ct);
             model.TakeDamage(100);
         }
         

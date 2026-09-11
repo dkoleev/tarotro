@@ -21,7 +21,7 @@ namespace Game.Logic {
             //ScoreManager is registered as Lifetime.Singleton, but VContainer only creates singletons when something first
             //So call this for force resolve
             //For experiment
-            builder.RegisterBuildCallback(container => container.Resolve<ScoreManager>());
+            // builder.RegisterBuildCallback(container => container.Resolve<ScoreManager>());
 
             var options = builder.RegisterMessagePipe();
             builder.RegisterBuildCallback(c => GlobalMessagePipe.SetProvider(c.AsServiceProvider()));
