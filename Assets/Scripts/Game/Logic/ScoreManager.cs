@@ -1,22 +1,23 @@
 ﻿using System;
 using Game.Messages;
+using Game.Utils;
 using MessagePipe;
-using UnityEngine;
 
 namespace Game.Logic {
     public class ScoreManager : IDisposable {
         private readonly IDisposable _subscription;
+        private readonly IGameLogger _logger;
 
         private int _currentScore;
 
-        public ScoreManager(ISubscriber<EnemyDiedMessage> enemyDiedSub)
-        {
+        public ScoreManager(ISubscriber<EnemyDiedMessage> enemyDiedSub, IGameLogger logger) {
             _subscription = enemyDiedSub.Subscribe(msg => AddScore(100));
+            _logger = logger;
         }
 
         private void AddScore(int score) {
             _currentScore += score;
-            Debug.Log($"Score: {_currentScore}");
+            _logger.Info($"Score: {_currentScore}", "Score");
         }
 
         public void Dispose() => _subscription.Dispose();
