@@ -5,6 +5,7 @@ using Cysharp.Threading.Tasks;
 using Game.Data;
 using Game.Messages;
 using Game.Presenters;
+using Game.Utils;
 using Game.View;
 using MessagePipe;
 using UnityEngine;
@@ -29,18 +30,21 @@ namespace Game.Logic
         
         private readonly IPublisher<EnemyDiedMessage> _enemyDiedPub;
         private readonly GameData _gameData;
+        private readonly IGameLogger _logger;
         private AsyncOperationHandle<GameObject> _currentEnemyHandle;
         private EnemyWrapper _currentEnemy;
         private CancellationTokenSource _cts;
 
-        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData) {
+        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, IGameLogger logger) {
             _enemyDiedPub = enemyDiedPub;
             _gameData = gameData;
+            _logger = logger;
         }
 
         public async UniTask StartBattle(CancellationToken ct = default) {
+            _logger.Info("Starting battle", "Battle");
             _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
-            
+
             await CreateDesk();
             await SpawnRandomEnemy(ct);
         }
@@ -55,13 +59,13 @@ namespace Game.Logic
         }
 
         private async UniTask SpawnEnemy(EnemyData enemyData, CancellationToken ct) {
-            Debug.Log(enemyData.prefabPath + "; " + enemyData.id);
+            _logger.Info($"Spawning enemy: {enemyData.id} ({enemyData.prefabPath})", "Battle");
             var handle = Addressables.InstantiateAsync(enemyData.prefabPath);
             var enemyGo = await handle.ToUniTask(cancellationToken: ct);
 
             var view = enemyGo.GetComponent<EnemyView>();
             if (view == null) {
-                Debug.LogError($"EnemyView component not found on prefab: {enemyData.prefabPath}");
+                _logger.Error($"EnemyView component not found on prefab: {enemyData.prefabPath}", "Battle");
                 Addressables.ReleaseInstance(handle);
                 return;
             }
@@ -82,8 +86,10 @@ namespace Game.Logic
         }
 
         private async UniTask HandleEnemyDeath(CancellationToken ct) {
+            _logger.Info("Enemy died, playing death animation", "Battle");
             await _currentEnemy.View.PlayDeathAnimation(ct);
 
+            _logger.Info("Death animation complete, publishing EnemyDiedMessage", "Battle");
             _enemyDiedPub.Publish(new EnemyDiedMessage { Enemy = _currentEnemy.Model });
 
             _currentEnemy.Model.Died -= OnEnemyDied;
