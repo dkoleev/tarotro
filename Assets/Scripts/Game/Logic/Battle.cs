@@ -78,13 +78,12 @@ namespace Game.Logic
         }
         
         private void OnEnemyDied() {
-            
             HandleEnemyDeath(_cts.Token).Forget();
         }
 
         private async UniTask HandleEnemyDeath(CancellationToken ct) {
             await _currentEnemy.View.PlayDeathAnimation(ct);
-            
+
             _enemyDiedPub.Publish(new EnemyDiedMessage { Enemy = _currentEnemy.Model });
 
             _currentEnemy.Model.Died -= OnEnemyDied;
