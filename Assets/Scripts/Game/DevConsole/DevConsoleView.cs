@@ -153,8 +153,8 @@ namespace Game.DevConsole {
             _panel = new GameObject("ConsolePanel");
             _panel.transform.SetParent(canvasGo.transform, false);
             var panelRect = _panel.AddComponent<RectTransform>();
-            panelRect.anchorMin = new Vector2(0f, 0.5f);
-            panelRect.anchorMax = new Vector2(1f, 1f);
+            panelRect.anchorMin = new Vector2(0f, 0.0f);
+            panelRect.anchorMax = new Vector2(1f, 1.0f);
             panelRect.offsetMin = Vector2.zero;
             panelRect.offsetMax = Vector2.zero;
             var panelImg = _panel.AddComponent<Image>();
@@ -210,7 +210,7 @@ namespace Game.DevConsole {
             textRect.offsetMax = new Vector2(-4, 0);
 
             _logText = textGo.AddComponent<TextMeshProUGUI>();
-            _logText.fontSize = 14;
+            _logText.fontSize = 24;
             _logText.font = TMP_Settings.defaultFontAsset;
             _logText.color = Color.white;
             _logText.richText = true;
@@ -255,7 +255,7 @@ namespace Game.DevConsole {
             inputTextRect.offsetMax = Vector2.zero;
 
             var tmp = inputText.AddComponent<TextMeshProUGUI>();
-            tmp.fontSize = 14;
+            tmp.fontSize = 20;
             tmp.font = TMP_Settings.defaultFontAsset;
             tmp.color = Color.white;
             tmp.richText = false;
