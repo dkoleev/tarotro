@@ -1,8 +1,10 @@
 using Game.Core;
 using Game.Data;
+using Game.Dev;
 using Game.Messages;
 using Game.Utils;
 using MessagePipe;
+using QFSW.QC;
 using VContainer;
 using VContainer.Unity;
 
@@ -12,8 +14,8 @@ namespace Game.Logic {
             builder.Register<GameLogger>(Lifetime.Singleton).As<IGameLogger>();
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
-            builder.Register<Game.DevConsole.DevConsole>(Lifetime.Singleton);
-            Game.DevConsole.DevConsoleInstaller.Install(builder);
+            // builder.Register<Game.DevConsole.DevConsole>(Lifetime.Singleton);
+            // Game.DevConsole.DevConsoleInstaller.Install(builder);
 #endif
 
             builder.RegisterEntryPoint<Boot>();
@@ -23,6 +25,17 @@ namespace Game.Logic {
             builder.Register<ConfigLoader>(Lifetime.Singleton);
             builder.Register<GameData>(Lifetime.Singleton);
 
+            //== DEV =================
+
+             builder.Register<DevConsoleCommands>(Lifetime.Singleton);
+             builder.RegisterBuildCallback(container =>
+             {
+                 var debugCommands = container.Resolve<DevConsoleCommands>();
+                 QuantumRegistry.RegisterObject(debugCommands);
+             });
+            
+            //=========================
+            
             //ScoreManager is registered as Lifetime.Singleton, but VContainer only creates singletons when something first
             //So call this for force resolve
             //For experiment

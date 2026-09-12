@@ -23,7 +23,7 @@ namespace Game.Logic {
             _logger.Info("Boot started", "Boot");
             await _configLoader.Load();
             _logger.Info("Configs loaded", "Boot");
-            await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Single, ct);
+            await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Additive, ct);
             _logger.Info("Level loaded, starting battle", "Boot");
             await _battle.StartBattle(ct);
         }
