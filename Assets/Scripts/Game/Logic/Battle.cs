@@ -54,9 +54,30 @@ namespace Game.Logic
         }
 
         private async UniTask SpawnRandomEnemy(CancellationToken ct = default) {
-            
+
             var enemyData = _gameData.Enemies.Values.ToList()[Random.Range(0, _gameData.Enemies.Count)];
             await SpawnEnemy(enemyData, ct);
+        }
+
+        public async UniTask DevSpawnEnemy(string enemyId, CancellationToken ct = default) {
+            if (!_gameData.Enemies.TryGetValue(enemyId, out var enemyData)) {
+                _logger.Error($"Enemy with id '{enemyId}' not found", "Battle");
+                return;
+            }
+
+            if (_currentEnemy != null) {
+                await HandleEnemyDeath(ct);
+            }
+
+            await SpawnEnemy(enemyData, ct);
+        }
+
+        public async UniTask DevSpawnRandomEnemy(CancellationToken ct = default) {
+            if (_currentEnemy != null) {
+                await HandleEnemyDeath(ct);
+            }
+
+            await SpawnRandomEnemy(ct);
         }
 
         private async UniTask SpawnEnemy(EnemyData enemyData, CancellationToken ct) {
