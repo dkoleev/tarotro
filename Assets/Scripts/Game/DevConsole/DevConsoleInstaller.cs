@@ -1,5 +1,6 @@
 using Game.Data;
 using Game.DevConsole.Commands;
+using Game.Logic;
 using UnityEngine;
 using VContainer;
 
@@ -17,6 +18,7 @@ namespace Game.DevConsole {
                 console.RegisterCommand(new TimeScaleCommand());
                 console.RegisterCommand(new FpsCommand());
                 console.RegisterCommand(new GameInfoCommand(container.Resolve<GameData>()));
+                console.RegisterCommand(new SpawnEnemyCommand(container.Resolve<Battle>(), container.Resolve<GameData>()));
 
                 var go = new GameObject("DevConsole");
                 Object.DontDestroyOnLoad(go);
