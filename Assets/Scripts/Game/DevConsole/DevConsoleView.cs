@@ -210,7 +210,7 @@ namespace Game.DevConsole {
             textRect.offsetMax = new Vector2(-4, 0);
 
             _logText = textGo.AddComponent<TextMeshProUGUI>();
-            _logText.fontSize = 24;
+            _logText.fontSize = 28;
             _logText.font = TMP_Settings.defaultFontAsset;
             _logText.color = Color.white;
             _logText.richText = true;
@@ -228,8 +228,8 @@ namespace Game.DevConsole {
             var inputGo = new GameObject("InputField");
             inputGo.transform.SetParent(_panel.transform, false);
             var inputLayout = inputGo.AddComponent<LayoutElement>();
-            inputLayout.minHeight = 30;
-            inputLayout.preferredHeight = 30;
+            inputLayout.minHeight = 50;
+            inputLayout.preferredHeight = 50;
 
             var inputBg = inputGo.AddComponent<Image>();
             inputBg.color = new Color(0.1f, 0.1f, 0.15f, 1f);
@@ -255,7 +255,7 @@ namespace Game.DevConsole {
             inputTextRect.offsetMax = Vector2.zero;
 
             var tmp = inputText.AddComponent<TextMeshProUGUI>();
-            tmp.fontSize = 20;
+            tmp.fontSize = 28;
             tmp.font = TMP_Settings.defaultFontAsset;
             tmp.color = Color.white;
             tmp.richText = false;
@@ -272,7 +272,7 @@ namespace Game.DevConsole {
             phRect.offsetMax = Vector2.zero;
 
             var phText = placeholder.AddComponent<TextMeshProUGUI>();
-            phText.fontSize = 14;
+            phText.fontSize = 28;
             phText.font = TMP_Settings.defaultFontAsset;
             phText.color = new Color(1f, 1f, 1f, 0.3f);
             phText.text = "Type command... (` toggle, Up/Down history, Esc close)";
