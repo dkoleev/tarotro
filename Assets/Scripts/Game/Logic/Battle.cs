@@ -46,6 +46,7 @@ namespace Game.Logic
             _logger.Info("Starting battle", "Battle");
             _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
 
+            _logger.Info("Play hand " + _gameData.Battle.playHandSize, "Battle");
             await CreateDesk();
             await SpawnRandomEnemy(ct);
         }
