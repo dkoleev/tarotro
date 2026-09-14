@@ -19,10 +19,10 @@ namespace Tarotro.Game.Logic
         private class EnemyWrapper {
             public EnemyModel Model { get; }
             public EnemyPresenter Presenter { get; }
-            public EnemyView View { get; }
+            public IEnemyView View { get; }
             public AsyncOperationHandle<GameObject> AddressablesHandle { get; }
 
-            public EnemyWrapper(EnemyModel model, EnemyPresenter presenter, EnemyView view, AsyncOperationHandle<GameObject>  addressablesHandle) {
+            public EnemyWrapper(EnemyModel model, EnemyPresenter presenter, IEnemyView view, AsyncOperationHandle<GameObject>  addressablesHandle) {
                 Model = model;
                 Presenter = presenter;
                 View = view;
@@ -88,9 +88,9 @@ namespace Tarotro.Game.Logic
             var handle = Addressables.InstantiateAsync(enemyData.prefabPath);
             var enemyGo = await handle.ToUniTask(cancellationToken: ct);
 
-            var view = enemyGo.GetComponent<EnemyView>();
+            var view = enemyGo.GetComponent<IEnemyView>();
             if (view == null) {
-                _logger.Error($"EnemyView component not found on prefab: {enemyData.prefabPath}", "Battle");
+                _logger.Error($"IEnemyView component not found on prefab: {enemyData.prefabPath}", "Battle");
                 Addressables.ReleaseInstance(handle);
                 return;
             }
