@@ -26,5 +26,12 @@
     "damage": 30,
     "nameLoc": "enemy_bloated_name",
     "prefabPath": "Bundles/Enemies/enemy_bloated.prefab"
+  },
+  "burning": {
+    "id": "burning",
+    "maxHealth": 140,
+    "damage": 40,
+    "nameLoc": "enemy_burning_name",
+    "prefabPath": "Bundles/Enemies/enemy_burning.prefab"
   }
 }

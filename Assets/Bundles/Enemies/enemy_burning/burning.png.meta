@@ -1,100 +1,112 @@
 fileFormatVersion: 2
-guid: e5efd0d4d5b191b44bde04083c86f707
+guid: 2bf20a9ca4e6ccd48904068251e17462
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3891361359843681242
-    second: Bloated Damned_0
+      213: 785666579429524048
+    second: Burning Damned_0
   - first:
-      213: -1133676772815820021
-    second: Bloated Damned_1
+      213: 7824383267374672857
+    second: Burning Damned_1
   - first:
-      213: -965304966025994540
-    second: Bloated Damned_2
+      213: -1167791122959184
+    second: Burning Damned_2
   - first:
-      213: 6695245093428516858
-    second: Bloated Damned_3
+      213: 1317249234737735933
+    second: Burning Damned_3
   - first:
-      213: 8573471366510675393
-    second: Bloated Damned_4
+      213: -4962381738113048986
+    second: Burning Damned_4
   - first:
-      213: 2586200281441506550
-    second: Bloated Damned_5
+      213: -6660888888159135947
+    second: Burning Damned_5
   - first:
-      213: 7556955749396248473
-    second: Bloated Damned_6
+      213: -1169891004820326508
+    second: Burning Damned_6
   - first:
-      213: -7193505007810896699
-    second: Bloated Damned_7
+      213: -844942310835981862
+    second: Burning Damned_7
   - first:
-      213: 3915948694066642023
-    second: Bloated Damned_8
+      213: -8303012072137993198
+    second: Burning Damned_8
   - first:
-      213: 8869172557797416728
-    second: Bloated Damned_9
+      213: -814445060199632487
+    second: Burning Damned_9
   - first:
-      213: -4691728749132766927
-    second: Bloated Damned_10
+      213: 7035514982114071329
+    second: Burning Damned_10
   - first:
-      213: 942526765055854841
-    second: Bloated Damned_11
+      213: 3293900508782354346
+    second: Burning Damned_11
   - first:
-      213: -593950024436809004
-    second: Bloated Damned_12
+      213: -6771123897937438400
+    second: Burning Damned_12
   - first:
-      213: 1909496394601074143
-    second: Bloated Damned_13
+      213: -8729835103603687053
+    second: Burning Damned_13
   - first:
-      213: 7613908239697098726
-    second: Bloated Damned_14
+      213: -6010730443846095488
+    second: Burning Damned_14
   - first:
-      213: -8426450448636672776
-    second: Bloated Damned_15
+      213: -6562399128734029645
+    second: Burning Damned_15
   - first:
-      213: -4903621394880215061
-    second: Bloated Damned_16
+      213: 8163901660935252528
+    second: Burning Damned_16
   - first:
-      213: -1885485835010754768
-    second: Bloated Damned_17
+      213: 5656059233053170978
+    second: Burning Damned_17
   - first:
-      213: -3586243260870015233
-    second: Bloated Damned_18
+      213: -6061184290978361751
+    second: Burning Damned_18
   - first:
-      213: 732048918551511733
-    second: Bloated Damned_19
+      213: -1933005668096768573
+    second: Burning Damned_19
   - first:
-      213: -7140641788065430449
-    second: Bloated Damned_20
+      213: -4885064858120251976
+    second: Burning Damned_20
   - first:
-      213: -1681940159542881382
-    second: Bloated Damned_21
+      213: -4543589145859071382
+    second: Burning Damned_21
   - first:
-      213: 1618328270241855177
-    second: Bloated Damned_22
+      213: 7755687154607543055
+    second: Burning Damned_22
   - first:
-      213: -5155007516641648116
-    second: Bloated Damned_23
+      213: 2119989206302716090
+    second: Burning Damned_23
   - first:
-      213: 8128805536510427810
-    second: Bloated Damned_24
+      213: 5405802920127392207
+    second: Burning Damned_24
   - first:
-      213: 4147581615297647026
-    second: Bloated Damned_25
+      213: -4682222185262963605
+    second: Burning Damned_25
   - first:
-      213: 2756808852026797689
-    second: Bloated Damned_26
+      213: -2252187521374176485
+    second: Burning Damned_26
   - first:
-      213: 5833329795628505564
-    second: Bloated Damned_27
+      213: -8860643775047176429
+    second: Burning Damned_27
   - first:
-      213: 82916042753881063
-    second: Bloated Damned_28
+      213: 4219175315830268674
+    second: Burning Damned_28
   - first:
-      213: -50101893967317673
-    second: Bloated Damned_29
+      213: 8240497248126522941
+    second: Burning Damned_29
   - first:
-      213: -6099055564158588024
-    second: Bloated Damned_30
+      213: 1398203595736035140
+    second: Burning Damned_30
+  - first:
+      213: -2887604745957281998
+    second: Burning Damned_31
+  - first:
+      213: -3256889982215361091
+    second: Burning Damned_32
+  - first:
+      213: 3849563707765917525
+    second: Burning Damned_33
+  - first:
+      213: -8406680731813987581
+    second: Burning Damned_34
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -231,7 +243,117 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bloated Damned_0
+      name: burning_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f66333b2ffb18834b9448912acbe49f6
+      internalID: -1380249087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0917844448469794daf3778b2f4b52f5
+      internalID: -1274855129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a015b32f8c7ba49806972baa8aedeb
+      internalID: -664187769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3738b2054e5c3b348937bdcf8dcc0f83
+      internalID: -1566986853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93a1bc6d411d12f4c8423b899adac995
+      internalID: -212502060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_5
       rect:
         serializedVersion: 2
         x: 0
@@ -244,16 +366,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ad3e92a1a84e00630800000000000000
-      internalID: 3891361359843681242
+      spriteID: c4a16361495d4c24f83a0fecbd115971
+      internalID: 1793392544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_1
+      name: burning_6
       rect:
         serializedVersion: 2
         x: 64
@@ -266,16 +388,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b0ba33a4bfe5440f0800000000000000
-      internalID: -1133676772815820021
+      spriteID: 8260ef19db67d1b4a8d1ad7264a74a9d
+      internalID: -1745503175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_2
+      name: burning_7
       rect:
         serializedVersion: 2
         x: 128
@@ -288,16 +410,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4de99107f3c8a92f0800000000000000
-      internalID: -965304966025994540
+      spriteID: e47bf809724f6884b8e030eca2248ca4
+      internalID: -186173516
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_3
+      name: burning_8
       rect:
         serializedVersion: 2
         x: 192
@@ -310,16 +432,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: af7dbf580f94aec50800000000000000
-      internalID: 6695245093428516858
+      spriteID: c98d6a1e36716e747aa9eafe17fc14d7
+      internalID: 1294233445
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_4
+      name: burning_9
       rect:
         serializedVersion: 2
         x: 256
@@ -332,130 +454,20 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 1c50adc98c61bf670800000000000000
-      internalID: 8573471366510675393
+      spriteID: 75f9b55f45900164794473382178b96c
+      internalID: -1062269626
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_5
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6f41655247704e320800000000000000
-      internalID: 2586200281441506550
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bloated Damned_6
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 64
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 997fb123733bfd860800000000000000
-      internalID: 7556955749396248473
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bloated Damned_7
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 64
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5cc1077ee498b2c90800000000000000
-      internalID: -7193505007810896699
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bloated Damned_8
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 64
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 76c3f74f69e385630800000000000000
-      internalID: 3915948694066642023
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bloated Damned_9
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 64
-        width: 64
-        height: 64
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 81f582f4371a51b70800000000000000
-      internalID: 8869172557797416728
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bloated Damned_10
+      name: burning_10
       rect:
         serializedVersion: 2
         x: 320
-        y: 64
+        y: 128
         width: 64
         height: 64
       alignment: 7
@@ -464,19 +476,63 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 131247d7f81a3eeb0800000000000000
-      internalID: -4691728749132766927
+      spriteID: 9544d766616df864ebb68a4ae032a358
+      internalID: 1392971451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_11
+      name: burning_11
       rect:
         serializedVersion: 2
         x: 384
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a726d9a8f2dccd4c82ca262f71328d7
+      internalID: 1432327750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_12
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 128
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b5e195d2976414f9814a72cd10c39c
+      internalID: 942234112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_13
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 64
         width: 64
         height: 64
@@ -486,60 +542,148 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 9f8c37e5917841d00800000000000000
-      internalID: 942526765055854841
+      spriteID: d89c6ff987d5a044c82c2879ed833a3a
+      internalID: -705289213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_12
+      name: burning_14
       rect:
         serializedVersion: 2
-        x: 448
+        x: 64
         y: 64
         width: 64
         height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4d20c13899dd1c7f0800000000000000
-      internalID: -593950024436809004
+      spriteID: 8a7877a6126f40744ad020864ae4e1ba
+      internalID: -1010336039
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_13
+      name: burning_15
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40f2a3b5224cdc0418edd854ad97f96c
+      internalID: -1030529463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_16
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab00083ec818d5b448b7fecae916181e
+      internalID: -14589596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_17
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63d13de484178f0419087036230fabf7
+      internalID: -2105286511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_18
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9f1eb8959f0f545a03085245568007
+      internalID: 114256808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_19
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
         height: 64
-      alignment: 6
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: fdd061c9ad4ef7a10800000000000000
-      internalID: 1909496394601074143
+      spriteID: b19156d1c7359b649b57cc23e4a460e5
+      internalID: 1188292904
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_14
+      name: burning_20
       rect:
         serializedVersion: 2
         x: 64
@@ -552,16 +696,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6e7b09b24390aa960800000000000000
-      internalID: 7613908239697098726
+      spriteID: c38aa715a74205a409eab415b2e67557
+      internalID: 289316285
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_15
+      name: burning_21
       rect:
         serializedVersion: 2
         x: 128
@@ -574,16 +718,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8f4849356fb3f0b80800000000000000
-      internalID: -8426450448636672776
+      spriteID: 003841623e1b82d449737bdf3f7086b4
+      internalID: 1011326724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_16
+      name: burning_22
       rect:
         serializedVersion: 2
         x: 192
@@ -596,16 +740,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: be7c8256256d2fbb0800000000000000
-      internalID: -4903621394880215061
+      spriteID: c3a70fee69bdedf49bd865c96f5f00c4
+      internalID: 1434725657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_17
+      name: burning_23
       rect:
         serializedVersion: 2
         x: 256
@@ -618,16 +762,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 037372f6f9865d5e0800000000000000
-      internalID: -1885485835010754768
+      spriteID: 0b379e912c9117d4b9e43d25b74471d0
+      internalID: -1164953818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bloated Damned_18
+      name: burning_24
       rect:
         serializedVersion: 2
         x: 320
@@ -640,10 +784,32 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ff644b541ca1b3ec0800000000000000
-      internalID: -3586243260870015233
+      spriteID: 623c663cb89b3fc4fb09816afa023270
+      internalID: 1838842409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: burning_25
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70569bef95bf7a4c8169c073f2d6514
+      internalID: -920968471
       vertices: []
       indices: 
       edges: []
@@ -652,7 +818,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: c7133cd4c8e2eda47832a587ecbf6945
+    spriteID: b96a5c11d4c0cf34c8a88682b83d7755
     internalID: 0
     vertices: []
     indices: 
@@ -664,25 +830,32 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Bloated Damned_0: 3891361359843681242
-      Bloated Damned_1: -1133676772815820021
-      Bloated Damned_10: -4691728749132766927
-      Bloated Damned_11: 942526765055854841
-      Bloated Damned_12: -593950024436809004
-      Bloated Damned_13: 1909496394601074143
-      Bloated Damned_14: 7613908239697098726
-      Bloated Damned_15: -8426450448636672776
-      Bloated Damned_16: -4903621394880215061
-      Bloated Damned_17: -1885485835010754768
-      Bloated Damned_18: -3586243260870015233
-      Bloated Damned_2: -965304966025994540
-      Bloated Damned_3: 6695245093428516858
-      Bloated Damned_4: 8573471366510675393
-      Bloated Damned_5: 2586200281441506550
-      Bloated Damned_6: 7556955749396248473
-      Bloated Damned_7: -7193505007810896699
-      Bloated Damned_8: 3915948694066642023
-      Bloated Damned_9: 8869172557797416728
+      burning_0: -1380249087
+      burning_1: -1274855129
+      burning_10: 1392971451
+      burning_11: 1432327750
+      burning_12: 942234112
+      burning_13: -705289213
+      burning_14: -1010336039
+      burning_15: -1030529463
+      burning_16: -14589596
+      burning_17: -2105286511
+      burning_18: 114256808
+      burning_19: 1188292904
+      burning_2: -664187769
+      burning_20: 289316285
+      burning_21: 1011326724
+      burning_22: 1434725657
+      burning_23: -1164953818
+      burning_24: 1838842409
+      burning_25: -920968471
+      burning_3: -1566986853
+      burning_4: -212502060
+      burning_5: 1793392544
+      burning_6: -1745503175
+      burning_7: -186173516
+      burning_8: 1294233445
+      burning_9: -1062269626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
