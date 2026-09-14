@@ -4,5 +4,11 @@
     "maxHealth": 80,
     "nameLoc": "demon_eye_name",
     "prefabPath": "Bundles/Enemies/enemy_demon_eye.prefab"
+  },
+  "enemy_demon_mine": {
+    "id": "enemy_demon_mine",
+    "maxHealth": 50,
+    "nameLoc": "enemy_demon_mine_name",
+    "prefabPath": "Bundles/Enemies/enemy_demon_mine.prefab"
   }
 }
