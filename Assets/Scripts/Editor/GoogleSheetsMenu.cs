@@ -4,11 +4,31 @@ using Yogi.UniGSC.Editor;
 
 namespace Editor {
     public static class GoogleSheetsMenu {
+        [MenuItem("Tarotro/Configs/Pull All Configs", priority = 0)]
+        private static void PullAll() {
+            GoogleSheetsHelper.PullAll();
+        }
+
+        [MenuItem("Tarotro/Configs/Open Spreadsheet in Browser", priority = 1)]
+        private static void OpenSpreadsheet() {
+            GoogleSheetsHelper.OpenSpreadsheet();
+        }
+
+        [MenuItem("Tarotro/Configs/Open tarot_cards Sheet", priority = 20)]
+        private static void OpenTarotCards() => GoogleSheetsHelper.OpenSheetByName("Configs/tarot_cards");
+
+        [MenuItem("Tarotro/Configs/Open enemies Sheet", priority = 21)]
+        private static void OpenEnemies() => GoogleSheetsHelper.OpenSheetByName("Configs/enemies");
+
+        [MenuItem("Tarotro/Configs/Open battle Sheet", priority = 22)]
+        private static void OpenBattle() => GoogleSheetsHelper.OpenSheetByName("Configs/battle");
+    }
+
+    public static class GoogleSheetsHelper {
         private const string ConfigsAssetPath =
             "Assets/Settings/GoogleSheetConfigs/Google Sheets Configs.asset";
 
-        [MenuItem("Tarotro/Configs/Pull All Configs", priority = 0)]
-        private static void PullAll() {
+        public static void PullAll() {
             var configs = LoadConfigs();
             if (configs == null) return;
 
@@ -16,8 +36,7 @@ namespace Editor {
             Debug.Log("[GoogleSheetsMenu] All configs pulled successfully.");
         }
 
-        [MenuItem("Tarotro/Configs/Open Spreadsheet in Browser", priority = 1)]
-        private static void OpenSpreadsheet() {
+        public static void OpenSpreadsheet() {
             var configs = LoadConfigs();
             if (configs == null) return;
 
@@ -26,16 +45,7 @@ namespace Editor {
             }
         }
 
-        [MenuItem("Tarotro/Configs/Open tarot_cards Sheet", priority = 20)]
-        private static void OpenTarotCards() => OpenSheetByName("Configs/tarot_cards");
-
-        [MenuItem("Tarotro/Configs/Open enemies Sheet", priority = 21)]
-        private static void OpenEnemies() => OpenSheetByName("Configs/enemies");
-
-        [MenuItem("Tarotro/Configs/Open battle Sheet", priority = 22)]
-        private static void OpenBattle() => OpenSheetByName("Configs/battle");
-
-        private static void OpenSheetByName(string configName) {
+        public static void OpenSheetByName(string configName) {
             var configs = LoadConfigs();
             if (configs == null) return;
 
