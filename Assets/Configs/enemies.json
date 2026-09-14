@@ -19,5 +19,12 @@
     "damage": 50,
     "nameLoc": "enemy_large_skull_name",
     "prefabPath": "Bundles/Enemies/enemy_large_skull.prefab"
+  },
+  "bloated": {
+    "id": "bloated",
+    "maxHealth": 120,
+    "damage": 30,
+    "nameLoc": "enemy_bloated_name",
+    "prefabPath": "Bundles/Enemies/enemy_bloated.prefab"
   }
 }

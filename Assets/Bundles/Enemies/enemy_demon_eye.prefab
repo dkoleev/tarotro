@@ -56,6 +56,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: enemy_demon_eye
       objectReference: {fileID: 0}
+    - target: {fileID: 7451023689534178256, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
+      propertyPath: m_Size.x
+      value: 0.37
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451023689534178256, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
+      propertyPath: m_Size.y
+      value: 0.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451023689534178256, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -443510068152227747, guid: dbaacc6f31228c745ae62acbb8ee1c44, type: 3}
+    - target: {fileID: 7451023689534178256, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
