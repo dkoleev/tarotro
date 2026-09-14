@@ -52,6 +52,7 @@ namespace Game.Logic
         }
 
         private async UniTask CreateDesk() {
+            
         }
 
         private async UniTask SpawnRandomEnemy(CancellationToken ct = default) {

@@ -25,3 +25,7 @@ MonoBehaviour:
       <SheetId>k__BackingField: 190890144
       <Range>k__BackingField: 
       <Parser>k__BackingField: default
+    - <ConfigName>k__BackingField: Configs/battle
+      <SheetId>k__BackingField: 580982164
+      <Range>k__BackingField: 
+      <Parser>k__BackingField: const

@@ -30,8 +30,6 @@ namespace Game.Core {
             jsonFile = await handle.ToUniTask();
             _gameData.Battle = JsonConvert.DeserializeObject<BattleData>(jsonFile.text);
 
-            
-
             Addressables.Release(handle);
         }
     }
