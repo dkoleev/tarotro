@@ -1,0 +1,64 @@
+using UnityEditor;
+using UnityEngine;
+using Yogi.UniGSC.Editor;
+
+namespace Editor {
+    public static class GoogleSheetsMenu {
+        private const string ConfigsAssetPath =
+            "Assets/Settings/GoogleSheetConfigs/Google Sheets Configs.asset";
+
+        [MenuItem("Tarotro/Configs/Pull All Configs", priority = 0)]
+        private static void PullAll() {
+            var configs = LoadConfigs();
+            if (configs == null) return;
+
+            configs.PullAllConfigs();
+            Debug.Log("[GoogleSheetsMenu] All configs pulled successfully.");
+        }
+
+        [MenuItem("Tarotro/Configs/Open Spreadsheet in Browser", priority = 1)]
+        private static void OpenSpreadsheet() {
+            var configs = LoadConfigs();
+            if (configs == null) return;
+
+            foreach (var config in configs.Configs) {
+                configs.OpenSpreadsheet(config);
+            }
+        }
+
+        [MenuItem("Tarotro/Configs/Open tarot_cards Sheet", priority = 20)]
+        private static void OpenTarotCards() => OpenSheetByName("Configs/tarot_cards");
+
+        [MenuItem("Tarotro/Configs/Open enemies Sheet", priority = 21)]
+        private static void OpenEnemies() => OpenSheetByName("Configs/enemies");
+
+        [MenuItem("Tarotro/Configs/Open battle Sheet", priority = 22)]
+        private static void OpenBattle() => OpenSheetByName("Configs/battle");
+
+        private static void OpenSheetByName(string configName) {
+            var configs = LoadConfigs();
+            if (configs == null) return;
+
+            foreach (var group in configs.Configs) {
+                foreach (var sheet in group.Sheets) {
+                    if (sheet.ConfigName != configName) continue;
+
+                    Application.OpenURL(
+                        $"https://docs.google.com/spreadsheets/d/{group.SpreadSheet}/#gid={sheet.SheetId}");
+                    return;
+                }
+            }
+
+            Debug.LogWarning($"[GoogleSheetsMenu] Sheet '{configName}' not found.");
+        }
+
+        private static GoogleSheetsConfigs LoadConfigs() {
+            var asset = AssetDatabase.LoadAssetAtPath<GoogleSheetsConfigs>(ConfigsAssetPath);
+            if (asset != null) return asset;
+
+            Debug.LogError(
+                $"[GoogleSheetsMenu] GoogleSheetsConfigs asset not found at '{ConfigsAssetPath}'.");
+            return null;
+        }
+    }
+}
