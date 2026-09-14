@@ -34,6 +34,7 @@ namespace Game.Logic
         private readonly GameData _gameData;
         private readonly IGameLogger _logger;
         private EnemyWrapper _currentEnemy;
+        private PlayerModel _currentPlayer;
         private CancellationTokenSource _cts;
 
         public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, IGameLogger logger) {
@@ -49,6 +50,10 @@ namespace Game.Logic
             _logger.Info("Play hand " + _gameData.Battle.playHandSize, "Battle");
             await CreateDesk();
             await SpawnRandomEnemy(ct);
+        }
+
+        private void CreatePlayer() {
+            _currentPlayer = new PlayerModel();
         }
 
         private async UniTask CreateDesk() {
@@ -96,7 +101,6 @@ namespace Game.Logic
             _currentEnemy = new EnemyWrapper(model, presenter, view, handle);
 
             await UniTask.Delay(1000, cancellationToken: ct);
-            model.TakeDamage(100);
         }
         
         private void OnEnemyDied() {

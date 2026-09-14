@@ -5,6 +5,7 @@ namespace Game.Data {
     public class TarotCardData {
         public string id;
         public int index;
+        public int value;
         public string nameLoc;
         public string spritePath;
     }
