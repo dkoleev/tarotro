@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 6723891045218367832, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: -2945179268124896240, guid: 8e745be357f39fd4cb104dabb12679d1, type: 3}
+      objectReference: {fileID: 9100000, guid: 6cdd3037a3d9e614490a1e6d1b857e40, type: 2}
     - target: {fileID: 7310245086373498210, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
       propertyPath: m_Name
       value: enemy_demon_mine

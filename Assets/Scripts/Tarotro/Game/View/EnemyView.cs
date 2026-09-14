@@ -26,9 +26,9 @@ namespace Tarotro.Game.View {
         };
 
         private void Awake() {
-            foreach (var animationState in _animationStates) {
-                if (animationStatsOverride.TryGetValue(animationState.Key, out var value)) {
-                    _animationStates[animationState.Key] = Animator.StringToHash(value);
+            foreach (var overrideState in animationStatsOverride) {
+                if (_animationStates.ContainsKey(overrideState.Key)) {
+                    _animationStates[overrideState.Key] = Animator.StringToHash(overrideState.Value);
                 }
             }
         }

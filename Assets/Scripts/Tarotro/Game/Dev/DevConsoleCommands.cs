@@ -32,6 +32,11 @@ namespace Tarotro.Game.Dev {
             _battle.SpawnRandomEnemy(CancellationToken.None).Forget();
         }
         
+        [Command("player-attack", MonoTargetType.Registry)]
+        public void PlayerAttack(int damage) {
+            _battle.PlayerAttack(damage);
+        }
+        
         [Command("list-enemies", MonoTargetType.Registry)]
         private void ListEnemies() {
             if (_gameData.Enemies == null || _gameData.Enemies.Count == 0) {

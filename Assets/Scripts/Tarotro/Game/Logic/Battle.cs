@@ -49,6 +49,7 @@ namespace Tarotro.Game.Logic
 
             _logger.Info("Play hand " + _gameData.Battle.playHandSize, "Battle");
             await CreateDesk();
+            // await SpawnEnemy("large_skull", ct);
             await SpawnRandomEnemy(ct);
         }
 
@@ -122,6 +123,11 @@ namespace Tarotro.Game.Logic
             }
                 
             _currentEnemy = null;
+        }
+
+        public void PlayerAttack(int? damageOverride = null) {
+            var damage = damageOverride ?? _currentPlayer.PlayHand();
+            _currentEnemy.Model.TakeDamage(damage);
         }
 
         public void Dispose() {
