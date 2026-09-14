@@ -1,29 +1,28 @@
 using UnityEditor;
 using UnityEditor.Toolbars;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Editor {
-    public class PullConfigsToolbarButton : EditorToolbarButton {
+    public static class ConfigsToolbar {
         [MainToolbarElement("TarotroPullConfigs", defaultDockPosition = MainToolbarDockPosition.Left)]
-        static PullConfigsToolbarButton Create() => new();
-
-        public PullConfigsToolbarButton() {
-            text = "Pull Configs";
-            tooltip = "Pull all configs from Google Sheets";
-            icon = EditorGUIUtility.IconContent("d_Refresh").image as Texture2D;
-            clicked += GoogleSheetsHelper.PullAll;
+        static VisualElement CreatePullButton() {
+            var button = new Button(GoogleSheetsHelper.PullAll) {
+                text = "Pull Configs",
+                tooltip = "Pull all configs from Google Sheets"
+            };
+            button.style.backgroundImage =
+                Background.FromTexture2D(EditorGUIUtility.IconContent("d_Refresh").image as Texture2D);
+            return button;
         }
-    }
 
-    public class OpenSheetToolbarButton : EditorToolbarButton {
         [MainToolbarElement("TarotroOpenSheet", defaultDockPosition = MainToolbarDockPosition.Left)]
-        static OpenSheetToolbarButton Create() => new();
-
-        public OpenSheetToolbarButton() {
-            text = "Open Sheet";
-            tooltip = "Open Google Spreadsheet in browser";
-            icon = EditorGUIUtility.IconContent("d_BuildSettings.Web.Small").image as Texture2D;
-            clicked += GoogleSheetsHelper.OpenSpreadsheet;
+        static VisualElement CreateOpenButton() {
+            var button = new Button(GoogleSheetsHelper.OpenSpreadsheet) {
+                text = "Open Sheet",
+                tooltip = "Open Google Spreadsheet in browser"
+            };
+            return button;
         }
     }
 }
