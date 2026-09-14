@@ -1,33 +1,29 @@
 using UnityEditor;
+using UnityEditor.Toolbars;
 using UnityEngine;
 
 namespace Editor {
-    public class ConfigsToolbar : EditorWindow {
-        [MenuItem("Tarotro/Configs/Show Toolbar", priority = 40)]
-        private static void ShowWindow() {
-            var window = GetWindow<ConfigsToolbar>("Configs");
-            window.minSize = new Vector2(200, 30);
-            window.maxSize = new Vector2(400, 30);
+    public class PullConfigsToolbarButton : EditorToolbarButton {
+        [MainToolbarElement("TarotroPullConfigs", defaultDockPosition = MainToolbarDockPosition.Left)]
+        static PullConfigsToolbarButton Create() => new();
+
+        public PullConfigsToolbarButton() {
+            text = "Pull Configs";
+            tooltip = "Pull all configs from Google Sheets";
+            icon = EditorGUIUtility.IconContent("d_Refresh").image as Texture2D;
+            clicked += GoogleSheetsHelper.PullAll;
         }
+    }
 
-        [InitializeOnLoadMethod]
-        private static void AutoOpen() {
-            EditorApplication.delayCall += () => {
-                if (HasOpenInstances<ConfigsToolbar>()) return;
-                ShowWindow();
-            };
-        }
+    public class OpenSheetToolbarButton : EditorToolbarButton {
+        [MainToolbarElement("TarotroOpenSheet", defaultDockPosition = MainToolbarDockPosition.Left)]
+        static OpenSheetToolbarButton Create() => new();
 
-        private void OnGUI() {
-            EditorGUILayout.BeginHorizontal();
-
-            if (GUILayout.Button("Pull Configs", EditorStyles.toolbarButton))
-                GoogleSheetsHelper.PullAll();
-
-            if (GUILayout.Button("Open Sheet", EditorStyles.toolbarButton))
-                GoogleSheetsHelper.OpenSpreadsheet();
-
-            EditorGUILayout.EndHorizontal();
+        public OpenSheetToolbarButton() {
+            text = "Open Sheet";
+            tooltip = "Open Google Spreadsheet in browser";
+            icon = EditorGUIUtility.IconContent("d_BuildSettings.Web.Small").image as Texture2D;
+            clicked += GoogleSheetsHelper.OpenSpreadsheet;
         }
     }
 }
