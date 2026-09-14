@@ -1,42 +1,62 @@
+using System;
 using UnityEditor;
-using UnityEditor.Overlays;
-using UnityEditor.Toolbars;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Editor {
-    [EditorToolbarElement(Id, typeof(SceneView))]
-    public class PullConfigsButton : EditorToolbarButton {
-        public const string Id = "Tarotro/PullConfigs";
+    [InitializeOnLoad]
+    public static class ConfigsToolbar {
+        private const string ContainerId = "tarotro-configs-toolbar";
 
-        public PullConfigsButton() {
-            text = "Pull Configs";
-            tooltip = "Pull all configs from Google Sheets";
-            icon = EditorGUIUtility.IconContent("d_Refresh").image as Texture2D;
-            clicked += GoogleSheetsHelper.PullAll;
+        static readonly Type ToolbarType =
+            typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.Toolbar");
+
+        static ConfigsToolbar() {
+            EditorApplication.delayCall += AttachToToolbar;
         }
-    }
 
-    [EditorToolbarElement(Id, typeof(SceneView))]
-    public class OpenSpreadsheetButton : EditorToolbarButton {
-        public const string Id = "Tarotro/OpenSpreadsheet";
+        private static void AttachToToolbar() {
+            if (ToolbarType == null) return;
 
-        public OpenSpreadsheetButton() {
-            text = "Open Sheet";
-            tooltip = "Open Google Spreadsheet in browser";
-            icon = EditorGUIUtility.IconContent("d_BuildSettings.Web.Small").image as Texture2D;
-            clicked += GoogleSheetsHelper.OpenSpreadsheet;
+            var toolbars = Resources.FindObjectsOfTypeAll(ToolbarType);
+            if (toolbars.Length == 0) {
+                EditorApplication.delayCall += AttachToToolbar;
+                return;
+            }
+
+            var toolbar = toolbars[0] as EditorWindow;
+            if (toolbar == null) return;
+
+            var root = toolbar.rootVisualElement;
+
+            if (root.Q(ContainerId) != null) return;
+
+            var zone = root.Q("ToolbarZoneRightAlign");
+            if (zone == null) {
+                Debug.LogWarning(
+                    "[ConfigsToolbar] Could not find toolbar zone. Use Tarotro > Configs menu instead.");
+                return;
+            }
+
+            var container = new VisualElement { name = ContainerId };
+            container.style.flexDirection = FlexDirection.Row;
+            container.style.alignItems = Align.Center;
+
+            var pullBtn = new Button(GoogleSheetsHelper.PullAll) {
+                text = "Pull Configs",
+                tooltip = "Pull all configs from Google Sheets"
+            };
+            pullBtn.AddToClassList("unity-toolbar-button");
+
+            var openBtn = new Button(GoogleSheetsHelper.OpenSpreadsheet) {
+                text = "Open Sheet",
+                tooltip = "Open Google Spreadsheet in browser"
+            };
+            openBtn.AddToClassList("unity-toolbar-button");
+
+            container.Add(pullBtn);
+            container.Add(openBtn);
+            zone.Add(container);
         }
-    }
-
-    [Overlay(typeof(SceneView), OverlayId, "Configs")]
-    [Icon("d_Refresh")]
-    public class ConfigsToolbarOverlay : ToolbarOverlay {
-        private const string OverlayId = "tarotro-configs-toolbar";
-
-        ConfigsToolbarOverlay() : base(
-            PullConfigsButton.Id,
-            OpenSpreadsheetButton.Id
-        ) { }
     }
 }
