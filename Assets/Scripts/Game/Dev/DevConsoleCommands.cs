@@ -24,12 +24,12 @@ namespace Game.Dev {
                 _gameLogger.Warn($"Unknown enemy id '{enemyId}'. Use 'list-enemies' to see available ids.", "dev");
                 return;
             }
-            _battle.DevSpawnEnemy(enemyId, CancellationToken.None).Forget();
+            _battle.SpawnEnemy(enemyId, CancellationToken.None).Forget();
         }
         
         [Command("spawn-random-enemy", MonoTargetType.Registry)]
         public void SpawnRandomEnemy() {
-            _battle.DevSpawnRandomEnemy(CancellationToken.None).Forget();
+            _battle.SpawnRandomEnemy(CancellationToken.None).Forget();
         }
         
         [Command("list-enemies", MonoTargetType.Registry)]

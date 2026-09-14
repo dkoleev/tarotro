@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8902026713692594622
+--- !u!1001 &3858302338060997581
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,6 +10,14 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2963410758134952678, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
       propertyPath: animationStatsOverride.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963410758134952678, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
+      propertyPath: _animationStatsOverride.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963410758134952678, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
+      propertyPath: animationStatsOverride.Array.data[0].key
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2963410758134952678, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
@@ -19,6 +27,14 @@ PrefabInstance:
     - target: {fileID: 2963410758134952678, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
       propertyPath: animationStatsOverride.Array.data[2].key
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963410758134952678, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
+      propertyPath: _animationStatsOverride.Array.data[0].key
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963410758134952678, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
+      propertyPath: animationStatsOverride.Array.data[0].value
+      value: Idle/Move
       objectReference: {fileID: 0}
     - target: {fileID: 2963410758134952678, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
       propertyPath: animationStatsOverride.Array.data[1].value
@@ -71,10 +87,10 @@ PrefabInstance:
     - target: {fileID: 6723891045218367832, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: -2945179268124896240, guid: 8e745be357f39fd4cb104dabb12679d1, type: 3}
+      objectReference: {fileID: 7579859928581259950, guid: 0c512192c3681e54484a21b1b6433474, type: 3}
     - target: {fileID: 7310245086373498210, guid: a92d35c6026e7474f8e3ee479bb46a69, type: 3}
       propertyPath: m_Name
-      value: enemy_demon_mine
+      value: enemy_large_skull
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -2,13 +2,22 @@
   "demon_eye": {
     "id": "demon_eye",
     "maxHealth": 80,
-    "nameLoc": "demon_eye_name",
+    "damage": 10,
+    "nameLoc": "enemy_demon_eye_name",
     "prefabPath": "Bundles/Enemies/enemy_demon_eye.prefab"
   },
-  "enemy_demon_mine": {
-    "id": "enemy_demon_mine",
+  "demon_mine": {
+    "id": "demon_mine",
     "maxHealth": 50,
+    "damage": 10,
     "nameLoc": "enemy_demon_mine_name",
     "prefabPath": "Bundles/Enemies/enemy_demon_mine.prefab"
+  },
+  "large_skull": {
+    "id": "large_skull",
+    "maxHealth": 200,
+    "damage": 50,
+    "nameLoc": "enemy_large_skull_name",
+    "prefabPath": "Bundles/Enemies/enemy_large_skull.prefab"
   }
 }
