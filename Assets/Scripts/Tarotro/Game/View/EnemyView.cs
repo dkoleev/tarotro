@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 
 namespace Tarotro.Game.View {
-    public class EnemyView : MonoBehaviour {
+    public class EnemyView : MonoBehaviour, IEnemyView {
         [SerializeField] private Dictionary<AnimationType, string> animationStatsOverride;
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private Animator animator;
