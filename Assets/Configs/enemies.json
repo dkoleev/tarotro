@@ -1,35 +1,40 @@
 {
   "demon_eye": {
     "id": "demon_eye",
-    "maxHealth": 80,
+    "circle": 1,
+    "type": "Common",
     "damage": 10,
     "nameLoc": "enemy_demon_eye_name",
     "prefabPath": "Bundles/Enemies/enemy_demon_eye.prefab"
   },
   "demon_mine": {
     "id": "demon_mine",
-    "maxHealth": 50,
+    "circle": 1,
+    "type": "Common",
     "damage": 10,
     "nameLoc": "enemy_demon_mine_name",
     "prefabPath": "Bundles/Enemies/enemy_demon_mine.prefab"
   },
   "large_skull": {
     "id": "large_skull",
-    "maxHealth": 200,
+    "circle": 1,
+    "type": "Boss",
     "damage": 50,
     "nameLoc": "enemy_large_skull_name",
     "prefabPath": "Bundles/Enemies/enemy_large_skull.prefab"
   },
   "bloated": {
     "id": "bloated",
-    "maxHealth": 120,
+    "circle": 1,
+    "type": "Elite",
     "damage": 30,
     "nameLoc": "enemy_bloated_name",
     "prefabPath": "Bundles/Enemies/enemy_bloated.prefab"
   },
   "burning": {
     "id": "burning",
-    "maxHealth": 140,
+    "circle": 1,
+    "type": "Elite",
     "damage": 40,
     "nameLoc": "enemy_burning_name",
     "prefabPath": "Bundles/Enemies/enemy_burning.prefab"

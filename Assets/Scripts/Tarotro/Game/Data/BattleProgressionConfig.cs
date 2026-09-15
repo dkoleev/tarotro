@@ -5,8 +5,8 @@ namespace Tarotro.Game.Data {
     public class BattleProgressionConfig {
         public int baseScore;
         public float scalingFactor;
-        public float smallBlindMultiplier;
-        public float bigBlindMultiplier;
-        public float bossBlindMultiplier;
+        public float commonEnemyMult;
+        public float eliteEnemyMult;
+        public float bossEnemyMult;
     }
 }

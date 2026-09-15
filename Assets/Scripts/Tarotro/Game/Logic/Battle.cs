@@ -52,7 +52,10 @@ namespace Tarotro.Game.Logic
             _logger.Info("Play hand " + _gameData.Battle.playHandSize, "Battle");
             await CreateDesk();
             // await SpawnEnemy("large_skull", ct);
-            await SpawnRandomEnemy(ct);
+            // await SpawnRandomEnemy(ct);
+
+            var roundData = _progressionManager.GenerateRound(1, EnemyType.Common);
+            await SpawnEnemyFromRound(roundData, ct);
         }
 
         private void CreatePlayer() {
@@ -63,16 +66,16 @@ namespace Tarotro.Game.Logic
             
         }
 
-        public async UniTask SpawnRandomEnemy(CancellationToken ct = default) {
+        public async UniTask SpawnRandomEnemy(int health, CancellationToken ct = default) {
             if (_currentEnemy != null) {
                 await HandleEnemyDeath(ct);
             }
             
             var enemyData = _gameData.Enemies.Values.ToList()[Random.Range(0, _gameData.Enemies.Count)];
-            await SpawnEnemy(enemyData, ct);
+            await SpawnEnemy(enemyData, health, ct);
         }
 
-        public async UniTask SpawnEnemy(string enemyId, CancellationToken ct = default) {
+        public async UniTask SpawnEnemy(string enemyId, int health, CancellationToken ct = default) {
             if (!_gameData.Enemies.TryGetValue(enemyId, out var enemyData)) {
                 _logger.Error($"Enemy with id '{enemyId}' not found", "Battle");
                 return;
@@ -82,7 +85,7 @@ namespace Tarotro.Game.Logic
                 await HandleEnemyDeath(ct);
             }
 
-            await SpawnEnemy(enemyData, ct);
+            await SpawnEnemy(enemyData, health, ct);
         }
 
         public async UniTask SpawnEnemyFromRound(FightRoundData roundData, CancellationToken ct = default) {
@@ -95,11 +98,11 @@ namespace Tarotro.Game.Logic
                 await HandleEnemyDeath(ct);
             }
 
-            _logger.Info($"Spawning enemy for Circle {roundData.Circle}, {roundData.BlindType}, HP: {roundData.TargetScore}", "Battle");
-            await SpawnEnemy(enemyData, ct, roundData.TargetScore);
+            _logger.Info($"Spawning enemy for Circle {roundData.Circle}, {roundData.EnemyType}, HP: {roundData.TargetScore}", "Battle");
+            await SpawnEnemy(enemyData, roundData.TargetScore, ct);
         }
 
-        private async UniTask SpawnEnemy(EnemyData enemyData, CancellationToken ct, int? healthOverride = null) {
+        private async UniTask SpawnEnemy(EnemyData enemyData, int health, CancellationToken ct) {
             _logger.Info($"Spawning enemy: {enemyData.id} ({enemyData.prefabPath})", "Battle");
             var handle = Addressables.InstantiateAsync(enemyData.prefabPath);
             var enemyGo = await handle.ToUniTask(cancellationToken: ct);
@@ -111,7 +114,7 @@ namespace Tarotro.Game.Logic
                 return;
             }
 
-            var model = new EnemyModel(enemyData, healthOverride);
+            var model = new EnemyModel(enemyData, health);
             model.Died += OnEnemyDied;
             var presenter = new EnemyPresenter(model, view);
 

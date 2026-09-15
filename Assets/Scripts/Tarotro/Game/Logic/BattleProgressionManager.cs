@@ -15,22 +15,22 @@ namespace Tarotro.Game.Logic {
             _logger = logger;
         }
 
-        public int CalculateTargetScore(int circle, BlindType blindType) {
+        public int CalculateTargetScore(int circle, EnemyType enemyType) {
             var config = _gameData.Battle.progression;
-            var blindMultiplier = GetBlindMultiplier(blindType);
+            var blindMultiplier = GetBlindMultiplier(enemyType);
             var exactScore = config.baseScore * Math.Pow(config.scalingFactor, circle - 1) * blindMultiplier;
             return (int)(Math.Round(exactScore / 50.0) * 50);
         }
 
-        public FightRoundData GenerateRound(int circle, BlindType blindType) {
-            var targetScore = CalculateTargetScore(circle, blindType);
+        public FightRoundData GenerateRound(int circle, EnemyType enemyType) {
+            var targetScore = CalculateTargetScore(circle, enemyType);
             var enemy = SelectEnemy();
 
-            _logger.Info($"Generated round: Circle {circle}, {blindType}, Target: {targetScore}, Enemy: {enemy.id}", "BattleProgression");
+            _logger.Info($"Generated round: Circle {circle}, {enemyType}, Target: {targetScore}, Enemy: {enemy.id}", "BattleProgression");
 
             return new FightRoundData {
                 Circle = circle,
-                BlindType = blindType,
+                EnemyType = enemyType,
                 TargetScore = targetScore,
                 EnemyId = enemy.id
             };
@@ -38,9 +38,9 @@ namespace Tarotro.Game.Logic {
 
         public List<FightRoundData> GenerateCircle(int circle) {
             return new List<FightRoundData> {
-                GenerateRound(circle, BlindType.SmallBlind),
-                GenerateRound(circle, BlindType.BigBlind),
-                GenerateRound(circle, BlindType.BossBlind)
+                GenerateRound(circle, EnemyType.Common),
+                GenerateRound(circle, EnemyType.Elite),
+                GenerateRound(circle, EnemyType.Boss)
             };
         }
 
@@ -49,12 +49,12 @@ namespace Tarotro.Game.Logic {
             return enemies[Random.Range(0, enemies.Count)];
         }
 
-        private float GetBlindMultiplier(BlindType blindType) {
+        private float GetBlindMultiplier(EnemyType enemyType) {
             var config = _gameData.Battle.progression;
-            return blindType switch {
-                BlindType.SmallBlind => config.smallBlindMultiplier,
-                BlindType.BigBlind => config.bigBlindMultiplier,
-                BlindType.BossBlind => config.bossBlindMultiplier,
+            return enemyType switch {
+                EnemyType.Common => config.commonEnemyMult,
+                EnemyType.Elite => config.eliteEnemyMult,
+                EnemyType.Boss => config.bossEnemyMult,
                 _ => 1f
             };
         }

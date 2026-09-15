@@ -12,8 +12,8 @@ namespace Tarotro.Game.Logic {
 
         private readonly int _damage;
 
-        public EnemyModel(EnemyData data, int? healthOverride = null) {
-            CurrentHealth = healthOverride ?? data.maxHealth;
+        public EnemyModel(EnemyData data, int health) {
+            CurrentHealth = health;
             _damage = data.damage;
         }
 

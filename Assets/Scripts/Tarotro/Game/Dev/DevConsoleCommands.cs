@@ -19,17 +19,17 @@ namespace Tarotro.Game.Dev {
         }
 
         [Command("spawn-enemy", MonoTargetType.Registry)]
-        public void SpawnEnemy(string enemyId) {
+        public void SpawnEnemy(string enemyId, int health = 100) {
             if (_gameData.Enemies == null || !_gameData.Enemies.ContainsKey(enemyId)) {
                 _gameLogger.Warn($"Unknown enemy id '{enemyId}'. Use 'list-enemies' to see available ids.", "dev");
                 return;
             }
-            _battle.SpawnEnemy(enemyId, CancellationToken.None).Forget();
+            _battle.SpawnEnemy(enemyId, health, CancellationToken.None).Forget();
         }
         
         [Command("spawn-random-enemy", MonoTargetType.Registry)]
-        public void SpawnRandomEnemy() {
-            _battle.SpawnRandomEnemy(CancellationToken.None).Forget();
+        public void SpawnRandomEnemy(int health = 100) {
+            _battle.SpawnRandomEnemy(health, CancellationToken.None).Forget();
         }
         
         [Command("player-attack", MonoTargetType.Registry)]
@@ -47,7 +47,7 @@ namespace Tarotro.Game.Dev {
             var sb = new StringBuilder();
             sb.AppendLine("Available enemies:");
             foreach (var e in _gameData.Enemies.Values) {
-                sb.AppendLine($"  {e.id} (HP: {e.maxHealth})");
+                sb.AppendLine($"  {e.id} (Type: {e.type})");
             }
 
             _gameLogger.Info(sb.ToString().TrimEnd(), "dev");
