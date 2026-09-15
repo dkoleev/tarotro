@@ -11,6 +11,7 @@ namespace Tarotro.Game.Core {
         private const string TarotCardConfigPath = "Configs/tarot_cards.json";
         private const string EnemiesConfigPath = "Configs/enemies.json";
         private const string BattleConfigPath = "Configs/battle.json";
+        private const string CirclesConfigPath = "Configs/circles.json";
 
         public ConfigLoader(GameData gameData) {
             _gameData = gameData;
@@ -24,7 +25,11 @@ namespace Tarotro.Game.Core {
             handle = Addressables.LoadAssetAsync<TextAsset>(EnemiesConfigPath);
             jsonFile = await handle.ToUniTask();
             _gameData.Enemies = JsonConvert.DeserializeObject<Dictionary<string, EnemyData>>(jsonFile.text);
-            
+
+            handle = Addressables.LoadAssetAsync<TextAsset>(CirclesConfigPath);
+            jsonFile = await handle.ToUniTask();
+            _gameData.Circles = JsonConvert.DeserializeObject<Dictionary<string, CircleData>>(jsonFile.text);
+
             handle = Addressables.LoadAssetAsync<TextAsset>(BattleConfigPath);
             jsonFile = await handle.ToUniTask();
             _gameData.Battle = JsonConvert.DeserializeObject<BattleData>(jsonFile.text);

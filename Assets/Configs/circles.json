@@ -1,0 +1,18 @@
+{
+  "circle_1": {
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_1_name"
+  },
+  "circle_2": {
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_2_name"
+  }
+}

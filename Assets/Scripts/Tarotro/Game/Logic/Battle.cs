@@ -55,6 +55,10 @@ namespace Tarotro.Game.Logic
             // await SpawnEnemy("large_skull", ct);
             // await SpawnRandomEnemy(ct);
 
+            foreach (var gameDataCircle in _gameData.Circles) {
+                _logger.Info(gameDataCircle.Key + "; " + gameDataCircle.Value.steps.Count, "test");
+            }
+
             _currentRoundData = _progressionManager.GenerateRound(1, EnemyType.Common);
             await SpawnEnemyFromRound(_currentRoundData, ct);
         }
