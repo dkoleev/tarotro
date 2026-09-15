@@ -28,7 +28,7 @@ namespace Tarotro.Game.Core {
 
             handle = Addressables.LoadAssetAsync<TextAsset>(CirclesConfigPath);
             jsonFile = await handle.ToUniTask();
-            _gameData.Circles = JsonConvert.DeserializeObject<Dictionary<string, CircleData>>(jsonFile.text);
+            _gameData.Circles = JsonConvert.DeserializeObject<Dictionary<CircleType, CircleData>>(jsonFile.text);
 
             handle = Addressables.LoadAssetAsync<TextAsset>(BattleConfigPath);
             jsonFile = await handle.ToUniTask();

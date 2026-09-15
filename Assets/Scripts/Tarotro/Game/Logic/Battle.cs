@@ -53,14 +53,15 @@ namespace Tarotro.Game.Logic
             _logger.Info("Play hand " + _gameData.Battle.playHandSize, "Battle");
             await CreateDesk();
 
-            var circle = _progressionManager.GenerateCircle(1);
+            var circle = _progressionManager.GenerateCircle(CircleType.Limbo);
+            _currentRoundData = circle[0];
             
             await SpawnEnemyFromRound(_currentRoundData, ct);
         }
 
         private void StartNextRound() {
             if (_currentRoundData is null) {
-                _currentRoundData = _progressionManager.GenerateRound(1, EnemyType.Common);
+                _currentRoundData = _progressionManager.GenerateRound(CircleType.Fraud, EnemyType.Common);
             }
             else {
                 

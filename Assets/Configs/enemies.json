@@ -1,7 +1,7 @@
 {
   "demon_eye": {
     "id": "demon_eye",
-    "circle": 1,
+    "circle": "Limbo",
     "type": "Common",
     "damage": 10,
     "nameLoc": "enemy_demon_eye_name",
@@ -9,7 +9,7 @@
   },
   "demon_mine": {
     "id": "demon_mine",
-    "circle": 1,
+    "circle": "Limbo",
     "type": "Common",
     "damage": 10,
     "nameLoc": "enemy_demon_mine_name",
@@ -17,7 +17,7 @@
   },
   "large_skull": {
     "id": "large_skull",
-    "circle": 1,
+    "circle": "Limbo",
     "type": "Boss",
     "damage": 50,
     "nameLoc": "enemy_large_skull_name",
@@ -25,7 +25,7 @@
   },
   "bloated": {
     "id": "bloated",
-    "circle": 1,
+    "circle": "Limbo",
     "type": "Elite",
     "damage": 30,
     "nameLoc": "enemy_bloated_name",
@@ -33,7 +33,7 @@
   },
   "burning": {
     "id": "burning",
-    "circle": 1,
+    "circle": "Limbo",
     "type": "Elite",
     "damage": 40,
     "nameLoc": "enemy_burning_name",

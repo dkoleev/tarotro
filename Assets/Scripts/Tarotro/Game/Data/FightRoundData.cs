@@ -1,6 +1,6 @@
 namespace Tarotro.Game.Data {
     public class FightRoundData {
-        public int Circle;
+        public CircleType Circle;
         public int CircleStep;
         public EnemyType EnemyType;
         public int TargetScore;

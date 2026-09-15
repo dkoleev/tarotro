@@ -15,36 +15,38 @@ namespace Tarotro.Game.Logic {
             _logger = logger;
         }
 
-        public int CalculateTargetScore(int circle, EnemyType enemyType) {
+        public int CalculateTargetScore(CircleType circleType, EnemyType enemyType) {
+            var circleIndex = _gameData.Circles[circleType].index;
             var config = _gameData.Battle.progression;
             var blindMultiplier = GetBlindMultiplier(enemyType);
-            var exactScore = config.baseScore * Math.Pow(config.scalingFactor, circle - 1) * blindMultiplier;
+            var exactScore = config.baseScore * Math.Pow(config.scalingFactor, circleIndex - 1) * blindMultiplier;
             return (int)(Math.Round(exactScore / 50.0) * 50);
         }
 
-        public FightRoundData GenerateRound(int circle, EnemyType enemyType) {
-            var targetScore = CalculateTargetScore(circle, enemyType);
-            var enemy = SelectEnemy(circle, enemyType);
+        public FightRoundData GenerateRound(CircleType circleType, EnemyType enemyType) {
+            var targetScore = CalculateTargetScore(circleType, enemyType);
+            var enemy = SelectEnemy(circleType, enemyType);
 
-            _logger.Info($"Generated round: Circle {circle}, {enemyType}, Target: {targetScore}, Enemy: {enemy.id}", "BattleProgression");
+            _logger.Info($"Generated round: Circle {circleType}, {enemyType}, Target: {targetScore}, Enemy: {enemy.id}", "BattleProgression");
 
             return new FightRoundData {
-                Circle = circle,
+                Circle = circleType,
                 EnemyType = enemyType,
                 TargetScore = targetScore,
                 EnemyId = enemy.id
             };
         }
 
-        public List<FightRoundData> GenerateCircle(int circle) {
-            return new List<FightRoundData> {
-                GenerateRound(circle, EnemyType.Common),
-                GenerateRound(circle, EnemyType.Elite),
-                GenerateRound(circle, EnemyType.Boss)
-            };
+        public List<FightRoundData> GenerateCircle(CircleType circleType) {
+            var result  = new List<FightRoundData>();
+            foreach (var step in _gameData.Circles[circleType].steps) {
+                result.Add(GenerateRound(circleType, step));
+            }
+
+            return result;
         }
 
-        private EnemyData SelectEnemy(int circle, EnemyType enemyType) {
+        private EnemyData SelectEnemy(CircleType circle, EnemyType enemyType) {
             var filteredEnemies = new List<EnemyData>();
             foreach (var enemiesValue in _gameData.Enemies.Values) {
                 if (enemiesValue.type == enemyType && enemiesValue.circle == circle) {

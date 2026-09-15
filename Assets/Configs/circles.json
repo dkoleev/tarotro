@@ -1,6 +1,6 @@
 {
-  "circle_1": {
-    "type": "Limbo",
+  "Limbo": {
+    "index": 1,
     "steps": [
       "Common",
       "Elite",
@@ -8,8 +8,8 @@
     ],
     "name": "circle_1_name"
   },
-  "circle_2": {
-    "type": "Lust",
+  "Lust": {
+    "index": 2,
     "steps": [
       "Common",
       "Elite",
@@ -17,8 +17,8 @@
     ],
     "name": "circle_2_name"
   },
-  "circle_3": {
-    "type": "Gluttony",
+  "Gluttony": {
+    "index": 3,
     "steps": [
       "Common",
       "Elite",
@@ -26,8 +26,8 @@
     ],
     "name": "circle_3_name"
   },
-  "circle_4": {
-    "type": "Greed",
+  "Greed": {
+    "index": 4,
     "steps": [
       "Common",
       "Elite",
@@ -35,8 +35,8 @@
     ],
     "name": "circle_4_name"
   },
-  "circle_5": {
-    "type": "Wrath",
+  "Wrath": {
+    "index": 5,
     "steps": [
       "Common",
       "Elite",
@@ -44,8 +44,8 @@
     ],
     "name": "circle_5_name"
   },
-  "circle_6": {
-    "type": "Heresy",
+  "Heresy": {
+    "index": 6,
     "steps": [
       "Common",
       "Elite",
@@ -53,8 +53,8 @@
     ],
     "name": "circle_6_name"
   },
-  "circle_7": {
-    "type": "Violence",
+  "Violence": {
+    "index": 7,
     "steps": [
       "Common",
       "Elite",
@@ -62,8 +62,8 @@
     ],
     "name": "circle_7_name"
   },
-  "circle_8": {
-    "type": "Fraud",
+  "Fraud": {
+    "index": 8,
     "steps": [
       "Common",
       "Elite",
@@ -71,8 +71,8 @@
     ],
     "name": "circle_8_name"
   },
-  "circle_9": {
-    "type": "Treachery",
+  "Treachery": {
+    "index": 9,
     "steps": [
       "Common",
       "Elite",

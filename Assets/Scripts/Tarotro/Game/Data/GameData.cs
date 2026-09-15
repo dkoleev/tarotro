@@ -4,7 +4,7 @@ namespace Tarotro.Game.Data {
     public class GameData {
         public Dictionary<string, TarotCardData> TarotCards;
         public Dictionary<string, EnemyData> Enemies;
-        public Dictionary<string, CircleData> Circles;
+        public Dictionary<CircleType, CircleData> Circles;
         public BattleData Battle;
     }
 }
