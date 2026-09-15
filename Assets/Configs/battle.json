@@ -1,4 +1,11 @@
 {
   "spreadDefaultSize": "5",
-  "playHandSize": "3"
+  "playHandSize": "3",
+  "progression": {
+    "baseScore": 300,
+    "scalingFactor": 2.2,
+    "smallBlindMultiplier": 1.0,
+    "bigBlindMultiplier": 1.5,
+    "bossBlindMultiplier": 2.0
+  }
 }
