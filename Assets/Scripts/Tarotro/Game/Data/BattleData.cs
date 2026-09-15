@@ -5,5 +5,6 @@ namespace Tarotro.Game.Data {
     public class BattleData {
         public int spreadDefaultSize;
         public int playHandSize;
+        public BattleProgressionConfig progression;
     }
 }

@@ -32,14 +32,16 @@ namespace Tarotro.Game.Logic
         
         private readonly IPublisher<EnemyDiedMessage> _enemyDiedPub;
         private readonly GameData _gameData;
+        private readonly BattleProgressionManager _progressionManager;
         private readonly IGameLogger _logger;
         private EnemyWrapper _currentEnemy;
         private PlayerModel _currentPlayer;
         private CancellationTokenSource _cts;
 
-        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, IGameLogger logger) {
+        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, IGameLogger logger) {
             _enemyDiedPub = enemyDiedPub;
             _gameData = gameData;
+            _progressionManager = progressionManager;
             _logger = logger;
         }
 
@@ -83,7 +85,21 @@ namespace Tarotro.Game.Logic
             await SpawnEnemy(enemyData, ct);
         }
 
-        private async UniTask SpawnEnemy(EnemyData enemyData, CancellationToken ct) {
+        public async UniTask SpawnEnemyFromRound(FightRoundData roundData, CancellationToken ct = default) {
+            if (!_gameData.Enemies.TryGetValue(roundData.EnemyId, out var enemyData)) {
+                _logger.Error($"Enemy with id '{roundData.EnemyId}' not found", "Battle");
+                return;
+            }
+
+            if (_currentEnemy != null) {
+                await HandleEnemyDeath(ct);
+            }
+
+            _logger.Info($"Spawning enemy for Circle {roundData.Circle}, {roundData.BlindType}, HP: {roundData.TargetScore}", "Battle");
+            await SpawnEnemy(enemyData, ct, roundData.TargetScore);
+        }
+
+        private async UniTask SpawnEnemy(EnemyData enemyData, CancellationToken ct, int? healthOverride = null) {
             _logger.Info($"Spawning enemy: {enemyData.id} ({enemyData.prefabPath})", "Battle");
             var handle = Addressables.InstantiateAsync(enemyData.prefabPath);
             var enemyGo = await handle.ToUniTask(cancellationToken: ct);
@@ -95,7 +111,7 @@ namespace Tarotro.Game.Logic
                 return;
             }
 
-            var model = new EnemyModel(enemyData);
+            var model = new EnemyModel(enemyData, healthOverride);
             model.Died += OnEnemyDied;
             var presenter = new EnemyPresenter(model, view);
 
