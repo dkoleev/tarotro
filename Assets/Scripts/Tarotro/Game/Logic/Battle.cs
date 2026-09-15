@@ -59,6 +59,15 @@ namespace Tarotro.Game.Logic
             await SpawnEnemyFromRound(_currentRoundData, ct);
         }
 
+        private void StartNextRound() {
+            if (_currentRoundData is null) {
+                _currentRoundData = _progressionManager.GenerateRound(1, EnemyType.Common);
+            }
+            else {
+                
+            }
+        }
+
         private void CreatePlayer() {
             _currentPlayer = new PlayerModel();
         }
