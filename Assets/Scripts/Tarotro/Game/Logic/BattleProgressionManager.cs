@@ -24,7 +24,7 @@ namespace Tarotro.Game.Logic {
 
         public FightRoundData GenerateRound(int circle, EnemyType enemyType) {
             var targetScore = CalculateTargetScore(circle, enemyType);
-            var enemy = SelectEnemy();
+            var enemy = SelectEnemy(circle, enemyType);
 
             _logger.Info($"Generated round: Circle {circle}, {enemyType}, Target: {targetScore}, Enemy: {enemy.id}", "BattleProgression");
 

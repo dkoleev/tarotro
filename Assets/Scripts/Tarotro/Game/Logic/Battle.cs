@@ -37,6 +37,7 @@ namespace Tarotro.Game.Logic
         private EnemyWrapper _currentEnemy;
         private PlayerModel _currentPlayer;
         private CancellationTokenSource _cts;
+        private FightRoundData _currentRoundData;
 
         public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, IGameLogger logger) {
             _enemyDiedPub = enemyDiedPub;
@@ -54,8 +55,8 @@ namespace Tarotro.Game.Logic
             // await SpawnEnemy("large_skull", ct);
             // await SpawnRandomEnemy(ct);
 
-            var roundData = _progressionManager.GenerateRound(1, EnemyType.Common);
-            await SpawnEnemyFromRound(roundData, ct);
+            _currentRoundData = _progressionManager.GenerateRound(1, EnemyType.Common);
+            await SpawnEnemyFromRound(_currentRoundData, ct);
         }
 
         private void CreatePlayer() {
