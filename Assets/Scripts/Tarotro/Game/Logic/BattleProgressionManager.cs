@@ -44,9 +44,15 @@ namespace Tarotro.Game.Logic {
             };
         }
 
-        private EnemyData SelectEnemy() {
-            var enemies = _gameData.Enemies.Values.ToList();
-            return enemies[Random.Range(0, enemies.Count)];
+        private EnemyData SelectEnemy(int circle, EnemyType enemyType) {
+            var filteredEnemies = new List<EnemyData>();
+            foreach (var enemiesValue in _gameData.Enemies.Values) {
+                if (enemiesValue.type == enemyType && enemiesValue.circle == circle) {
+                    filteredEnemies.Add(enemiesValue);
+                }    
+            }
+            
+            return filteredEnemies[Random.Range(0, filteredEnemies.Count)];
         }
 
         private float GetBlindMultiplier(EnemyType enemyType) {
