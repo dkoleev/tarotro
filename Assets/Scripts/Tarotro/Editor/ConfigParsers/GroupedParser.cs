@@ -1,0 +1,72 @@
+using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
+using Yogi.UniGSC.Editor.Parsers;
+
+namespace Tarotro.Editor.ConfigParsers {
+    [ParserType("grouped")]
+    public class GroupedParser : ISpreadsheetParser {
+        public string Parse(int sheetId, IList<IList<object>> sheetData) {
+            var headers = sheetData[0];
+            var result = new JObject();
+            var groups = BuildGroups(sheetData);
+
+            foreach (var group in groups) {
+                var id = group[0][0].ToString();
+                var item = new JObject();
+
+                for (var col = 1; col < headers.Count; col++) {
+                    var header = headers[col].ToString();
+                    if (string.IsNullOrEmpty(header))
+                        continue;
+
+                    var values = CollectColumnValues(group, col);
+
+                    if (values.Count == 1)
+                        item[header] = JToken.FromObject(values[0]);
+                    else
+                        item[header] = new JArray(values.ToArray());
+                }
+
+                result[id] = item;
+            }
+
+            return result.ToString();
+        }
+
+        private static List<List<IList<object>>> BuildGroups(IList<IList<object>> sheetData) {
+            var groups = new List<List<IList<object>>>();
+            List<IList<object>> current = null;
+
+            for (var i = 1; i < sheetData.Count; i++) {
+                var row = sheetData[i];
+                var hasId = row.Count > 0 && !string.IsNullOrEmpty(row[0]?.ToString());
+
+                if (hasId) {
+                    current = new List<IList<object>> { row };
+                    groups.Add(current);
+                } else {
+                    current?.Add(row);
+                }
+            }
+
+            return groups;
+        }
+
+        private static List<object> CollectColumnValues(List<IList<object>> group, int col) {
+            var values = new List<object>();
+
+            foreach (var row in group) {
+                if (col >= row.Count)
+                    continue;
+
+                var cell = row[col]?.ToString();
+                if (string.IsNullOrEmpty(cell))
+                    continue;
+
+                values.Add(SpreadSheetsParserUtils.GetParseValue(row[col]));
+            }
+
+            return values;
+        }
+    }
+}
