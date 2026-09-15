@@ -52,14 +52,9 @@ namespace Tarotro.Game.Logic
 
             _logger.Info("Play hand " + _gameData.Battle.playHandSize, "Battle");
             await CreateDesk();
-            // await SpawnEnemy("large_skull", ct);
-            // await SpawnRandomEnemy(ct);
 
-            foreach (var gameDataCircle in _gameData.Circles) {
-                _logger.Info(gameDataCircle.Key + "; " + gameDataCircle.Value.steps.Count, "test");
-            }
-
-            _currentRoundData = _progressionManager.GenerateRound(1, EnemyType.Common);
+            var circle = _progressionManager.GenerateCircle(1);
+            
             await SpawnEnemyFromRound(_currentRoundData, ct);
         }
 

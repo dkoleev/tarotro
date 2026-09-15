@@ -1,5 +1,6 @@
 {
   "circle_1": {
+    "type": "Limbo",
     "steps": [
       "Common",
       "Elite",
@@ -8,11 +9,75 @@
     "name": "circle_1_name"
   },
   "circle_2": {
+    "type": "Lust",
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
     "name": "circle_2_name"
+  },
+  "circle_3": {
+    "type": "Gluttony",
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_3_name"
+  },
+  "circle_4": {
+    "type": "Greed",
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_4_name"
+  },
+  "circle_5": {
+    "type": "Wrath",
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_5_name"
+  },
+  "circle_6": {
+    "type": "Heresy",
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_6_name"
+  },
+  "circle_7": {
+    "type": "Violence",
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_7_name"
+  },
+  "circle_8": {
+    "type": "Fraud",
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_8_name"
+  },
+  "circle_9": {
+    "type": "Treachery",
+    "steps": [
+      "Common",
+      "Elite",
+      "Boss"
+    ],
+    "name": "circle_9_name"
   }
 }
