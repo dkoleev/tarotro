@@ -12,7 +12,7 @@ namespace Tarotro.Game.Utils {
         [Inject]
         public GameLogger() {
             _enableConsoleLogs =
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
+#if UNITY_EDITOR || DEBUG
                 true;
 #else
                 false;
