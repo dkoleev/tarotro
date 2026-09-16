@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using Tarotro.Game.Core;
 using Tarotro.Game.Utils;
 using UnityEngine.SceneManagement;
+using VContainer;
 using VContainer.Unity;
 
 namespace Tarotro.Game.Logic {
@@ -12,6 +13,7 @@ namespace Tarotro.Game.Logic {
         private readonly ConfigLoader _configLoader;
         private readonly IGameLogger _logger;
 
+        [Inject]
         public Boot(SceneLoader sceneLoader, Battle battle, ConfigLoader configLoader, IGameLogger logger) {
             _sceneLoader = sceneLoader;
             _battle = battle;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Tarotro.Game.Data;
 using Tarotro.Game.Utils;
+using VContainer;
 using Random = UnityEngine.Random;
 
 namespace Tarotro.Game.Logic {
@@ -10,6 +11,7 @@ namespace Tarotro.Game.Logic {
         private readonly GameData _gameData;
         private readonly IGameLogger _logger;
 
+        [Inject]
         public BattleProgressionManager(GameData gameData, IGameLogger logger) {
             _gameData = gameData;
             _logger = logger;

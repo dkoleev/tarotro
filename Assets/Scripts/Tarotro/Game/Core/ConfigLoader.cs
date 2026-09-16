@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using Tarotro.Game.Data;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using VContainer;
 
 namespace Tarotro.Game.Core {
     public class ConfigLoader {
@@ -14,6 +15,7 @@ namespace Tarotro.Game.Core {
         private const string CirclesConfigPath = "Configs/circles.json";
         private const string CharactersConfigPath = "Configs/characters.json";
 
+        [Inject]
         public ConfigLoader(GameData gameData) {
             _gameData = gameData;
         }

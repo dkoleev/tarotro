@@ -5,6 +5,7 @@ using QFSW.QC;
 using Tarotro.Game.Data;
 using Tarotro.Game.Logic;
 using Tarotro.Game.Utils;
+using VContainer;
 
 namespace Tarotro.Game.Dev {
     public class DevConsoleCommands {
@@ -12,6 +13,7 @@ namespace Tarotro.Game.Dev {
         private readonly GameData _gameData;
         private readonly IGameLogger _gameLogger;
 
+        [Inject]
         public DevConsoleCommands(Battle battle, GameData gameData, IGameLogger gameLogger) {
             _battle = battle;
             _gameData = gameData;

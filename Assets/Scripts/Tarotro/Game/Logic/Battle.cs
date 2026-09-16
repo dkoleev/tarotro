@@ -9,6 +9,7 @@ using Tarotro.Game.Presenters;
 using Tarotro.Game.Utils;
 using Tarotro.Game.View;
 using UnityEngine;
+using VContainer;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Random = UnityEngine.Random;
@@ -39,6 +40,7 @@ namespace Tarotro.Game.Logic
         private CancellationTokenSource _cts;
         private FightRoundData _currentRoundData;
 
+        [Inject]
         public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, IGameLogger logger) {
             _enemyDiedPub = enemyDiedPub;
             _gameData = gameData;
