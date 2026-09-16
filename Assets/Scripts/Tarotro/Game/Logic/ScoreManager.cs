@@ -2,6 +2,7 @@
 using MessagePipe;
 using Tarotro.Game.Messages;
 using Tarotro.Game.Utils;
+using VContainer;
 
 namespace Tarotro.Game.Logic {
     public class ScoreManager : IDisposable {
@@ -10,6 +11,7 @@ namespace Tarotro.Game.Logic {
 
         private int _currentScore;
 
+        [Inject]
         public ScoreManager(ISubscriber<EnemyDiedMessage> enemyDiedSub, IGameLogger logger) {
             _subscription = enemyDiedSub.Subscribe(msg => AddScore(100));
             _logger = logger;

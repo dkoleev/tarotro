@@ -3,10 +3,14 @@ using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceProviders;
 using UnityEngine.SceneManagement;
+using VContainer;
 
 namespace Tarotro.Game.Logic {
     public class SceneLoader {
         private SceneInstance? _currentScene;
+
+        [Inject]
+        public SceneLoader() { }
 
         public async UniTask<SceneInstance> LoadSceneAsync(
             string sceneKey,

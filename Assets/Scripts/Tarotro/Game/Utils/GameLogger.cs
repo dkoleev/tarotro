@@ -2,12 +2,14 @@ using System;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using VContainer;
 
 namespace Tarotro.Game.Utils {
     public class GameLogger : IGameLogger, IDisposable {
         private readonly StreamWriter _writer;
         private readonly bool _enableConsoleLogs;
 
+        [Inject]
         public GameLogger() {
             _enableConsoleLogs =
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
