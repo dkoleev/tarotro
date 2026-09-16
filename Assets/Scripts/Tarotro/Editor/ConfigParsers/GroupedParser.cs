@@ -14,7 +14,7 @@ namespace Tarotro.Editor.ConfigParsers {
                 var id = group[0][0].ToString();
                 var item = new JObject();
 
-                for (var col = 1; col < headers.Count; col++) {
+                for (var col = 0; col < headers.Count; col++) {
                     var rawHeader = headers[col].ToString();
                     if (string.IsNullOrEmpty(rawHeader))
                         continue;

@@ -13,7 +13,7 @@ namespace Tarotro.Editor.ConfigParsers {
                 var row = sheetData[i];
                 var item = new JObject();
 
-                for (var j = 1; j < row.Count; j++) {
+                for (var j = 0; j < row.Count; j++) {
                     if (j >= headers.Count)
                         break;
 
