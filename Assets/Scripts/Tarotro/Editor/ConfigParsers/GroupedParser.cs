@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Yogi.UniGSC.Editor.Parsers;
@@ -15,16 +16,18 @@ namespace Tarotro.Editor.ConfigParsers {
                 var item = new JObject();
 
                 for (var col = 1; col < headers.Count; col++) {
-                    var header = headers[col].ToString();
-                    if (string.IsNullOrEmpty(header))
+                    var rawHeader = headers[col].ToString();
+                    if (string.IsNullOrEmpty(rawHeader))
                         continue;
 
+                    var forceArray = rawHeader.EndsWith("[]");
+                    var header = forceArray ? rawHeader.Substring(0, rawHeader.Length - 2) : rawHeader;
                     var values = CollectColumnValues(group, col);
 
-                    if (values.Count == 1)
-                        item[header] = JToken.FromObject(values[0]);
-                    else
+                    if (forceArray || values.Count > 1)
                         item[header] = new JArray(values.ToArray());
+                    else if (values.Count == 1)
+                        item[header] = JToken.FromObject(values[0]);
                 }
 
                 result[id] = item;
@@ -63,7 +66,14 @@ namespace Tarotro.Editor.ConfigParsers {
                 if (string.IsNullOrEmpty(cell))
                     continue;
 
-                values.Add(SpreadSheetsParserUtils.GetParseValue(row[col]));
+                if (cell.Contains(", ")) {
+                    var parts = cell.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (var part in parts) {
+                        values.Add(SpreadSheetsParserUtils.GetParseValue(part.Trim()));
+                    }
+                } else {
+                    values.Add(SpreadSheetsParserUtils.GetParseValue(row[col]));
+                }
             }
 
             return values;
