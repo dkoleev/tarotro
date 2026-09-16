@@ -1,21 +1,27 @@
-using System;
 using UnityEditor;
+using UnityEngine;
 
 namespace Tarotro.Editor.Build {
-    [Serializable]
-    public class BuildConfig {
-        public string OutputFolder { get; set; } = "Builds";
-        public string ExecutableName { get; set; } = "Tarotro.exe";
-        public BuildTarget Target { get; set; } = BuildTarget.StandaloneWindows64;
-        public bool Development { get; set; }
-        public bool ValidateConfigs { get; set; } = true;
-        public bool BuildAddressables { get; set; } = true;
+    [CreateAssetMenu(fileName = "NewBuildConfig", menuName = "Tarotro/Build Config")]
+    public class BuildConfig : ScriptableObject {
+        [Header("Output")]
+        public string outputFolder = "Builds";
+        public string executableName = "Tarotro.exe";
+        public string subFolder = "Windows";
 
-        public string OutputPath => $"{OutputFolder}/Windows/{ExecutableName}";
+        [Header("Platform")]
+        public BuildTarget target = BuildTarget.StandaloneWindows64;
+
+        [Header("Options")]
+        public bool development;
+        public bool validateConfigs = true;
+        public bool buildAddressables = true;
+
+        public string OutputPath => $"{outputFolder}/{subFolder}/{executableName}";
 
         public BuildOptions GetBuildOptions() {
             var options = BuildOptions.None;
-            if (Development)
+            if (development)
                 options |= BuildOptions.Development | BuildOptions.AllowDebugging;
             return options;
         }
