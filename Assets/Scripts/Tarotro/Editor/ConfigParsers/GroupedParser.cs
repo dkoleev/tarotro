@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Yogi.UniGSC.Editor.Parsers;
@@ -20,14 +19,11 @@ namespace Tarotro.Editor.ConfigParsers {
                     if (string.IsNullOrEmpty(rawHeader))
                         continue;
 
-                    var forceArray = rawHeader.EndsWith("[]");
-                    var header = forceArray ? rawHeader.Substring(0, rawHeader.Length - 2) : rawHeader;
+                    var (header, forceArray) = ParserUtils.ParseHeader(rawHeader);
                     var values = CollectColumnValues(group, col);
-
-                    if (forceArray || values.Count > 1)
-                        item[header] = new JArray(values.ToArray());
-                    else if (values.Count == 1)
-                        item[header] = JToken.FromObject(values[0]);
+                    var token = ParserUtils.ToJsonToken(values, forceArray);
+                    if (token != null)
+                        item[header] = token;
                 }
 
                 result[id] = item;
@@ -66,14 +62,7 @@ namespace Tarotro.Editor.ConfigParsers {
                 if (string.IsNullOrEmpty(cell))
                     continue;
 
-                if (cell.Contains(", ")) {
-                    var parts = cell.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
-                    foreach (var part in parts) {
-                        values.Add(SpreadSheetsParserUtils.GetParseValue(part.Trim()));
-                    }
-                } else {
-                    values.Add(SpreadSheetsParserUtils.GetParseValue(row[col]));
-                }
+                values.AddRange(ParserUtils.ParseCell(cell));
             }
 
             return values;

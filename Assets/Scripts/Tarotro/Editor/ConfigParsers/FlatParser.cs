@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Yogi.UniGSC.Editor.Parsers;
@@ -22,23 +21,15 @@ namespace Tarotro.Editor.ConfigParsers {
                     if (string.IsNullOrEmpty(rawHeader))
                         continue;
 
-                    var forceArray = rawHeader.EndsWith("[]");
-                    var header = forceArray ? rawHeader.Substring(0, rawHeader.Length - 2) : rawHeader;
                     var cell = row[j]?.ToString();
-
                     if (string.IsNullOrEmpty(cell))
                         continue;
 
-                    if (forceArray || cell.Contains(", ")) {
-                        var parts = cell.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries);
-                        var arr = new JArray();
-                        foreach (var part in parts) {
-                            arr.Add(JToken.FromObject(SpreadSheetsParserUtils.GetParseValue(part.Trim())));
-                        }
-                        item[header] = arr;
-                    } else {
-                        item[header] = JToken.FromObject(SpreadSheetsParserUtils.GetParseValue(row[j]));
-                    }
+                    var (header, forceArray) = ParserUtils.ParseHeader(rawHeader);
+                    var values = ParserUtils.ParseCell(cell);
+                    var token = ParserUtils.ToJsonToken(values, forceArray);
+                    if (token != null)
+                        item[header] = token;
                 }
 
                 result[row[0].ToString()] = item;

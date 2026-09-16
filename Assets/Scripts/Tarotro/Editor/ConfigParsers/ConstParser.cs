@@ -9,16 +9,22 @@ namespace Tarotro.Editor.ConfigParsers {
             var result = new JObject();
 
             for (var i = 0; i < sheetData.Count; i++) {
-                var key = sheetData[i][0].ToString();
-                var value = SpreadSheetsParserUtils.GetParseValue(sheetData[i][1]);
+                var rawKey = sheetData[i][0].ToString();
+                var cell = sheetData[i][1]?.ToString();
+                if (string.IsNullOrEmpty(cell))
+                    continue;
 
-                SetNestedValue(result, key, value);
+                var (key, forceArray) = ParserUtils.ParseHeader(rawKey);
+                var values = ParserUtils.ParseCell(cell);
+                var token = ParserUtils.ToJsonToken(values, forceArray);
+                if (token != null)
+                    SetNestedValue(result, key, token);
             }
 
             return result.ToString();
         }
 
-        private static void SetNestedValue(JObject root, string key, object value) {
+        private static void SetNestedValue(JObject root, string key, JToken value) {
             var parts = key.Split('.');
 
             var current = root;
@@ -31,7 +37,7 @@ namespace Tarotro.Editor.ConfigParsers {
                 current = child;
             }
 
-            current[parts[^1]] = JToken.FromObject(value);
+            current[parts[^1]] = value;
         }
     }
 }
