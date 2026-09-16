@@ -1,7 +1,7 @@
 {
   "demon_eye": {
     "id": "demon_eye",
-    "circle": "Limbo",
+    "circle": "Lust",
     "type": "Common",
     "damage": 10,
     "nameLoc": "enemy_demon_eye_name",
@@ -9,7 +9,7 @@
   },
   "demon_mine": {
     "id": "demon_mine",
-    "circle": "Limbo",
+    "circle": "Lust",
     "type": "Common",
     "damage": 10,
     "nameLoc": "enemy_demon_mine_name",
@@ -46,5 +46,13 @@
     "damage": 40,
     "nameLoc": "enemy_plague_fly_name",
     "prefabPath": "Bundles/Enemies/enemy_plague_fly.prefab"
+  },
+  "twisted": {
+    "id": "twisted",
+    "circle": "Limbo",
+    "type": "Common",
+    "damage": 40,
+    "nameLoc": "enemy_twisted",
+    "prefabPath": "Bundles/Enemies/enemy_twisted.prefab"
   }
 }
