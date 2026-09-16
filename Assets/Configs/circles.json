@@ -1,5 +1,6 @@
 {
   "Limbo": {
+    "type": "Limbo",
     "steps": [
       "Common",
       "Elite",
@@ -14,6 +15,7 @@
     "name": "circle_1_name"
   },
   "Lust": {
+    "type": "Lust",
     "steps": [
       "Common",
       "Elite",
@@ -23,6 +25,7 @@
     "name": "circle_2_name"
   },
   "Gluttony": {
+    "type": "Gluttony",
     "steps": [
       "Common",
       "Elite",
@@ -32,6 +35,7 @@
     "name": "circle_3_name"
   },
   "Greed": {
+    "type": "Greed",
     "steps": [
       "Common",
       "Elite",
@@ -41,6 +45,7 @@
     "name": "circle_4_name"
   },
   "Wrath": {
+    "type": "Wrath",
     "steps": [
       "Common",
       "Elite",
@@ -50,6 +55,7 @@
     "name": "circle_5_name"
   },
   "Heresy": {
+    "type": "Heresy",
     "steps": [
       "Common",
       "Elite",
@@ -59,6 +65,7 @@
     "name": "circle_6_name"
   },
   "Violence": {
+    "type": "Violence",
     "steps": [
       "Common",
       "Elite",
@@ -68,6 +75,7 @@
     "name": "circle_7_name"
   },
   "Fraud": {
+    "type": "Fraud",
     "steps": [
       "Common",
       "Elite",
@@ -77,6 +85,7 @@
     "name": "circle_8_name"
   },
   "Treachery": {
+    "type": "Treachery",
     "steps": [
       "Common",
       "Elite",
