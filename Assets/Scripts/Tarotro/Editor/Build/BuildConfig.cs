@@ -7,6 +7,13 @@ namespace Tarotro.Editor.Build {
         [Header("Build Profile")]
         public BuildProfile buildProfile;
 
+        [Header("Code Variant")]
+        [Tooltip("Enables DEVELOPMENT_BUILD define and dev-only code (e.g. DevConsole).")]
+        public bool isDevelopment;
+
+        [Tooltip("Additional scripting defines applied for this build variant.")]
+        public string[] extraScriptingDefines = {};
+
         [Header("Output")]
         public string outputFolder = "Builds";
         public string subFolder = "Windows";
