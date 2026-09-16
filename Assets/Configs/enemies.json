@@ -38,5 +38,13 @@
     "damage": 40,
     "nameLoc": "enemy_burning_name",
     "prefabPath": "Bundles/Enemies/enemy_burning.prefab"
+  },
+  "plague_fly": {
+    "id": "plague_fly",
+    "circle": "Limbo",
+    "type": "Common",
+    "damage": 40,
+    "nameLoc": "enemy_plague_fly_name",
+    "prefabPath": "Bundles/Enemies/enemy_plague_fly.prefab"
   }
 }
