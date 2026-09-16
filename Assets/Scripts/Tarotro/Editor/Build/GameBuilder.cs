@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Tarotro.Editor.Validation;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
@@ -23,7 +24,20 @@ namespace Tarotro.Editor.Build {
             Build(list.defaultConfig);
         }
 
-        [MenuItem("Tarotro/Build/Build Selected Config", priority = 1)]
+        [MenuItem("Tarotro/Build/Build Development", priority = 1)]
+        public static void BuildDevelopment() {
+            var list = LoadConfigsList();
+            if (list == null) return;
+
+            if (list.developmentConfig == null) {
+                Debug.LogError("[Build] No development config set. Assign one in the BuildConfigsList Inspector.");
+                return;
+            }
+
+            Build(list.developmentConfig);
+        }
+
+        [MenuItem("Tarotro/Build/Build Selected Config", priority = 2)]
         public static void BuildSelected() {
             var config = Selection.activeObject as BuildConfig;
             if (config == null) {
@@ -39,7 +53,7 @@ namespace Tarotro.Editor.Build {
             return Selection.activeObject is BuildConfig;
         }
 
-        [MenuItem("Tarotro/Build/Build All Configs", priority = 2)]
+        [MenuItem("Tarotro/Build/Build All Configs", priority = 3)]
         public static void BuildAll() {
             var list = LoadConfigsList();
             if (list == null) return;
@@ -68,7 +82,8 @@ namespace Tarotro.Editor.Build {
         }
 
         public static bool Build(BuildConfig config) {
-            Debug.Log($"[Build] Starting '{config.name}'...");
+            var variant = config.isDevelopment ? "Development" : "Release";
+            Debug.Log($"[Build] Starting '{config.name}' ({variant})...");
 
             if (config.buildProfile == null) {
                 Debug.LogError($"[Build] No Build Profile assigned in '{config.name}'. Assign one in the Inspector.");
@@ -138,28 +153,66 @@ namespace Tarotro.Editor.Build {
         private static bool RunPlayerBuild(BuildConfig config) {
             Debug.Log($"[Build] Building player to '{config.OutputPath}'...");
 
-            var buildOptions = new BuildPlayerWithProfileOptions {
-                buildProfile = config.buildProfile,
-                locationPathName = config.OutputPath
-            };
+            var options = config.isDevelopment ? BuildOptions.Development : BuildOptions.None;
 
-            var report = BuildPipeline.BuildPlayer(buildOptions);
+            var savedDefines = ApplyExtraDefines(config);
 
-            if (report.summary.result == UnityEditor.Build.Reporting.BuildResult.Succeeded) {
-                var size = report.summary.totalSize / (1024f * 1024f);
-                Debug.Log($"[Build] Build succeeded! Size: {size:F1} MB, Time: {report.summary.totalTime}");
-                return true;
-            }
+            try {
+                var buildOptions = new BuildPlayerWithProfileOptions {
+                    buildProfile = config.buildProfile,
+                    locationPathName = config.OutputPath,
+                    options = options
+                };
 
-            Debug.LogError($"[Build] Build failed: {report.summary.result}");
-            foreach (var step in report.steps) {
-                foreach (var msg in step.messages) {
-                    if (msg.type == LogType.Error)
-                        Debug.LogError($"[Build] {msg.content}");
+                var report = BuildPipeline.BuildPlayer(buildOptions);
+
+                if (report.summary.result == UnityEditor.Build.Reporting.BuildResult.Succeeded) {
+                    var size = report.summary.totalSize / (1024f * 1024f);
+                    Debug.Log($"[Build] Build succeeded! Size: {size:F1} MB, Time: {report.summary.totalTime}");
+                    return true;
                 }
+
+                Debug.LogError($"[Build] Build failed: {report.summary.result}");
+                foreach (var step in report.steps) {
+                    foreach (var msg in step.messages) {
+                        if (msg.type == LogType.Error)
+                            Debug.LogError($"[Build] {msg.content}");
+                    }
+                }
+
+                return false;
+            } finally {
+                RestoreDefines(savedDefines);
+            }
+        }
+
+        private static string ApplyExtraDefines(BuildConfig config) {
+            if (config.extraScriptingDefines == null || config.extraScriptingDefines.Length == 0)
+                return null;
+
+            var namedTarget = NamedBuildTarget.FromBuildTargetGroup(
+                BuildPipeline.GetBuildTargetGroup(EditorUserBuildSettings.activeBuildTarget));
+            var current = PlayerSettings.GetScriptingDefineSymbols(namedTarget);
+            var currentDefines = current.Split(';').ToList();
+
+            foreach (var define in config.extraScriptingDefines) {
+                var trimmed = define.Trim();
+                if (!string.IsNullOrEmpty(trimmed) && !currentDefines.Contains(trimmed))
+                    currentDefines.Add(trimmed);
             }
 
-            return false;
+            PlayerSettings.SetScriptingDefineSymbols(namedTarget, string.Join(";", currentDefines));
+            Debug.Log($"[Build] Applied extra defines: {string.Join(", ", config.extraScriptingDefines)}");
+            return current;
+        }
+
+        private static void RestoreDefines(string savedDefines) {
+            if (savedDefines == null) return;
+
+            var namedTarget = NamedBuildTarget.FromBuildTargetGroup(
+                BuildPipeline.GetBuildTargetGroup(EditorUserBuildSettings.activeBuildTarget));
+            PlayerSettings.SetScriptingDefineSymbols(namedTarget, savedDefines);
+            Debug.Log("[Build] Restored original scripting defines.");
         }
     }
 }
