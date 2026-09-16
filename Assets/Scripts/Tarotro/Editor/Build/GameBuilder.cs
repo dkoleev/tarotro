@@ -1,9 +1,9 @@
 using System;
-using System.Linq;
 using Tarotro.Editor.Validation;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
+using UnityEditor.Build.Profile;
 using UnityEngine;
 
 namespace Tarotro.Editor.Build {
@@ -68,7 +68,12 @@ namespace Tarotro.Editor.Build {
         }
 
         public static bool Build(BuildConfig config) {
-            Debug.Log($"[Build] Starting '{config.name}' ({config.target})...");
+            Debug.Log($"[Build] Starting '{config.name}'...");
+
+            if (config.buildProfile == null) {
+                Debug.LogError($"[Build] No Build Profile assigned in '{config.name}'. Assign one in the Inspector.");
+                return false;
+            }
 
             if (config.validateConfigs && !RunConfigValidation())
                 return false;
@@ -133,21 +138,9 @@ namespace Tarotro.Editor.Build {
         private static bool RunPlayerBuild(BuildConfig config) {
             Debug.Log($"[Build] Building player to '{config.OutputPath}'...");
 
-            var scenes = EditorBuildSettings.scenes
-                .Where(s => s.enabled)
-                .Select(s => s.path)
-                .ToArray();
-
-            if (scenes.Length == 0) {
-                Debug.LogError("[Build] No scenes enabled in Build Settings. Add at least the boot scene.");
-                return false;
-            }
-
-            var buildOptions = new BuildPlayerOptions {
-                scenes = scenes,
-                locationPathName = config.OutputPath,
-                target = config.target,
-                options = config.GetBuildOptions()
+            var buildOptions = new BuildPlayerWithProfileOptions {
+                buildProfile = config.buildProfile,
+                locationPathName = config.OutputPath
             };
 
             var report = BuildPipeline.BuildPlayer(buildOptions);
