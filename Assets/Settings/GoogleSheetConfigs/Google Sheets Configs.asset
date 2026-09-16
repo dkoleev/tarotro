@@ -29,3 +29,7 @@ MonoBehaviour:
       <SheetId>k__BackingField: 580982164
       <Range>k__BackingField: 
       <Parser>k__BackingField: const
+    - <ConfigName>k__BackingField: Configs/circles
+      <SheetId>k__BackingField: 2441977
+      <Range>k__BackingField: 
+      <Parser>k__BackingField: grouped
