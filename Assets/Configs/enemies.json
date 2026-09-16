@@ -3,56 +3,42 @@
     "id": "demon_eye",
     "circle": "Lust",
     "type": "Common",
-    "damage": 10,
-    "nameLoc": "enemy_demon_eye_name",
-    "prefabPath": "Bundles/Enemies/enemy_demon_eye.prefab"
+    "damage": 10
   },
   "demon_mine": {
     "id": "demon_mine",
     "circle": "Lust",
     "type": "Common",
-    "damage": 10,
-    "nameLoc": "enemy_demon_mine_name",
-    "prefabPath": "Bundles/Enemies/enemy_demon_mine.prefab"
+    "damage": 10
   },
   "large_skull": {
     "id": "large_skull",
     "circle": "Limbo",
     "type": "Boss",
-    "damage": 50,
-    "nameLoc": "enemy_large_skull_name",
-    "prefabPath": "Bundles/Enemies/enemy_large_skull.prefab"
+    "damage": 50
   },
   "bloated": {
     "id": "bloated",
     "circle": "Limbo",
     "type": "Elite",
-    "damage": 30,
-    "nameLoc": "enemy_bloated_name",
-    "prefabPath": "Bundles/Enemies/enemy_bloated.prefab"
+    "damage": 30
   },
   "burning": {
     "id": "burning",
     "circle": "Limbo",
     "type": "Elite",
-    "damage": 40,
-    "nameLoc": "enemy_burning_name",
-    "prefabPath": "Bundles/Enemies/enemy_burning.prefab"
+    "damage": 40
   },
   "plague_fly": {
     "id": "plague_fly",
     "circle": "Limbo",
     "type": "Common",
-    "damage": 40,
-    "nameLoc": "enemy_plague_fly_name",
-    "prefabPath": "Bundles/Enemies/enemy_plague_fly.prefab"
+    "damage": 40
   },
   "twisted": {
     "id": "twisted",
     "circle": "Limbo",
     "type": "Common",
-    "damage": 40,
-    "nameLoc": "enemy_twisted",
-    "prefabPath": "Bundles/Enemies/enemy_twisted.prefab"
+    "damage": 40
   }
 }

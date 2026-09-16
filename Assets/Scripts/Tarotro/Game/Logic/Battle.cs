@@ -113,13 +113,14 @@ namespace Tarotro.Game.Logic
         }
 
         private async UniTask SpawnEnemy(EnemyData enemyData, int health, CancellationToken ct) {
-            _logger.Info($"Spawning enemy: {enemyData.id} ({enemyData.prefabPath})", "Battle");
-            var handle = Addressables.InstantiateAsync(enemyData.prefabPath);
+            var characterData = _gameData.Characters[enemyData.id];
+            _logger.Info($"Spawning enemy: {enemyData.id} ({characterData.prefabPath})", "Battle");
+            var handle = Addressables.InstantiateAsync(characterData.prefabPath);
             var enemyGo = await handle.ToUniTask(cancellationToken: ct);
 
             var view = enemyGo.GetComponent<IEnemyView>();
             if (view == null) {
-                _logger.Error($"IEnemyView component not found on prefab: {enemyData.prefabPath}", "Battle");
+                _logger.Error($"IEnemyView component not found on prefab: {characterData.prefabPath}", "Battle");
                 Addressables.ReleaseInstance(handle);
                 return;
             }

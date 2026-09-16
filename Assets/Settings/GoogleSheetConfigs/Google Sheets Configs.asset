@@ -33,3 +33,7 @@ MonoBehaviour:
       <SheetId>k__BackingField: 2441977
       <Range>k__BackingField: 
       <Parser>k__BackingField: grouped
+    - <ConfigName>k__BackingField: Configs/characters
+      <SheetId>k__BackingField: 1237204758
+      <Range>k__BackingField: 
+      <Parser>k__BackingField: default

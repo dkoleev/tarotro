@@ -7,7 +7,5 @@ namespace Tarotro.Game.Data {
         public CircleType circle; //circle on which this enemy available
         public EnemyType type;
         public int damage;
-        public string nameLoc;
-        public string prefabPath;
     }
 }

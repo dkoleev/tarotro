@@ -1,0 +1,37 @@
+{
+  "demon_eye": {
+    "id": "demon_eye",
+    "nameLoc": "enemy_demon_eye_name",
+    "prefabPath": "Bundles/Enemies/enemy_demon_eye.prefab"
+  },
+  "demon_mine": {
+    "id": "demon_mine",
+    "nameLoc": "enemy_demon_mine_name",
+    "prefabPath": "Bundles/Enemies/enemy_demon_mine.prefab"
+  },
+  "large_skull": {
+    "id": "large_skull",
+    "nameLoc": "enemy_large_skull_name",
+    "prefabPath": "Bundles/Enemies/enemy_large_skull.prefab"
+  },
+  "bloated": {
+    "id": "bloated",
+    "nameLoc": "enemy_bloated_name",
+    "prefabPath": "Bundles/Enemies/enemy_bloated.prefab"
+  },
+  "burning": {
+    "id": "burning",
+    "nameLoc": "enemy_burning_name",
+    "prefabPath": "Bundles/Enemies/enemy_burning.prefab"
+  },
+  "plague_fly": {
+    "id": "plague_fly",
+    "nameLoc": "enemy_plague_fly_name",
+    "prefabPath": "Bundles/Enemies/enemy_plague_fly.prefab"
+  },
+  "twisted": {
+    "id": "twisted",
+    "nameLoc": "enemy_twisted",
+    "prefabPath": "Bundles/Enemies/enemy_twisted.prefab"
+  }
+}
