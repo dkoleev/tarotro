@@ -10,7 +10,8 @@
     "enemies": [
       "demon_eye",
       "large_skull",
-      "plague_fly"
+      "plague_fly",
+      "burning"
     ],
     "name": "circle_1_name"
   },
@@ -22,6 +23,9 @@
       "Boss"
     ],
     "index": 2,
+    "enemies": [
+      "burning"
+    ],
     "name": "circle_2_name"
   },
   "Gluttony": {
@@ -42,6 +46,10 @@
       "Boss"
     ],
     "index": 4,
+    "enemies": [
+      "large_skull",
+      "plague_fly"
+    ],
     "name": "circle_4_name"
   },
   "Wrath": {
@@ -52,6 +60,11 @@
       "Boss"
     ],
     "index": 5,
+    "enemies": [
+      "demon_eye",
+      "large_skull",
+      "plague_fly"
+    ],
     "name": "circle_5_name"
   },
   "Heresy": {
@@ -62,6 +75,11 @@
       "Boss"
     ],
     "index": 6,
+    "enemies": [
+      "demon_eye",
+      "large_skull",
+      "plague_fly"
+    ],
     "name": "circle_6_name"
   },
   "Violence": {
@@ -72,6 +90,11 @@
       "Boss"
     ],
     "index": 7,
+    "enemies": [
+      "demon_eye",
+      "large_skull",
+      "plague_fly"
+    ],
     "name": "circle_7_name"
   },
   "Fraud": {
@@ -82,6 +105,11 @@
       "Boss"
     ],
     "index": 8,
+    "enemies": [
+      "demon_eye",
+      "large_skull",
+      "plague_fly"
+    ],
     "name": "circle_8_name"
   },
   "Treachery": {
@@ -92,6 +120,11 @@
       "Boss"
     ],
     "index": 9,
+    "enemies": [
+      "demon_eye",
+      "large_skull",
+      "plague_fly"
+    ],
     "name": "circle_9_name"
   }
 }

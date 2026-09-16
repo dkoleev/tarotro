@@ -46,11 +46,12 @@ namespace Tarotro.Game.Logic {
             return result;
         }
 
-        private EnemyData SelectEnemy(CircleType circle, EnemyType enemyType) {
+        private EnemyData SelectEnemy(CircleType circleType, EnemyType enemyType) {
+            var circleData = _gameData.Circles[circleType];
             var filteredEnemies = new List<EnemyData>();
-            foreach (var enemiesValue in _gameData.Enemies.Values) {
-                if (enemiesValue.type == enemyType && enemiesValue.circle == circle) {
-                    filteredEnemies.Add(enemiesValue);
+            foreach (var enemyData in _gameData.Enemies.Values) {
+                if (enemyData.type == enemyType && circleData.enemies.Contains(enemyData.id)) {
+                    filteredEnemies.Add(enemyData);
                 }    
             }
             

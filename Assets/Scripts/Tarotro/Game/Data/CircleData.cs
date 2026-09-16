@@ -8,5 +8,6 @@ namespace Tarotro.Game.Data {
         public int index;
         public string name;
         public List<EnemyType> steps;
+        public List<string> enemies;
     }
 }

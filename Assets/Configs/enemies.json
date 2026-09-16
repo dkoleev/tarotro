@@ -1,43 +1,36 @@
 {
   "demon_eye": {
     "id": "demon_eye",
-    "circle": "Lust",
     "type": "Common",
     "damage": 10
   },
   "demon_mine": {
     "id": "demon_mine",
-    "circle": "Lust",
     "type": "Common",
     "damage": 10
   },
   "large_skull": {
     "id": "large_skull",
-    "circle": "Limbo",
     "type": "Boss",
     "damage": 50
   },
   "bloated": {
     "id": "bloated",
-    "circle": "Limbo",
     "type": "Elite",
     "damage": 30
   },
   "burning": {
     "id": "burning",
-    "circle": "Limbo",
     "type": "Elite",
     "damage": 40
   },
   "plague_fly": {
     "id": "plague_fly",
-    "circle": "Limbo",
     "type": "Common",
     "damage": 40
   },
   "twisted": {
     "id": "twisted",
-    "circle": "Limbo",
     "type": "Common",
     "damage": 40
   }
