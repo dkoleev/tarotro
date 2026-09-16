@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using JetBrains.Annotations;
 using QFSW.QC;
 using Tarotro.Game.Data;
 using Tarotro.Game.Logic;
@@ -20,6 +21,7 @@ namespace Tarotro.Game.Dev {
             _gameLogger = gameLogger;
         }
 
+        [UsedImplicitly]
         [Command("spawn-enemy", MonoTargetType.Registry)]
         public void SpawnEnemy(string enemyId, int health = 100) {
             if (_gameData.Enemies == null || !_gameData.Enemies.ContainsKey(enemyId)) {
@@ -29,16 +31,19 @@ namespace Tarotro.Game.Dev {
             _battle.SpawnEnemy(enemyId, health, CancellationToken.None).Forget();
         }
         
+        [UsedImplicitly]
         [Command("spawn-random-enemy", MonoTargetType.Registry)]
         public void SpawnRandomEnemy(int health = 100) {
             _battle.SpawnRandomEnemy(health, CancellationToken.None).Forget();
         }
         
+        [UsedImplicitly]
         [Command("player-attack", MonoTargetType.Registry)]
         public void PlayerAttack(int damage) {
             _battle.PlayerAttack(damage);
         }
         
+        [UsedImplicitly]
         [Command("list-enemies", MonoTargetType.Registry)]
         private void ListEnemies() {
             if (_gameData.Enemies == null || _gameData.Enemies.Count == 0) {
@@ -54,6 +59,5 @@ namespace Tarotro.Game.Dev {
 
             _gameLogger.Info(sb.ToString().TrimEnd(), "dev");
         }
-
     }
 }
