@@ -11,14 +11,9 @@ using VContainer.Unity;
 namespace Tarotro.Game.Logic {
     public class GameLifetimeScope : LifetimeScope {
         protected override void Configure(IContainerBuilder builder) {
-            builder.Register<GameLogger>(Lifetime.Singleton).As<IGameLogger>();
-
-#if UNITY_EDITOR || DEVELOPMENT_BUILD
-            // builder.Register<Game.DevConsole.DevConsole>(Lifetime.Singleton);
-            // Game.DevConsole.DevConsoleInstaller.Install(builder);
-#endif
-
             builder.RegisterEntryPoint<Boot>();
+            
+            builder.Register<GameLogger>(Lifetime.Singleton).As<IGameLogger>();
             builder.Register<SceneLoader>(Lifetime.Singleton);
             builder.Register<Battle>(Lifetime.Singleton);
             builder.Register<BattleProgressionManager>(Lifetime.Singleton);
