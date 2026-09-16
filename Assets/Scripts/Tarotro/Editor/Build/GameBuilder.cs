@@ -8,28 +8,72 @@ using UnityEngine;
 
 namespace Tarotro.Editor.Build {
     public static class GameBuilder {
-        [MenuItem("Tarotro/Build/Windows Steam", priority = 0)]
-        public static void BuildWindowsSteam() {
-            var config = new BuildConfig();
+        private const string BuildConfigsPath = "Assets/Settings/BuildConfigs.asset";
+
+        [MenuItem("Tarotro/Build/Build Selected Config", priority = 0)]
+        public static void BuildSelected() {
+            var config = Selection.activeObject as BuildConfig;
+            if (config == null) {
+                Debug.LogError("[Build] Select a BuildConfig asset in the Project window first.");
+                return;
+            }
+
             Build(config);
         }
 
-        [MenuItem("Tarotro/Build/Windows Steam (Development)", priority = 1)]
-        public static void BuildWindowsSteamDev() {
-            var config = new BuildConfig { Development = true };
-            Build(config);
+        [MenuItem("Tarotro/Build/Build Selected Config", true)]
+        private static bool BuildSelectedValidate() {
+            return Selection.activeObject is BuildConfig;
+        }
+
+        [MenuItem("Tarotro/Build/Build All Configs", priority = 1)]
+        public static void BuildAll() {
+            var list = LoadConfigsList();
+            if (list == null) return;
+
+            var succeeded = 0;
+            var failed = 0;
+
+            foreach (var config in list.configs) {
+                if (config == null) continue;
+
+                Debug.Log($"[Build] === Building profile: {config.name} ===");
+                if (Build(config))
+                    succeeded++;
+                else
+                    failed++;
+            }
+
+            Debug.Log($"[Build] Finished. Succeeded: {succeeded}, Failed: {failed}");
+        }
+
+        [MenuItem("Tarotro/Build/Open Build Configs", priority = 20)]
+        public static void OpenBuildConfigs() {
+            var list = LoadConfigsList();
+            if (list != null)
+                Selection.activeObject = list;
         }
 
         public static bool Build(BuildConfig config) {
-            Debug.Log($"[Build] Starting {config.Target} build...");
+            Debug.Log($"[Build] Starting '{config.name}' ({config.target})...");
 
-            if (config.ValidateConfigs && !RunConfigValidation())
+            if (config.validateConfigs && !RunConfigValidation())
                 return false;
 
-            if (config.BuildAddressables && !RunAddressablesBuild())
+            if (config.buildAddressables && !RunAddressablesBuild())
                 return false;
 
             return RunPlayerBuild(config);
+        }
+
+        private static BuildConfigsList LoadConfigsList() {
+            var list = AssetDatabase.LoadAssetAtPath<BuildConfigsList>(BuildConfigsPath);
+            if (list != null) return list;
+
+            Debug.LogError(
+                $"[Build] BuildConfigsList not found at '{BuildConfigsPath}'. " +
+                "Create one via Assets > Create > Tarotro > Build Configs List.");
+            return null;
         }
 
         private static bool RunConfigValidation() {
@@ -89,7 +133,7 @@ namespace Tarotro.Editor.Build {
             var buildOptions = new BuildPlayerOptions {
                 scenes = scenes,
                 locationPathName = config.OutputPath,
-                target = config.Target,
+                target = config.target,
                 options = config.GetBuildOptions()
             };
 
