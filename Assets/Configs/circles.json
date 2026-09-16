@@ -1,83 +1,88 @@
 {
   "Limbo": {
-    "index": 1,
     "steps": [
       "Common",
       "Elite",
       "Boss"
+    ],
+    "index": 1,
+    "enemies": [
+      "demon_eye",
+      "large_skull",
+      "plague_fly"
     ],
     "name": "circle_1_name"
   },
   "Lust": {
-    "index": 2,
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
+    "index": 2,
     "name": "circle_2_name"
   },
   "Gluttony": {
-    "index": 3,
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
+    "index": 3,
     "name": "circle_3_name"
   },
   "Greed": {
-    "index": 4,
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
+    "index": 4,
     "name": "circle_4_name"
   },
   "Wrath": {
-    "index": 5,
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
+    "index": 5,
     "name": "circle_5_name"
   },
   "Heresy": {
-    "index": 6,
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
+    "index": 6,
     "name": "circle_6_name"
   },
   "Violence": {
-    "index": 7,
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
+    "index": 7,
     "name": "circle_7_name"
   },
   "Fraud": {
-    "index": 8,
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
+    "index": 8,
     "name": "circle_8_name"
   },
   "Treachery": {
-    "index": 9,
     "steps": [
       "Common",
       "Elite",
       "Boss"
     ],
+    "index": 9,
     "name": "circle_9_name"
   }
 }

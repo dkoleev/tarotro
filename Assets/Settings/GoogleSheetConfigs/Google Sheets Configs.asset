@@ -20,7 +20,7 @@ MonoBehaviour:
     - <ConfigName>k__BackingField: Configs/tarot_cards
       <SheetId>k__BackingField: 2040511227
       <Range>k__BackingField: 
-      <Parser>k__BackingField: default
+      <Parser>k__BackingField: flat
     - <ConfigName>k__BackingField: Configs/enemies
       <SheetId>k__BackingField: 190890144
       <Range>k__BackingField: 
@@ -36,4 +36,4 @@ MonoBehaviour:
     - <ConfigName>k__BackingField: Configs/characters
       <SheetId>k__BackingField: 1237204758
       <Range>k__BackingField: 
-      <Parser>k__BackingField: default
+      <Parser>k__BackingField: flat
