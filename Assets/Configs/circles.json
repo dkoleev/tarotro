@@ -24,7 +24,9 @@
     ],
     "index": 2,
     "enemies": [
-      "burning"
+      "burning",
+      "demon_eye",
+      "large_skull"
     ],
     "name": "circle_2_name"
   },
@@ -36,6 +38,11 @@
       "Boss"
     ],
     "index": 3,
+    "enemies": [
+      "burning",
+      "demon_eye",
+      "large_skull"
+    ],
     "name": "circle_3_name"
   },
   "Greed": {
@@ -48,7 +55,8 @@
     "index": 4,
     "enemies": [
       "large_skull",
-      "plague_fly"
+      "plague_fly",
+      "burning"
     ],
     "name": "circle_4_name"
   },
@@ -63,7 +71,8 @@
     "enemies": [
       "demon_eye",
       "large_skull",
-      "plague_fly"
+      "plague_fly",
+      "bloated"
     ],
     "name": "circle_5_name"
   },
@@ -78,7 +87,8 @@
     "enemies": [
       "demon_eye",
       "large_skull",
-      "plague_fly"
+      "plague_fly",
+      "burning"
     ],
     "name": "circle_6_name"
   },
@@ -93,7 +103,8 @@
     "enemies": [
       "demon_eye",
       "large_skull",
-      "plague_fly"
+      "plague_fly",
+      "bloated"
     ],
     "name": "circle_7_name"
   },
@@ -108,7 +119,8 @@
     "enemies": [
       "demon_eye",
       "large_skull",
-      "plague_fly"
+      "plague_fly",
+      "bloated"
     ],
     "name": "circle_8_name"
   },
@@ -123,7 +135,9 @@
     "enemies": [
       "demon_eye",
       "large_skull",
-      "plague_fly"
+      "plague_fly",
+      "burning",
+      "twisted"
     ],
     "name": "circle_9_name"
   }
