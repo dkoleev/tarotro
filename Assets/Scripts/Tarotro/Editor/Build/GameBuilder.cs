@@ -10,7 +10,20 @@ namespace Tarotro.Editor.Build {
     public static class GameBuilder {
         private const string BuildConfigsPath = "Assets/Settings/BuildConfigs.asset";
 
-        [MenuItem("Tarotro/Build/Build Selected Config", priority = 0)]
+        [MenuItem("Tarotro/Build/Build Default", priority = 0)]
+        public static void BuildDefault() {
+            var list = LoadConfigsList();
+            if (list == null) return;
+
+            if (list.defaultConfig == null) {
+                Debug.LogError("[Build] No default config set. Assign one in the BuildConfigsList Inspector.");
+                return;
+            }
+
+            Build(list.defaultConfig);
+        }
+
+        [MenuItem("Tarotro/Build/Build Selected Config", priority = 1)]
         public static void BuildSelected() {
             var config = Selection.activeObject as BuildConfig;
             if (config == null) {
@@ -26,7 +39,7 @@ namespace Tarotro.Editor.Build {
             return Selection.activeObject is BuildConfig;
         }
 
-        [MenuItem("Tarotro/Build/Build All Configs", priority = 1)]
+        [MenuItem("Tarotro/Build/Build All Configs", priority = 2)]
         public static void BuildAll() {
             var list = LoadConfigsList();
             if (list == null) return;
