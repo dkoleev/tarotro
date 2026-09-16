@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Enemies.md",
+                "file": "GDD/GDD MAIN WIP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Enemies"
+              "title": "GDD MAIN WIP"
             }
           }
         ],
@@ -247,21 +247,25 @@
   },
   "active": "399da98c1330843c",
   "lastOpenFiles": [
-    "GDD/GDD MAIN WIP.md",
-    "Enemies.md",
-    "9-circles-art.webp",
+    "GDD/22 Major arcana actions.md",
     "Attachements/9-circles-art.webp",
+    "9-circles-art.webp",
+    "GDD/Enemies.md",
+    "GDD/Enemies.md",
+    "GDD/GDD MAIN WIP.md.meta",
+    "Attachements/9-circles-art.webp.meta",
+    "Attachements.meta",
+    "Enemies.md.meta",
+    "GDD/GDD Thoughts.md.meta",
+    "GDD/RINGS.md.meta",
+    "9-circles-art.webp.meta",
+    "GDD/GDD MAIN WIP.md",
     "GDD/RINGS.md",
     "Attachements",
     "GDD/GDD Thoughts.md",
-    "GDD/22 Major arcana actions.md",
     "Welcome.md.meta",
     "GDD.meta",
-    "22 Major arcana actions.md.meta",
-    "22 Major arcana actions (EN).md.meta",
     "Welcome.md",
-    "22 Major arcana actions.md",
-    "GDD/22 Major arcana actions.md.meta",
-    "GDD"
+    "22 Major arcana actions.md"
   ]
 }
