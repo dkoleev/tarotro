@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Tarotro.Editor.Build {
     public static class GameBuilder {
-        private const string BuildConfigsPath = "Assets/Settings/BuildConfigs.asset";
+        private const string BuildConfigsPath = "Assets/Settings/BuildConfigs/BuildConfigList.asset";
 
         [MenuItem("Tarotro/Build/Build Default", priority = 0)]
         public static void BuildDefault() {
