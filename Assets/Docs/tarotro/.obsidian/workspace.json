@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "22 Major arcana actions.md",
+                "file": "GDD/22 Major arcana actions.md",
                 "mode": "source",
                 "source": false
               },
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "22 Major arcana actions.md",
+                "file": "GDD/22 Major arcana actions.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "22 Major arcana actions.md",
+                "file": "GDD/22 Major arcana actions.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "22 Major arcana actions.md",
+                "file": "GDD/22 Major arcana actions.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -188,10 +188,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "eeb676d93fcb63a2",
+  "active": "4d9e37c57a2f41fc",
   "lastOpenFiles": [
+    "GDD/22 Major arcana actions.md",
+    "Welcome.md.meta",
+    "GDD.meta",
+    "22 Major arcana actions.md.meta",
+    "22 Major arcana actions (EN).md.meta",
     "Welcome.md",
     "22 Major arcana actions.md",
+    "GDD/22 Major arcana actions.md.meta",
     "GDD"
   ]
 }

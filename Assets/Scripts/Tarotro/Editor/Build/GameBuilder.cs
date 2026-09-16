@@ -4,6 +4,7 @@ using Tarotro.Editor.Validation;
 using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
+using UnityEditor.Build;
 using UnityEditor.Build.Profile;
 using UnityEngine;
 
