@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c826f88f8e7d0747a9c72744bd2a658, type: 3}
   m_Name: SteamRelease
   m_EditorClassIdentifier: Assembly-CSharp-Editor::Tarotro.Editor.Build.BuildConfig
+  buildProfile: {fileID: 11400000, guid: f51a6f8e8868c7846a6bf86bed0ffe7b, type: 2}
   outputFolder: Builds
-  executableName: Tarotro.exe
   subFolder: Windows
-  target: 19
-  development: 0
+  executableName: Tarotro.exe
   validateConfigs: 1
   buildAddressables: 1
