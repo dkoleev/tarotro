@@ -10,7 +10,8 @@
     "enemies": [
       "large_skull",
       "burning",
-      "burning_skull"
+      "burning_skull",
+      "devil"
     ],
     "name": "circle_1_name"
   },

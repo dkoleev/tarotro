@@ -1,42 +1,47 @@
 {
   "demon_eye": {
     "id": "demon_eye",
-    "nameLoc": "enemy_demon_eye_name",
-    "prefabPath": "Bundles/Enemies/demon_eye.prefab"
+    "nameLoc": "char_demon_eye_name",
+    "prefabPath": "Bundles/Characters/demon_eye.prefab"
   },
   "demon_mine": {
     "id": "demon_mine",
-    "nameLoc": "enemy_demon_mine_name",
-    "prefabPath": "Bundles/Enemies/demon_mine.prefab"
+    "nameLoc": "char_demon_mine_name",
+    "prefabPath": "Bundles/Characters/demon_mine.prefab"
   },
   "large_skull": {
     "id": "large_skull",
-    "nameLoc": "enemy_large_skull_name",
-    "prefabPath": "Bundles/Enemies/large_skull.prefab"
+    "nameLoc": "char_large_skull_name",
+    "prefabPath": "Bundles/Characters/large_skull.prefab"
   },
   "bloated": {
     "id": "bloated",
-    "nameLoc": "enemy_bloated_name",
-    "prefabPath": "Bundles/Enemies/bloated.prefab"
+    "nameLoc": "char_bloated_name",
+    "prefabPath": "Bundles/Characters/bloated.prefab"
   },
   "burning": {
     "id": "burning",
-    "nameLoc": "enemy_burning_name",
-    "prefabPath": "Bundles/Enemies/burning.prefab"
+    "nameLoc": "char_burning_name",
+    "prefabPath": "Bundles/Characters/burning.prefab"
   },
   "plague_fly": {
     "id": "plague_fly",
-    "nameLoc": "enemy_plague_fly_name",
-    "prefabPath": "Bundles/Enemies/plague_fly.prefab"
+    "nameLoc": "char_plague_fly_name",
+    "prefabPath": "Bundles/Characters/plague_fly.prefab"
   },
   "twisted": {
     "id": "twisted",
-    "nameLoc": "enemy_twisted_name",
-    "prefabPath": "Bundles/Enemies/twisted.prefab"
+    "nameLoc": "char_twisted_name",
+    "prefabPath": "Bundles/Characters/twisted.prefab"
   },
   "burning_skull": {
     "id": "burning_skull",
-    "nameLoc": "burning_skull_name",
-    "prefabPath": "Bundles/Enemies/burning_skull.prefab"
+    "nameLoc": "char_burning_skull_name",
+    "prefabPath": "Bundles/Characters/burning_skull.prefab"
+  },
+  "devil": {
+    "id": "devil",
+    "nameLoc": "char_devil_name",
+    "prefabPath": "Bundles/Characters/devil.prefab"
   }
 }

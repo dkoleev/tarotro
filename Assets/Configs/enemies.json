@@ -38,5 +38,10 @@
     "id": "burning_skull",
     "type": "Common",
     "damage": 20
+  },
+  "devil": {
+    "id": "devil",
+    "type": "Boss",
+    "damage": 100
   }
 }
