@@ -25,7 +25,7 @@ namespace Tarotro.Game.Dev {
         [Command("spawn-enemy", MonoTargetType.Registry)]
         public void SpawnEnemy(string enemyId, int health = 100) {
             if (_gameData.Enemies == null || !_gameData.Enemies.ContainsKey(enemyId)) {
-                _gameLogger.Warn($"Unknown enemy id '{enemyId}'. Use 'list-enemies' to see available ids.", "dev");
+                _gameLogger.Warning($"Unknown enemy id '{enemyId}'. Use 'list-enemies' to see available ids.", "dev");
                 return;
             }
             _battle.SpawnEnemy(enemyId, health, CancellationToken.None).Forget();

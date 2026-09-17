@@ -39,7 +39,7 @@ namespace Tarotro.Game.Utils {
         public void Info(string message, string category) =>
             Log(message, LogLevel.Info, category);
 
-        public void Warn(string message, string category) =>
+        public void Warning(string message, string category) =>
             Log(message, LogLevel.Warning, category);
 
         public void Error(string message, string category) =>

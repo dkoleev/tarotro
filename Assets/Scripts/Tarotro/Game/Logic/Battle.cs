@@ -195,7 +195,7 @@ namespace Tarotro.Game.Logic {
 
         public void PlayerAttack(int? damageOverride = null) {
             if (_currentPlayer == null || _currentEnemy == null) {
-                _logger.Warn("Cannot attack: no player or enemy", "Battle");
+                _logger.Warning("Cannot attack: no player or enemy", "Battle");
                 return;
             }
 
