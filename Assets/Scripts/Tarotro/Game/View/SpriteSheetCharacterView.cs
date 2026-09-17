@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 namespace Tarotro.Game.View {
-    public class SpriteSheetCharacterView : MonoBehaviour, IEnemyView {
+    public class SpriteSheetCharacterView : MonoBehaviour, ICharacterView {
         [SerializeField] private SpriteSheetAnimator animator;
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private string idleAnimation = "Idle";
@@ -29,6 +29,10 @@ namespace Tarotro.Game.View {
 
         public async UniTask PlayAttackAnimation(CancellationToken ct = default) {
             await animator.PlayAsync(attackAnimation, ct);
+        }
+
+        public void SetInterfaceActive(bool active) {
+            healthText.gameObject.SetActive(active);
         }
     }
 }

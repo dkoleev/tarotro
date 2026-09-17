@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: animations.Array.data[1].frameRate
-      value: 80
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: animations.Array.data[2].frameRate
-      value: 80
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: animations.Array.data[0].frames.Array.size
@@ -186,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7310245086373498210, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: m_Name
-      value: enemy_burning
+      value: burning
       objectReference: {fileID: 0}
     - target: {fileID: 7451023689534178256, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: m_Size.x

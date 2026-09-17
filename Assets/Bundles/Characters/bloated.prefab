@@ -38,11 +38,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: animations.Array.data[1].frameRate
-      value: 80
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: animations.Array.data[2].frameRate
-      value: 80
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: animations.Array.data[0].frames.Array.size
@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: animations.Array.data[1].frames.Array.size
-      value: 8
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: animations.Array.data[2].frames.Array.size
@@ -79,23 +79,23 @@ PrefabInstance:
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: 'animations.Array.data[1].frames.Array.data[0]'
       value: 
-      objectReference: {fileID: 2586200281441506550, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
+      objectReference: {fileID: 3891361359843681242, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: 'animations.Array.data[1].frames.Array.data[1]'
       value: 
-      objectReference: {fileID: 7556955749396248473, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
+      objectReference: {fileID: -1133676772815820021, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: 'animations.Array.data[1].frames.Array.data[2]'
       value: 
-      objectReference: {fileID: -7193505007810896699, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
+      objectReference: {fileID: -965304966025994540, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: 'animations.Array.data[1].frames.Array.data[3]'
       value: 
-      objectReference: {fileID: 3915948694066642023, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
+      objectReference: {fileID: 6695245093428516858, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: 'animations.Array.data[1].frames.Array.data[4]'
       value: 
-      objectReference: {fileID: 8869172557797416728, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
+      objectReference: {fileID: 8573471366510675393, guid: e5efd0d4d5b191b44bde04083c86f707, type: 3}
     - target: {fileID: 3888119195090137513, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: 'animations.Array.data[1].frames.Array.data[5]'
       value: 
@@ -186,7 +186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7310245086373498210, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: m_Name
-      value: enemy_bloated
+      value: bloated
       objectReference: {fileID: 0}
     - target: {fileID: 7451023689534178256, guid: 154318e3e18e52d4f8b55d9af9559b6e, type: 3}
       propertyPath: m_Size.x

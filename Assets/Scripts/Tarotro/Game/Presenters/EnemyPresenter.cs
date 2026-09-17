@@ -5,9 +5,9 @@ using Tarotro.Game.View;
 namespace Tarotro.Game.Presenters {
     public class EnemyPresenter : IDisposable {
         private readonly EnemyModel _model;
-        private readonly IEnemyView _view;
+        private readonly ICharacterView _view;
 
-        public EnemyPresenter(EnemyModel model, IEnemyView view) {
+        public EnemyPresenter(EnemyModel model, ICharacterView view) {
             _model = model;
             _view = view;
             _model.HealthChanged += OnHealthChanged;

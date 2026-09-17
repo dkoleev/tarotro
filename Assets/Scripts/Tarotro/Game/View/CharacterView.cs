@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 
 namespace Tarotro.Game.View {
-    public class CharacterView : MonoBehaviour, IEnemyView {
+    public class CharacterView : MonoBehaviour, ICharacterView {
         [SerializeField] private Dictionary<AnimationType, string> animationStatsOverride;
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private Animator animator;
@@ -51,6 +51,10 @@ namespace Tarotro.Game.View {
         
         public async UniTask PlayAttackAnimation(CancellationToken ct = default) {
             await animator.PlayAnimationAsync(_animationStates[AnimationType.Attack], ct);
+        }
+
+        public void SetInterfaceActive(bool active) {
+            healthText.gameObject.SetActive(active);
         }
     }
 }

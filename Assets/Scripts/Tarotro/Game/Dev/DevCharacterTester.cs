@@ -13,6 +13,9 @@ namespace Tarotro.Game.Dev {
     public class DevCharacterTester : MonoBehaviour {
         [SerializeField] private float spawnSpacing = 1.5f;
         [SerializeField] private float cameraPanSpeed = 3f;
+        [SerializeField] private int uiFontSize = 20;
+        [SerializeField] private float panelWidth = 340f;
+        [SerializeField] private float scrollHeight = 300f;
 
         private Dictionary<string, CharacterData> _characters;
         private bool _configsLoaded;
@@ -28,13 +31,11 @@ namespace Tarotro.Game.Dev {
         private GUIStyle _boldLabelStyle;
         private GUIStyle _buttonStyle;
         private GUIStyle _boldButtonStyle;
-        private const int UIFontSize = 18;
-        private const float PanelWidth = 340f;
 
         private class SpawnedCharacter {
             public string Id;
             public GameObject Go;
-            public IEnemyView View;
+            public ICharacterView View;
             public AsyncOperationHandle<GameObject> Handle;
             public CancellationTokenSource Cts;
         }
@@ -89,8 +90,9 @@ namespace Tarotro.Game.Dev {
             go.transform.position = new Vector3(_nextSpawnX, 0, 0);
             _nextSpawnX += spawnSpacing;
 
-            var view = go.GetComponent<IEnemyView>();
+            var view = go.GetComponent<ICharacterView>();
             view?.SetHealth(100);
+            view.SetInterfaceActive(false);
 
             var spawned = new SpawnedCharacter {
                 Id = id,
@@ -137,10 +139,10 @@ namespace Tarotro.Game.Dev {
         private void InitStyles() {
             if (_labelStyle != null) return;
 
-            _labelStyle = new GUIStyle(GUI.skin.label) { fontSize = UIFontSize };
-            _boldLabelStyle = new GUIStyle(GUI.skin.label) { fontSize = UIFontSize, richText = true, fontStyle = FontStyle.Bold };
-            _buttonStyle = new GUIStyle(GUI.skin.button) { fontSize = UIFontSize };
-            _boldButtonStyle = new GUIStyle(GUI.skin.button) { fontSize = UIFontSize, fontStyle = FontStyle.Bold };
+            _labelStyle = new GUIStyle(GUI.skin.label) { fontSize = uiFontSize };
+            _boldLabelStyle = new GUIStyle(GUI.skin.label) { fontSize = uiFontSize, richText = true, fontStyle = FontStyle.Bold };
+            _buttonStyle = new GUIStyle(GUI.skin.button) { fontSize = uiFontSize };
+            _boldButtonStyle = new GUIStyle(GUI.skin.button) { fontSize = uiFontSize, fontStyle = FontStyle.Bold };
         }
 
         private void OnGUI() {
@@ -148,9 +150,9 @@ namespace Tarotro.Game.Dev {
 
             var panelHeight = Screen.height;
 
-            GUI.Box(new Rect(0, 0, PanelWidth, panelHeight), "");
+            GUI.Box(new Rect(0, 0, panelWidth, panelHeight), "");
 
-            GUILayout.BeginArea(new Rect(8, 8, PanelWidth - 16, panelHeight - 16));
+            GUILayout.BeginArea(new Rect(8, 8, panelWidth - 16, panelHeight - 16));
 
             GUILayout.Label("<b>Character Tester</b>", _boldLabelStyle);
             GUILayout.Space(4);
@@ -165,7 +167,7 @@ namespace Tarotro.Game.Dev {
             if (_configsLoaded && _characters != null) {
                 GUILayout.Label("<b>Spawn Character:</b>", _boldLabelStyle);
 
-                _scrollPos = GUILayout.BeginScrollView(_scrollPos, GUILayout.Height(250));
+                _scrollPos = GUILayout.BeginScrollView(_scrollPos, GUILayout.Height(scrollHeight));
                 foreach (var kv in _characters) {
                     if (GUILayout.Button(kv.Key, _buttonStyle)) {
                         SpawnCharacter(kv.Key).Forget();
@@ -256,7 +258,7 @@ namespace Tarotro.Game.Dev {
             }
         }
 
-        private static void PlayAnimation(SpawnedCharacter c, Func<IEnemyView, UniTask> play) {
+        private static void PlayAnimation(SpawnedCharacter c, Func<ICharacterView, UniTask> play) {
             if (c.View == null) return;
             play(c.View).Forget();
         }
