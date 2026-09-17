@@ -75,7 +75,12 @@ namespace Tarotro.Editor.Build {
             if (config.buildAddressables && !RunAddressablesBuild())
                 return false;
 
-            return RunPlayerBuild(config);
+            var success = RunPlayerBuild(config);
+
+            if (success && config.openFolderAfterBuild)
+                OpenBuildFolder(config);
+
+            return success;
         }
 
         private static BuildConfigsList LoadConfigsList() {
@@ -163,6 +168,12 @@ namespace Tarotro.Editor.Build {
             } finally {
                 RestoreDefines(savedDefines);
             }
+        }
+
+        private static void OpenBuildFolder(BuildConfig config) {
+            var folderPath = $"{config.outputFolder}/{config.subFolder}";
+            Debug.Log($"[Build] Opening build folder: {folderPath}");
+            EditorUtility.RevealInFinder(config.OutputPath);
         }
 
         private static string ApplyExtraDefines(BuildConfig config) {
