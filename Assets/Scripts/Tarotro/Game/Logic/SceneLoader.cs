@@ -21,7 +21,7 @@ namespace Tarotro.Game.Logic {
 
             var handle = Addressables.LoadSceneAsync(sceneKey, mode);
             _currentScene = await handle.ToUniTask(cancellationToken: ct);
-
+            
             return _currentScene.Value;
         }
 

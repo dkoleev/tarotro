@@ -25,8 +25,11 @@ namespace Tarotro.Game.Logic {
             _logger.Info("Boot started", "Boot");
             await _configLoader.Load();
             _logger.Info("Configs loaded", "Boot");
-            await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Additive, ct);
-            _logger.Info("Level loaded, starting battle", "Boot");
+            await _sceneLoader.LoadSceneAsync("Scenes/debug.unity", LoadSceneMode.Additive, ct);
+            _logger.Info("Debug scene loaded, starting load level scene", "Boot");
+            var levelScene = await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Additive, ct);
+            SceneManager.SetActiveScene(levelScene.Scene);
+            _logger.Info("Level scene loaded, starting battle", "Boot");
             await _battle.StartBattle(ct);
         }
     }
