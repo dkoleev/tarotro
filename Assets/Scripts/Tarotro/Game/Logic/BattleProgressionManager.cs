@@ -40,8 +40,15 @@ namespace Tarotro.Game.Logic {
         }
 
         public List<FightRoundData> GenerateCircle(CircleType circleType) {
-            var result  = new List<FightRoundData>();
-            foreach (var step in _gameData.Circles[circleType].steps) {
+            var result = new List<FightRoundData>();
+            var circleData = _gameData.Circles[circleType];
+
+            if (circleData == null) {
+                _logger.Error($"Circle data not found for {circleType}", "BattleProgression");
+                return result;
+            }
+
+            foreach (var step in circleData.steps) {
                 result.Add(GenerateRound(circleType, step));
             }
 
@@ -50,13 +57,26 @@ namespace Tarotro.Game.Logic {
 
         private EnemyData SelectEnemy(CircleType circleType, EnemyType enemyType) {
             var circleData = _gameData.Circles[circleType];
+
+            if (circleData == null) {
+                _logger.Error($"Circle data not found for {circleType}", "BattleProgression");
+                // Return a default enemy or throw exception
+                return _gameData.Enemies.Values.FirstOrDefault();
+            }
+
             var filteredEnemies = new List<EnemyData>();
             foreach (var enemyData in _gameData.Enemies.Values) {
                 if (enemyData.type == enemyType && circleData.enemies.Contains(enemyData.id)) {
                     filteredEnemies.Add(enemyData);
-                }    
+                }
             }
-            
+
+            if (filteredEnemies.Count == 0) {
+                _logger.Error($"No enemies found for circle {circleType}, type {enemyType}", "BattleProgression");
+                // Return first available enemy as fallback
+                return _gameData.Enemies.Values.FirstOrDefault();
+            }
+
             return filteredEnemies[Random.Range(0, filteredEnemies.Count)];
         }
 

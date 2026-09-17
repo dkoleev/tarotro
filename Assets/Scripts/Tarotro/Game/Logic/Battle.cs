@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using Cysharp.Threading.Tasks;
@@ -14,8 +15,7 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using Random = UnityEngine.Random;
 
-namespace Tarotro.Game.Logic
-{
+namespace Tarotro.Game.Logic {
     public class Battle : IDisposable {
         private class EnemyWrapper {
             public EnemyModel Model { get; }
@@ -23,14 +23,14 @@ namespace Tarotro.Game.Logic
             public IEnemyView View { get; }
             public AsyncOperationHandle<GameObject> AddressablesHandle { get; }
 
-            public EnemyWrapper(EnemyModel model, EnemyPresenter presenter, IEnemyView view, AsyncOperationHandle<GameObject>  addressablesHandle) {
+            public EnemyWrapper(EnemyModel model, EnemyPresenter presenter, IEnemyView view, AsyncOperationHandle<GameObject> addressablesHandle) {
                 Model = model;
                 Presenter = presenter;
                 View = view;
                 AddressablesHandle = addressablesHandle;
             }
         }
-        
+
         private readonly IPublisher<EnemyDiedMessage> _enemyDiedPub;
         private readonly GameData _gameData;
         private readonly BattleProgressionManager _progressionManager;
@@ -39,6 +39,8 @@ namespace Tarotro.Game.Logic
         private PlayerModel _currentPlayer;
         private CancellationTokenSource _cts;
         private FightRoundData _currentRoundData;
+        private int _currentCircleIndex = 0;
+        private List<FightRoundData> _currentCircle;
 
         [Inject]
         public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, IGameLogger logger) {
@@ -52,13 +54,21 @@ namespace Tarotro.Game.Logic
             _logger.Info("Starting battle", "Battle");
             _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
 
-            _logger.Info("Play hand " + _gameData.Battle.playHandSize, "Battle");
+            // Initialize player
+            CreatePlayer();
+
+            _logger.Info("Play hand size: " + _gameData.Battle.playHandSize, "Battle");
             await CreateDesk();
 
+            // Start first circle
             var circle = _progressionManager.GenerateCircle(CircleType.Limbo);
-            _currentRoundData = circle[0];
-            
-            await SpawnEnemyFromRound(_currentRoundData, ct);
+            _currentCircle = circle;
+            _currentCircleIndex = 0;
+
+            if (_currentCircle.Count > 0) {
+                _currentRoundData = _currentCircle[0];
+                await SpawnEnemyFromRound(_currentRoundData, ct);
+            }
         }
 
         private void StartNextRound() {
@@ -66,7 +76,17 @@ namespace Tarotro.Game.Logic
                 _currentRoundData = _progressionManager.GenerateRound(CircleType.Fraud, EnemyType.Common);
             }
             else {
-                
+                // Advance to next round in current circle
+                _currentCircleIndex++;
+                if (_currentCircleIndex < _currentCircle.Count) {
+                    _currentRoundData = _currentCircle[_currentCircleIndex];
+                    // Spawn new enemy for this round
+                    SpawnEnemyFromRound(_currentRoundData, _cts.Token).Forget();
+                }
+                else {
+                    // End of circle - could start a new circle or end battle
+                    _logger.Info("Circle completed", "Battle");
+                }
             }
         }
 
@@ -75,15 +95,26 @@ namespace Tarotro.Game.Logic
         }
 
         private async UniTask CreateDesk() {
-            
+            // Initialize player's starting hand
+            // This would typically involve drawing initial cards from the deck
+            _logger.Info("Creating player desk", "Battle");
+
+            // Initialize with a basic hand of cards
+            // In a real implementation, this would draw cards from the player's deck
         }
 
         public async UniTask SpawnRandomEnemy(int health, CancellationToken ct = default) {
             if (_currentEnemy != null) {
                 await HandleEnemyDeath(ct);
             }
-            
-            var enemyData = _gameData.Enemies.Values.ToList()[Random.Range(0, _gameData.Enemies.Count)];
+
+            var enemyList = _gameData.Enemies.Values.ToList();
+            if (enemyList.Count == 0) {
+                _logger.Error("No enemies available in game data", "Battle");
+                return;
+            }
+
+            var enemyData = enemyList[Random.Range(0, enemyList.Count)];
             await SpawnEnemy(enemyData, health, ct);
         }
 
@@ -135,12 +166,14 @@ namespace Tarotro.Game.Logic
 
             await UniTask.Delay(1000, cancellationToken: ct);
         }
-        
+
         private void OnEnemyDied() {
             HandleEnemyDeath(_cts.Token).Forget();
         }
 
         private async UniTask HandleEnemyDeath(CancellationToken ct) {
+            if (_currentEnemy == null) return;
+
             _logger.Info("Enemy died, playing death animation", "Battle");
             await _currentEnemy.View.PlayDeathAnimation(ct);
 
@@ -153,18 +186,26 @@ namespace Tarotro.Game.Logic
             if (_currentEnemy.AddressablesHandle.IsValid()) {
                 Addressables.ReleaseInstance(_currentEnemy.AddressablesHandle);
             }
-                
+
             _currentEnemy = null;
+
+            // Move to next round after enemy death
+            StartNextRound();
         }
 
         public void PlayerAttack(int? damageOverride = null) {
+            if (_currentPlayer == null || _currentEnemy == null) {
+                _logger.Warn("Cannot attack: no player or enemy", "Battle");
+                return;
+            }
+
             var damage = damageOverride ?? _currentPlayer.PlayHand();
             _currentEnemy.Model.TakeDamage(damage);
         }
 
         public void Dispose() {
-            _cts.Cancel();
-            _cts.Dispose();
+            _cts?.Cancel();
+            _cts?.Dispose();
 
             if (_currentEnemy != null) {
                 _currentEnemy.Presenter.Dispose();
@@ -173,6 +214,10 @@ namespace Tarotro.Game.Logic
                     Addressables.ReleaseInstance(_currentEnemy.AddressablesHandle);
                 }
             }
+
+            // Clear any remaining references
+            _currentEnemy = null;
+            _currentPlayer = null;
         }
     }
 }
