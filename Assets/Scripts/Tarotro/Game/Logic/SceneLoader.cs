@@ -1,4 +1,5 @@
-﻿using System.Threading;
+using System.Collections.Generic;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.ResourceProviders;
@@ -7,7 +8,7 @@ using VContainer;
 
 namespace Tarotro.Game.Logic {
     public class SceneLoader {
-        private SceneInstance? _currentScene;
+        private readonly Dictionary<string, SceneInstance> _loadedScenes = new();
 
         [Inject]
         public SceneLoader() { }
@@ -16,21 +17,33 @@ namespace Tarotro.Game.Logic {
             string sceneKey,
             LoadSceneMode mode = LoadSceneMode.Single,
             CancellationToken ct = default) {
-            if (_currentScene.HasValue)
-                await Addressables.UnloadSceneAsync(_currentScene.Value).ToUniTask(cancellationToken: ct);
+            if (mode == LoadSceneMode.Single)
+                await UnloadAllScenesAsync(ct);
 
             var handle = Addressables.LoadSceneAsync(sceneKey, mode);
-            _currentScene = await handle.ToUniTask(cancellationToken: ct);
-            
-            return _currentScene.Value;
+            var sceneInstance = await handle.ToUniTask(cancellationToken: ct);
+            _loadedScenes[sceneKey] = sceneInstance;
+
+            return sceneInstance;
         }
 
-        public async UniTask UnloadCurrentSceneAsync(CancellationToken ct = default) {
-            if (!_currentScene.HasValue)
+        public async UniTask UnloadSceneAsync(string sceneKey, CancellationToken ct = default) {
+            if (!_loadedScenes.TryGetValue(sceneKey, out var sceneInstance))
                 return;
 
-            await Addressables.UnloadSceneAsync(_currentScene.Value).ToUniTask(cancellationToken: ct);
-            _currentScene = null;
+            await Addressables.UnloadSceneAsync(sceneInstance).ToUniTask(cancellationToken: ct);
+            _loadedScenes.Remove(sceneKey);
         }
+
+        public async UniTask UnloadAllScenesAsync(CancellationToken ct = default) {
+            var tasks = new List<UniTask>();
+            foreach (var scene in _loadedScenes.Values)
+                tasks.Add(Addressables.UnloadSceneAsync(scene).ToUniTask(cancellationToken: ct));
+
+            await UniTask.WhenAll(tasks);
+            _loadedScenes.Clear();
+        }
+
+        public bool IsSceneLoaded(string sceneKey) => _loadedScenes.ContainsKey(sceneKey);
     }
 }
