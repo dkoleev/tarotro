@@ -1,5 +1,5 @@
 {
-    "activeFile": "fire_anim.tsx",
+    "activeFile": "level_0.tmx",
     "expandedProjectPaths": [
         "."
     ],
@@ -33,10 +33,10 @@
                 3
             ],
             "scale": 1,
-            "selectedLayer": 4,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": -33,
-                "y": -7.5
+                "x": 32,
+                "y": -0.5
             }
         },
         "level_0_0.tmx": {
@@ -77,10 +77,10 @@
     ],
     "project": "tarotro.tiled-project",
     "recentFiles": [
-        "level_0_0.tmx",
-        "level_0.tmx",
-        "hell_back_dark.tsx",
         "fire_anim.tsx",
+        "level_0.tmx",
+        "level_0_0.tmx",
+        "hell_back_dark.tsx",
         "fire_blue_anim.tsx",
         "hell_back_light.tsx",
         "hell.tsx",
