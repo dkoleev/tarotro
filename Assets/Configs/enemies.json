@@ -33,5 +33,10 @@
     "id": "twisted",
     "type": "Common",
     "damage": 40
+  },
+  "burning_skull": {
+    "id": "burning_skull",
+    "type": "Common",
+    "damage": 20
   }
 }

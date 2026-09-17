@@ -8,10 +8,9 @@
     ],
     "index": 1,
     "enemies": [
-      "demon_eye",
       "large_skull",
-      "plague_fly",
-      "burning"
+      "burning",
+      "burning_skull"
     ],
     "name": "circle_1_name"
   },

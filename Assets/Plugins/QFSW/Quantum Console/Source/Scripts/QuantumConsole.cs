@@ -1076,7 +1076,7 @@ namespace QFSW.QC
             return false;
 #endif
             SupportedState currentState = SupportedState.Always;
-#if DEVELOPMENT_BUILD
+#if DEBUG
             currentState = SupportedState.Development;
 #elif UNITY_EDITOR
             currentState = SupportedState.Editor;

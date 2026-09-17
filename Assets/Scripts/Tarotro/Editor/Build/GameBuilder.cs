@@ -5,37 +5,36 @@ using UnityEditor;
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor.Build;
-using UnityEditor.Build.Profile;
 using UnityEngine;
 
 namespace Tarotro.Editor.Build {
     public static class GameBuilder {
         private const string BuildConfigsPath = "Assets/Settings/BuildConfigs/BuildConfigList.asset";
 
-        [MenuItem("Tarotro/Build/Build Default", priority = 0)]
-        public static void BuildDefault() {
+        [MenuItem("Tarotro/Build/Windows Release", priority = 0)]
+        public static void BuildWindowsRelease() {
             var list = LoadConfigsList();
             if (list == null) return;
 
-            if (list.defaultConfig == null) {
+            if (list.windowsReleaseConfig == null) {
                 Debug.LogError("[Build] No default config set. Assign one in the BuildConfigsList Inspector.");
                 return;
             }
 
-            Build(list.defaultConfig);
+            Build(list.windowsReleaseConfig);
         }
 
-        [MenuItem("Tarotro/Build/Build Development", priority = 1)]
-        public static void BuildDevelopment() {
+        [MenuItem("Tarotro/Build/Windows Development", priority = 1)]
+        public static void BuildWindowsDevelopment() {
             var list = LoadConfigsList();
             if (list == null) return;
 
-            if (list.developmentConfig == null) {
+            if (list.windowsDevelopmentConfig == null) {
                 Debug.LogError("[Build] No development config set. Assign one in the BuildConfigsList Inspector.");
                 return;
             }
 
-            Build(list.developmentConfig);
+            Build(list.windowsDevelopmentConfig);
         }
 
         [MenuItem("Tarotro/Build/Build Selected Config", priority = 2)]
@@ -52,27 +51,6 @@ namespace Tarotro.Editor.Build {
         [MenuItem("Tarotro/Build/Build Selected Config", true)]
         private static bool BuildSelectedValidate() {
             return Selection.activeObject is BuildConfig;
-        }
-
-        [MenuItem("Tarotro/Build/Build All Configs", priority = 3)]
-        public static void BuildAll() {
-            var list = LoadConfigsList();
-            if (list == null) return;
-
-            var succeeded = 0;
-            var failed = 0;
-
-            foreach (var config in list.configs) {
-                if (config == null) continue;
-
-                Debug.Log($"[Build] === Building profile: {config.name} ===");
-                if (Build(config))
-                    succeeded++;
-                else
-                    failed++;
-            }
-
-            Debug.Log($"[Build] Finished. Succeeded: {succeeded}, Failed: {failed}");
         }
 
         [MenuItem("Tarotro/Build/Open Build Configs", priority = 20)]

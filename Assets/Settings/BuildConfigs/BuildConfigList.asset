@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab2b00cb775b58f448a7b8677858b221, type: 3}
   m_Name: BuildConfigList
   m_EditorClassIdentifier: Assembly-CSharp-Editor::Tarotro.Editor.Build.BuildConfigsList
-  defaultConfig: {fileID: 11400000, guid: b22728cc3f1045e4bb29a9d7e3ad43be, type: 2}
-  developmentConfig: {fileID: 11400000, guid: b242c8f2e043ca94dbfc4b78345ebcc0, type: 2}
-  configs:
-  - {fileID: 11400000, guid: b22728cc3f1045e4bb29a9d7e3ad43be, type: 2}
-  - {fileID: 11400000, guid: b242c8f2e043ca94dbfc4b78345ebcc0, type: 2}
+  windowsReleaseConfig: {fileID: 11400000, guid: b22728cc3f1045e4bb29a9d7e3ad43be, type: 2}
+  windowsDevelopmentConfig: {fileID: 11400000, guid: b242c8f2e043ca94dbfc4b78345ebcc0, type: 2}
