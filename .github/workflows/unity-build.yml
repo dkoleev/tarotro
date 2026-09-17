@@ -1,0 +1,48 @@
+# Unity CI Build
+# Requires GitHub Secrets:
+#   UNITY_LICENSE  - Unity license file content (Unity_lic.ulf)
+#   UNITY_EMAIL    - Unity account email
+#   UNITY_PASSWORD - Unity account password
+#
+# Setup guide: https://game.ci/docs/github/activation
+
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-windows:
+    name: Build Windows
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-Windows-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: Library-Windows-
+
+      - uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: 6000.6.0f1
+          targetPlatform: StandaloneWindows64
+          buildMethod: Tarotro.Editor.Build.GameBuilder.BuildCI
+
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: Tarotro-Windows
+          path: Builds/Windows
+          retention-days: 14
