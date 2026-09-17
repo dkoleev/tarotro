@@ -7,12 +7,14 @@ using Tarotro.Game.Data;
 using Tarotro.Game.View;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.InputSystem;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
 namespace Tarotro.Game.Dev {
     public class DevCharacterTester : MonoBehaviour {
         [SerializeField] private float spawnSpacing = 1.5f;
         [SerializeField] private float cameraPanSpeed = 3f;
+        [SerializeField] private float zoomSpeed = 0.5f;
 
         private Dictionary<string, CharacterData> _characters;
         private bool _configsLoaded;
@@ -24,6 +26,8 @@ namespace Tarotro.Game.Dev {
         private Camera _cam;
         private float _nextSpawnX;
 
+        private DevCharacterInputActions _input;
+
         private class SpawnedCharacter {
             public string Id;
             public GameObject Go;
@@ -34,28 +38,29 @@ namespace Tarotro.Game.Dev {
 
         private async void Start() {
             _cam = Camera.main;
+            _input = new DevCharacterInputActions();
+            _input.Enable();
             await LoadConfigs();
         }
 
         private void Update() {
-            if (_cam == null) return;
+            if (_cam == null || _input == null) return;
 
-            var move = Vector3.zero;
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) move.y += 1;
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow)) move.y -= 1;
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow)) move.x -= 1;
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow)) move.x += 1;
-
-            if (move != Vector3.zero)
+            var moveInput = _input.Camera.Move.ReadValue<Vector2>();
+            if (moveInput != Vector2.zero) {
+                var move = new Vector3(moveInput.x, moveInput.y, 0f);
                 _cam.transform.position += move.normalized * (cameraPanSpeed * Time.deltaTime);
+            }
 
-            var scroll = Input.GetAxis("Mouse ScrollWheel");
-            if (Mathf.Abs(scroll) > 0.001f)
-                _cam.orthographicSize = Mathf.Clamp(_cam.orthographicSize - scroll * 0.5f, 0.5f, 10f);
+            var scrollInput = _input.Camera.Zoom.ReadValue<float>();
+            if (Mathf.Abs(scrollInput) > 0.001f)
+                _cam.orthographicSize = Mathf.Clamp(_cam.orthographicSize - scrollInput * zoomSpeed, 0.5f, 10f);
         }
 
         private void OnDestroy() {
             ClearAll();
+            _input?.Disable();
+            _input?.Dispose();
         }
 
         private async UniTask LoadConfigs() {

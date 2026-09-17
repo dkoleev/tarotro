@@ -207,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Tarotro.Game.Dev.DevCharacterTester
   spawnSpacing: 1.5
   cameraPanSpeed: 3
+  zoomSpeed: 0.5
 --- !u!4 &1253153940
 Transform:
   m_ObjectHideFlags: 0
@@ -230,17 +231,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 84631556439965675, guid: 0c3ce787d0bff434dad08d0d5dc4973a, type: 3}
+      propertyPath: orthographic size
+      value: 1.35
+      objectReference: {fileID: 0}
     - target: {fileID: 3288175225883356317, guid: 0c3ce787d0bff434dad08d0d5dc4973a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05161
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3288175225883356317, guid: 0c3ce787d0bff434dad08d0d5dc4973a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.10118
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3288175225883356317, guid: 0c3ce787d0bff434dad08d0d5dc4973a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 3288175225883356317, guid: 0c3ce787d0bff434dad08d0d5dc4973a, type: 3}
       propertyPath: m_LocalRotation.w
