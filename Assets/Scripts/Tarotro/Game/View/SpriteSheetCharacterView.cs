@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 
 namespace Tarotro.Game.View {
-    public class SpriteSheetEnemyView : MonoBehaviour, IEnemyView {
+    public class SpriteSheetCharacterView : MonoBehaviour, IEnemyView {
         [SerializeField] private SpriteSheetAnimator animator;
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private string idleAnimation = "Idle";
