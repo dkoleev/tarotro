@@ -24,6 +24,13 @@ namespace Tarotro.Game.Dev {
         private Camera _cam;
         private float _nextSpawnX;
 
+        private GUIStyle _labelStyle;
+        private GUIStyle _boldLabelStyle;
+        private GUIStyle _buttonStyle;
+        private GUIStyle _boldButtonStyle;
+        private const int UIFontSize = 18;
+        private const float PanelWidth = 340f;
+
         private class SpawnedCharacter {
             public string Id;
             public GameObject Go;
@@ -127,30 +134,40 @@ namespace Tarotro.Game.Dev {
             }
         }
 
+        private void InitStyles() {
+            if (_labelStyle != null) return;
+
+            _labelStyle = new GUIStyle(GUI.skin.label) { fontSize = UIFontSize };
+            _boldLabelStyle = new GUIStyle(GUI.skin.label) { fontSize = UIFontSize, richText = true, fontStyle = FontStyle.Bold };
+            _buttonStyle = new GUIStyle(GUI.skin.button) { fontSize = UIFontSize };
+            _boldButtonStyle = new GUIStyle(GUI.skin.button) { fontSize = UIFontSize, fontStyle = FontStyle.Bold };
+        }
+
         private void OnGUI() {
-            var panelWidth = 260f;
+            InitStyles();
+
             var panelHeight = Screen.height;
 
-            GUI.Box(new Rect(0, 0, panelWidth, panelHeight), "");
+            GUI.Box(new Rect(0, 0, PanelWidth, panelHeight), "");
 
-            GUILayout.BeginArea(new Rect(8, 8, panelWidth - 16, panelHeight - 16));
+            GUILayout.BeginArea(new Rect(8, 8, PanelWidth - 16, panelHeight - 16));
 
-            GUILayout.Label("<b>Character Tester</b>", new GUIStyle(GUI.skin.label) { richText = true, fontSize = 16 });
+            GUILayout.Label("<b>Character Tester</b>", _boldLabelStyle);
             GUILayout.Space(4);
-            GUILayout.Label(_loadingStatus);
+            GUILayout.Label(_loadingStatus, _labelStyle);
             GUILayout.Space(4);
 
             if (_cam != null) {
-                GUILayout.Label($"Camera: zoom={_cam.orthographicSize:F1}  WASD=pan  Scroll=zoom");
+                GUILayout.Label($"Camera: zoom={_cam.orthographicSize:F1}  WASD=pan  Scroll=zoom", _labelStyle);
             }
             GUILayout.Space(8);
 
             if (_configsLoaded && _characters != null) {
-                GUILayout.Label("<b>Spawn Character:</b>", new GUIStyle(GUI.skin.label) { richText = true });
+                GUILayout.Label("<b>Spawn Character:</b>", _boldLabelStyle);
 
-                _scrollPos = GUILayout.BeginScrollView(_scrollPos, GUILayout.Height(200));
+                _scrollPos = GUILayout.BeginScrollView(_scrollPos, GUILayout.Height(250));
                 foreach (var kv in _characters) {
-                    if (GUILayout.Button(kv.Key)) {
+                    if (GUILayout.Button(kv.Key, _buttonStyle)) {
                         SpawnCharacter(kv.Key).Forget();
                     }
                 }
@@ -159,27 +176,25 @@ namespace Tarotro.Game.Dev {
                 GUILayout.Space(4);
 
                 GUILayout.BeginHorizontal();
-                if (GUILayout.Button("Spawn All")) SpawnAll();
-                if (GUILayout.Button("Clear All")) ClearAll();
+                if (GUILayout.Button("Spawn All", _buttonStyle)) SpawnAll();
+                if (GUILayout.Button("Clear All", _buttonStyle)) ClearAll();
                 GUILayout.EndHorizontal();
             }
 
             GUILayout.Space(12);
 
             if (_spawned.Count > 0) {
-                GUILayout.Label($"<b>Spawned ({_spawned.Count}):</b>", new GUIStyle(GUI.skin.label) { richText = true });
+                GUILayout.Label($"<b>Spawned ({_spawned.Count}):</b>", _boldLabelStyle);
 
                 for (var i = 0; i < _spawned.Count; i++) {
                     var isSelected = i == _selectedIndex;
-                    var style = isSelected
-                        ? new GUIStyle(GUI.skin.button) { fontStyle = FontStyle.Bold }
-                        : GUI.skin.button;
+                    var style = isSelected ? _boldButtonStyle : _buttonStyle;
 
                     GUILayout.BeginHorizontal();
                     if (GUILayout.Button(_spawned[i].Id, style, GUILayout.ExpandWidth(true))) {
                         _selectedIndex = i;
                     }
-                    if (GUILayout.Button("X", GUILayout.Width(24))) {
+                    if (GUILayout.Button("X", _buttonStyle, GUILayout.Width(30))) {
                         RemoveCharacter(i);
                         i--;
                     }
@@ -198,27 +213,27 @@ namespace Tarotro.Game.Dev {
         private void DrawSelectedControls(SpawnedCharacter c) {
             if (c.Go == null) return;
 
-            GUILayout.Label($"<b>Selected: {c.Id}</b>", new GUIStyle(GUI.skin.label) { richText = true });
+            GUILayout.Label($"<b>Selected: {c.Id}</b>", _boldLabelStyle);
 
-            GUILayout.Label("Animations:");
+            GUILayout.Label("Animations:", _labelStyle);
             GUILayout.BeginHorizontal();
-            if (GUILayout.Button("Idle")) PlayAnimation(c, v => v.PlayIdleAnimation(c.Cts.Token));
-            if (GUILayout.Button("Attack")) PlayAnimation(c, v => v.PlayAttackAnimation(c.Cts.Token));
-            if (GUILayout.Button("Death")) PlayAnimation(c, v => v.PlayDeathAnimation(c.Cts.Token));
+            if (GUILayout.Button("Idle", _buttonStyle)) PlayAnimation(c, v => v.PlayIdleAnimation(c.Cts.Token));
+            if (GUILayout.Button("Attack", _buttonStyle)) PlayAnimation(c, v => v.PlayAttackAnimation(c.Cts.Token));
+            if (GUILayout.Button("Death", _buttonStyle)) PlayAnimation(c, v => v.PlayDeathAnimation(c.Cts.Token));
             GUILayout.EndHorizontal();
 
             GUILayout.Space(4);
             var t = c.Go.transform;
             var pos = t.position;
 
-            GUILayout.Label($"Position: ({pos.x:F2}, {pos.y:F2})");
+            GUILayout.Label($"Position: ({pos.x:F2}, {pos.y:F2})", _labelStyle);
             GUILayout.BeginHorizontal();
-            GUILayout.Label("X:", GUILayout.Width(16));
+            GUILayout.Label("X:", _labelStyle, GUILayout.Width(24));
             var newX = GUILayout.HorizontalSlider(pos.x, -5f, 5f);
             GUILayout.EndHorizontal();
 
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Y:", GUILayout.Width(16));
+            GUILayout.Label("Y:", _labelStyle, GUILayout.Width(24));
             var newY = GUILayout.HorizontalSlider(pos.y, -3f, 3f);
             GUILayout.EndHorizontal();
 
@@ -228,7 +243,7 @@ namespace Tarotro.Game.Dev {
             GUILayout.Space(4);
             var scale = t.localScale;
             GUILayout.BeginHorizontal();
-            GUILayout.Label("Scale:", GUILayout.Width(40));
+            GUILayout.Label("Scale:", _labelStyle, GUILayout.Width(52));
             var newScale = GUILayout.HorizontalSlider(scale.x, 0.1f, 5f);
             GUILayout.EndHorizontal();
 
@@ -236,7 +251,7 @@ namespace Tarotro.Game.Dev {
                 t.localScale = new Vector3(newScale, Mathf.Abs(newScale), scale.z);
 
             GUILayout.Space(2);
-            if (GUILayout.Button(scale.x < 0 ? "Flip: ON" : "Flip: OFF")) {
+            if (GUILayout.Button(scale.x < 0 ? "Flip: ON" : "Flip: OFF", _buttonStyle)) {
                 t.localScale = new Vector3(-scale.x, scale.y, scale.z);
             }
         }
