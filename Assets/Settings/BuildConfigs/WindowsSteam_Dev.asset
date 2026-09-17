@@ -18,5 +18,13 @@ MonoBehaviour:
   outputFolder: Builds
   subFolder: Windows
   executableName: Tarotro.exe
+  autoIncrementBuildNumber: 0
   validateConfigs: 1
   buildAddressables: 1
+  cleanBeforeBuild: 0
+  openFolderAfterBuild: 1
+  saveBuildLog: 1
+  uploadToSteam: 0
+  steamCmdPath: 
+  steamVdfPath: 
+  steamUsername: 

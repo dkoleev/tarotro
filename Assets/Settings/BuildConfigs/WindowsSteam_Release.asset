@@ -13,8 +13,18 @@ MonoBehaviour:
   m_Name: WindowsSteam_Release
   m_EditorClassIdentifier: Assembly-CSharp-Editor::Tarotro.Editor.Build.BuildConfig
   buildProfile: {fileID: 11400000, guid: f51a6f8e8868c7846a6bf86bed0ffe7b, type: 2}
+  isDevelopment: 0
+  extraScriptingDefines: []
   outputFolder: Builds
   subFolder: Windows
   executableName: Tarotro.exe
+  autoIncrementBuildNumber: 1
   validateConfigs: 1
   buildAddressables: 1
+  cleanBeforeBuild: 1
+  openFolderAfterBuild: 1
+  saveBuildLog: 1
+  uploadToSteam: 0
+  steamCmdPath: 
+  steamVdfPath: 
+  steamUsername: 
