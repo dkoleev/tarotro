@@ -23,6 +23,10 @@ namespace Tarotro.Editor.Build {
         public bool validateConfigs = true;
         public bool buildAddressables = true;
 
+        [Header("Post-Build Steps")]
+        [Tooltip("Opens the output folder in the file explorer after a successful build.")]
+        public bool openFolderAfterBuild = true;
+
         public string OutputPath => $"{outputFolder}/{subFolder}/{executableName}";
     }
 }
