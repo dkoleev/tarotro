@@ -43,5 +43,10 @@
     "id": "devil",
     "nameLoc": "char_devil_name",
     "prefabPath": "Bundles/Characters/devil.prefab"
+  },
+  "cheeky_devil": {
+    "id": "cheeky_devil",
+    "nameLoc": "char_cheeky_devil_name",
+    "prefabPath": "Bundles/Characters/cheeky_devil.prefab"
   }
 }
