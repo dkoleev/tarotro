@@ -48,6 +48,30 @@ namespace Tarotro.Game.Logic {
                 return false;
             }
         }
+        
+        public bool Save(GameSaveData data) {
+            data.Version = SaveVersion;
+
+            try {
+                var bytes = MemoryPackSerializer.Serialize(data);
+
+                File.WriteAllBytes(TempPath, bytes);
+
+                if (File.Exists(SavePath)) {
+                    File.Replace(TempPath, SavePath, BackupPath);
+                } else {
+                    File.Move(TempPath, SavePath);
+                }
+
+                _logger.Info($"Game saved ({bytes.Length} bytes)", "Save");
+                return true;
+            } catch (Exception ex) {
+                _logger.Error($"Failed to save game: {ex.Message}", "Save");
+                CleanupTempFile();
+                return false;
+            }
+        }
+
 
         public async UniTask<GameSaveData> LoadAsync(CancellationToken ct = default) {
             var data = await TryLoadFile(SavePath, ct);

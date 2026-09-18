@@ -21,8 +21,11 @@ namespace Tarotro.Game.Logic {
             builder.Register<BattleProgressionManager>(Lifetime.Singleton);
             builder.Register<ScoreManager>(Lifetime.Singleton);
             builder.Register<SaveManager>(Lifetime.Singleton);
+            builder.Register<AutoSaveHandler>(Lifetime.Singleton);
             builder.Register<ConfigLoader>(Lifetime.Singleton);
             builder.Register<GameData>(Lifetime.Singleton);
+            
+            builder.RegisterBuildCallback(container => container.Resolve<AutoSaveHandler>());
 
 #if UNITY_EDITOR || DEBUG
             builder.Register<DevConsoleCommands>(Lifetime.Singleton);
