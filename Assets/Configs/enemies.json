@@ -29,6 +29,11 @@
     "type": "Common",
     "damage": 20
   },
+  "imp": {
+    "id": "imp",
+    "type": "Common",
+    "damage": 80
+  },
   "bloated": {
     "id": "bloated",
     "type": "Elite",

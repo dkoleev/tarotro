@@ -13,6 +13,7 @@ namespace Tarotro.Game.View {
         
         private enum AnimationType {
             Idle,
+            IdlePassive,
             Attack,
             Death,
             Emote
@@ -20,6 +21,7 @@ namespace Tarotro.Game.View {
         
         private readonly Dictionary<AnimationType, int> _animationStates = new() {
             { AnimationType.Idle, Animator.StringToHash("Base Layer.Idle") },
+            { AnimationType.IdlePassive, Animator.StringToHash("Base Layer.IdlePassive") },
             { AnimationType.Death, Animator.StringToHash("Base Layer.Death") },
             { AnimationType.Attack, Animator.StringToHash("Base Layer.Attack") },
             { AnimationType.Emote, Animator.StringToHash("Base Layer.Emote") },
@@ -48,7 +50,11 @@ namespace Tarotro.Game.View {
         public async UniTask PlayIdleAnimation(CancellationToken ct = default) {
             await animator.PlayAnimationAsync(_animationStates[AnimationType.Idle], ct);
         }
-        
+
+        public async UniTask PlayIdlePassiveAnimation(CancellationToken ct = default) {
+            await animator.PlayAnimationAsync(_animationStates[AnimationType.IdlePassive], ct);
+        }
+
         public async UniTask PlayAttackAnimation(CancellationToken ct = default) {
             await animator.PlayAnimationAsync(_animationStates[AnimationType.Attack], ct);
         }

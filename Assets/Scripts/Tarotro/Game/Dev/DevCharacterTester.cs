@@ -14,7 +14,7 @@ namespace Tarotro.Game.Dev {
         [SerializeField] private float spawnSpacing = 1.5f;
         [SerializeField] private float cameraPanSpeed = 3f;
         [SerializeField] private int uiFontSize = 20;
-        [SerializeField] private float panelWidth = 340f;
+        [SerializeField] private float panelWidth = 400f;
         [SerializeField] private float scrollHeight = 300f;
 
         private Dictionary<string, CharacterData> _characters;
@@ -223,6 +223,7 @@ namespace Tarotro.Game.Dev {
             if (GUILayout.Button("Attack", _buttonStyle)) PlayAnimation(c, v => v.PlayAttackAnimation(c.Cts.Token));
             if (GUILayout.Button("Death", _buttonStyle)) PlayAnimation(c, v => v.PlayDeathAnimation(c.Cts.Token));
             if (GUILayout.Button("Emote", _buttonStyle)) PlayAnimation(c, v => v.PlayEmoteAnimation(c.Cts.Token));
+            if (GUILayout.Button("IdlePassive", _buttonStyle)) PlayAnimation(c, v => v.PlayIdlePassiveAnimation(c.Cts.Token));
             GUILayout.EndHorizontal();
 
             GUILayout.Space(4);

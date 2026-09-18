@@ -60,9 +60,19 @@ namespace Tarotro.Game.View {
             StartAnimation(anim);
         }
 
-        public async UniTask PlayAsync(string animationName, CancellationToken ct = default) {
+        public async UniTask PlayAsync(string animationName, string defaultAnimation = null, CancellationToken ct = default) {
             var anim = FindAnimation(animationName);
-            if (anim == null) return;
+            if (anim == null) {
+                if (defaultAnimation != null) {
+                    anim = FindAnimation(defaultAnimation);
+                    if (anim == null) {
+                        return;
+                    }
+                }
+                else {
+                    return;
+                }
+            }
 
             StartAnimation(anim);
 

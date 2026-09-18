@@ -8,6 +8,7 @@ namespace Tarotro.Game.View {
         [SerializeField] private SpriteSheetAnimator animator;
         [SerializeField] private TMP_Text healthText;
         [SerializeField] private string idleAnimation = "Idle";
+        [SerializeField] private string idlePassiveAnimation = "IdlePassive";
         [SerializeField] private string deathAnimation = "Death";
         [SerializeField] private string attackAnimation = "Attack";
         [SerializeField] private string emoteAnimation = "Emote";
@@ -21,19 +22,23 @@ namespace Tarotro.Game.View {
         }
 
         public async UniTask PlayDeathAnimation(CancellationToken ct = default) {
-            await animator.PlayAsync(deathAnimation, ct);
+            await animator.PlayAsync(deathAnimation, ct:ct);
         }
 
         public async UniTask PlayIdleAnimation(CancellationToken ct = default) {
-            await animator.PlayAsync(idleAnimation, ct);
+            await animator.PlayAsync(idleAnimation, ct:ct);
+        }
+
+        public async UniTask PlayIdlePassiveAnimation(CancellationToken ct = default) {
+            await animator.PlayAsync(idlePassiveAnimation, idleAnimation, ct:ct);
         }
 
         public async UniTask PlayAttackAnimation(CancellationToken ct = default) {
-            await animator.PlayAsync(attackAnimation, ct);
+            await animator.PlayAsync(attackAnimation, ct:ct);
         }
 
         public async UniTask PlayEmoteAnimation(CancellationToken ct = default) {
-            await animator.PlayAsync(emoteAnimation, ct);
+            await animator.PlayAsync(emoteAnimation, ct:ct);
         }
 
         public void SetInterfaceActive(bool active) {

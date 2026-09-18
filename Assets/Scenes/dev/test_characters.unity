@@ -208,7 +208,7 @@ MonoBehaviour:
   spawnSpacing: 0.8
   cameraPanSpeed: 3
   uiFontSize: 22
-  panelWidth: 340
+  panelWidth: 400
   scrollHeight: 400
 --- !u!4 &1253153940
 Transform:
