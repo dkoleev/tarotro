@@ -48,5 +48,10 @@
     "id": "cheeky_devil",
     "nameLoc": "char_cheeky_devil_name",
     "prefabPath": "Bundles/Characters/cheeky_devil.prefab"
+  },
+  "memento_mori_skeleton": {
+    "id": "memento_mori_skeleton",
+    "nameLoc": "cahr_memento_mori_skeleton_name",
+    "prefabPath": "Bundles/Characters/memento_mori_skeleton.prefab"
   }
 }

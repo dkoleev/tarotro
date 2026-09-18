@@ -53,6 +53,10 @@ namespace Tarotro.Game.View {
             await animator.PlayAnimationAsync(_animationStates[AnimationType.Attack], ct);
         }
 
+        public async UniTask PlayEmoteAnimation(CancellationToken ct = default) {
+            await animator.PlayAnimationAsync(_animationStates[AnimationType.Emote ], ct);
+        }
+
         public void SetInterfaceActive(bool active) {
             healthText.gameObject.SetActive(active);
         }

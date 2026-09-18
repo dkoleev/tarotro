@@ -10,6 +10,7 @@ namespace Tarotro.Game.View {
         [SerializeField] private string idleAnimation = "Idle";
         [SerializeField] private string deathAnimation = "Death";
         [SerializeField] private string attackAnimation = "Attack";
+        [SerializeField] private string emoteAnimation = "Emote";
 
         public void SetHealth(int amount) {
             healthText.text = amount.ToString();
@@ -29,6 +30,10 @@ namespace Tarotro.Game.View {
 
         public async UniTask PlayAttackAnimation(CancellationToken ct = default) {
             await animator.PlayAsync(attackAnimation, ct);
+        }
+
+        public async UniTask PlayEmoteAnimation(CancellationToken ct = default) {
+            await animator.PlayAsync(emoteAnimation, ct);
         }
 
         public void SetInterfaceActive(bool active) {

@@ -222,6 +222,7 @@ namespace Tarotro.Game.Dev {
             if (GUILayout.Button("Idle", _buttonStyle)) PlayAnimation(c, v => v.PlayIdleAnimation(c.Cts.Token));
             if (GUILayout.Button("Attack", _buttonStyle)) PlayAnimation(c, v => v.PlayAttackAnimation(c.Cts.Token));
             if (GUILayout.Button("Death", _buttonStyle)) PlayAnimation(c, v => v.PlayDeathAnimation(c.Cts.Token));
+            if (GUILayout.Button("Emote", _buttonStyle)) PlayAnimation(c, v => v.PlayEmoteAnimation(c.Cts.Token));
             GUILayout.EndHorizontal();
 
             GUILayout.Space(4);

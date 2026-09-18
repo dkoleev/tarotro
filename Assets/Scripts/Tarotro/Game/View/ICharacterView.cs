@@ -8,6 +8,7 @@ namespace Tarotro.Game.View {
         UniTask PlayDeathAnimation(CancellationToken ct = default);
         UniTask PlayIdleAnimation(CancellationToken ct = default);
         UniTask PlayAttackAnimation(CancellationToken ct = default);
+        UniTask PlayEmoteAnimation(CancellationToken ct = default);
         public void SetInterfaceActive(bool active);
     }
 }
