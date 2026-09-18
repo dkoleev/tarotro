@@ -8,6 +8,8 @@ using VContainer;
 
 namespace Tarotro.Game.Logic {
     public class SceneLoader {
+        public const string LocationHellPath = "Scenes/locations/location_hell.unity";
+        
         private readonly Dictionary<string, SceneInstance> _loadedScenes = new();
 
         [Inject]

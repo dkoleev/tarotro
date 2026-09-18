@@ -35,7 +35,7 @@ namespace Tarotro.Game.Logic {
             await _sceneLoader.LoadSceneAsync("Scenes/debug.unity", LoadSceneMode.Additive, ct);
             _logger.Info("Debug scene loaded, starting load level scene", "Boot");
 #endif
-            var levelScene = await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Additive, ct);
+            var levelScene = await _sceneLoader.LoadSceneAsync(SceneLoader.LocationHellPath, LoadSceneMode.Additive, ct);
             SceneManager.SetActiveScene(levelScene.Scene);
             _logger.Info("Level scene loaded", "Boot");
 

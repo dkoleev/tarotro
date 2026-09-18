@@ -1,3 +1,4 @@
+using Tarotro.Game.Logic;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -58,9 +59,9 @@ namespace Tarotro.Editor {
             OpenScene("Assets/Scenes/boot.unity");
         }
         
-        [MenuItem("Tarotro/Open level_0 Scene", priority = 302)]
+        [MenuItem("Tarotro/Open location_hell Scene", priority = 302)]
         private static void OpenLevel0Scene() {
-            OpenScene("Assets/Scenes/level_0.unity");
+            OpenScene(SceneLoader.LocationHellPath);
         }
 
         private static void OpenScene(string path) {
