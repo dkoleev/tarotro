@@ -58,5 +58,10 @@
     "id": "burning_blue",
     "nameLoc": "char_burning_blue_name",
     "prefabPath": "Bundles/Characters/burning_blue.prefab"
+  },
+  "burning_skull_blue": {
+    "id": "burning_skull_blue",
+    "nameLoc": "char_burning_skull_blue_name",
+    "prefabPath": "Bundles/Characters/burning_skull_blue.prefab"
   }
 }

@@ -1,19 +1,4 @@
 {
-  "bloated": {
-    "id": "bloated",
-    "type": "Elite",
-    "damage": 30
-  },
-  "burning": {
-    "id": "burning",
-    "type": "Elite",
-    "damage": 40
-  },
-  "burning_blue": {
-    "id": "burning_blue",
-    "type": "Elite",
-    "damage": 40
-  },
   "demon_eye": {
     "id": "demon_eye",
     "type": "Common",
@@ -38,6 +23,26 @@
     "id": "burning_skull",
     "type": "Common",
     "damage": 20
+  },
+  "burning_skull_blue": {
+    "id": "burning_skull_blue",
+    "type": "Common",
+    "damage": 20
+  },
+  "bloated": {
+    "id": "bloated",
+    "type": "Elite",
+    "damage": 30
+  },
+  "burning": {
+    "id": "burning",
+    "type": "Elite",
+    "damage": 40
+  },
+  "burning_blue": {
+    "id": "burning_blue",
+    "type": "Elite",
+    "damage": 40
   },
   "large_skull": {
     "id": "large_skull",
