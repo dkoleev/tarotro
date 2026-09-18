@@ -11,6 +11,8 @@ namespace Tarotro.Game.Logic {
 
         private int _currentScore;
 
+        public int CurrentScore => _currentScore;
+
         [Inject]
         public ScoreManager(ISubscriber<EnemyDiedMessage> enemyDiedSub, IGameLogger logger) {
             _subscription = enemyDiedSub.Subscribe(msg => AddScore(100));
@@ -20,6 +22,10 @@ namespace Tarotro.Game.Logic {
         private void AddScore(int score) {
             _currentScore += score;
             _logger.Info($"Score: {_currentScore}", "Score");
+        }
+
+        public void SetScore(int score) {
+            _currentScore = score;
         }
 
         public void Dispose() => _subscription.Dispose();

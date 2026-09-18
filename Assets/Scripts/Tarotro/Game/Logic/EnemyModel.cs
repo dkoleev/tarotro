@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Tarotro.Game.Logic {
     public class EnemyModel {
+        public string Id { get; }
         public int CurrentHealth { get; private set; }
 
         public event Action<int> HealthChanged;
@@ -13,6 +14,7 @@ namespace Tarotro.Game.Logic {
         private readonly int _damage;
 
         public EnemyModel(EnemyData data, int health) {
+            Id = data.id;
             CurrentHealth = health;
             _damage = data.damage;
         }

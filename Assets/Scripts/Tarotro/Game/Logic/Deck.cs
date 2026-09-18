@@ -7,10 +7,20 @@ namespace Tarotro.Game.Logic {
         private List<CardModel> _drawPile;
         private List<CardModel> _discardPile;
 
+        public IReadOnlyList<CardModel> Cards => _cards;
+        public IReadOnlyList<CardModel> DrawPile => _drawPile;
+        public IReadOnlyList<CardModel> DiscardPile => _discardPile;
+
         public Deck() {
             _cards = new List<CardModel>();
             _drawPile = new List<CardModel>();
             _discardPile = new List<CardModel>();
+        }
+
+        public Deck(List<CardModel> cards, List<CardModel> drawPile, List<CardModel> discardPile) {
+            _cards = cards;
+            _drawPile = drawPile;
+            _discardPile = discardPile;
         }
 
         public void AddCard(CardModel card) {

@@ -20,6 +20,7 @@ namespace Tarotro.Game.Logic {
             builder.Register<Battle>(Lifetime.Singleton);
             builder.Register<BattleProgressionManager>(Lifetime.Singleton);
             builder.Register<ScoreManager>(Lifetime.Singleton);
+            builder.Register<SaveManager>(Lifetime.Singleton);
             builder.Register<ConfigLoader>(Lifetime.Singleton);
             builder.Register<GameData>(Lifetime.Singleton);
 
