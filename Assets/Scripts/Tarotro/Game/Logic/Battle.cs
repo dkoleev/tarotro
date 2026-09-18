@@ -8,13 +8,13 @@ using Tarotro.Game.Data;
 using Tarotro.Game.Data.Save;
 using Tarotro.Game.Messages;
 using Tarotro.Game.Presenters;
+using Tarotro.Game.Logic.Rng;
 using Tarotro.Game.Utils;
 using Tarotro.Game.View;
 using UnityEngine;
 using VContainer;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
-using Random = UnityEngine.Random;
 
 namespace Tarotro.Game.Logic {
     public class Battle : IDisposable {
@@ -35,6 +35,7 @@ namespace Tarotro.Game.Logic {
         private readonly IPublisher<EnemyDiedMessage> _enemyDiedPub;
         private readonly GameData _gameData;
         private readonly BattleProgressionManager _progressionManager;
+        private readonly GameRng _rng;
         private readonly IGameLogger _logger;
         private EnemyWrapper _currentEnemy;
         private PlayerModel _currentPlayer;
@@ -44,10 +45,11 @@ namespace Tarotro.Game.Logic {
         private List<FightRoundData> _currentCircle;
 
         [Inject]
-        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, IGameLogger logger) {
+        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, GameRng rng, IGameLogger logger) {
             _enemyDiedPub = enemyDiedPub;
             _gameData = gameData;
             _progressionManager = progressionManager;
+            _rng = rng;
             _logger = logger;
         }
 
@@ -131,7 +133,7 @@ namespace Tarotro.Game.Logic {
         }
 
         private void CreatePlayer() {
-            _currentPlayer = new PlayerModel();
+            _currentPlayer = new PlayerModel(_rng);
         }
 
         private void RestorePlayer(PlayerSaveData saveData) {
@@ -141,12 +143,12 @@ namespace Tarotro.Game.Logic {
         }
 
         private Deck RestoreDeck(DeckSaveData saveData) {
-            if (saveData == null) return new Deck();
+            if (saveData == null) return new Deck(_rng);
 
             var cards = saveData.Cards?.Select(ToCardModel).ToList() ?? new List<CardModel>();
             var drawPile = saveData.DrawPile?.Select(ToCardModel).ToList() ?? new List<CardModel>();
             var discardPile = saveData.DiscardPile?.Select(ToCardModel).ToList() ?? new List<CardModel>();
-            return new Deck(cards, drawPile, discardPile);
+            return new Deck(_rng, cards, drawPile, discardPile);
         }
 
         private async UniTask CreateDesk() {
@@ -169,7 +171,7 @@ namespace Tarotro.Game.Logic {
                 return;
             }
 
-            var enemyData = enemyList[Random.Range(0, enemyList.Count)];
+            var enemyData = enemyList[_rng.Range(RngChannel.EnemySelect, 0, enemyList.Count)];
             await SpawnEnemy(enemyData, health, ct);
         }
 

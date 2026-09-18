@@ -2,6 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using Tarotro.Game.Core;
 using Tarotro.Game.Data.Save;
+using Tarotro.Game.Logic.Rng;
 using Tarotro.Game.Utils;
 using UnityEngine.SceneManagement;
 using VContainer;
@@ -14,16 +15,18 @@ namespace Tarotro.Game.Logic {
         private readonly ConfigLoader _configLoader;
         private readonly SaveManager _saveManager;
         private readonly ScoreManager _scoreManager;
+        private readonly GameRng _rng;
         private readonly IGameLogger _logger;
 
         [Inject]
         public Boot(SceneLoader sceneLoader, Battle battle, ConfigLoader configLoader,
-            SaveManager saveManager, ScoreManager scoreManager, IGameLogger logger) {
+            SaveManager saveManager, ScoreManager scoreManager, GameRng rng, IGameLogger logger) {
             _sceneLoader = sceneLoader;
             _battle = battle;
             _configLoader = configLoader;
             _saveManager = saveManager;
             _scoreManager = scoreManager;
+            _rng = rng;
             _logger = logger;
         }
 
@@ -43,12 +46,18 @@ namespace Tarotro.Game.Logic {
                 _logger.Info("Save file found, restoring game state", "Boot");
                 var saveData = await _saveManager.LoadAsync(ct);
                 if (saveData != null) {
+                    if (saveData.Rng != null) {
+                        _rng.RestoreFromSave(saveData.Rng);
+                    } else {
+                        _rng.SeedFromTime();
+                    }
                     _scoreManager.SetScore(saveData.Score);
                     await _battle.RestoreFromSave(saveData.Battle, ct);
                     return;
                 }
             }
 
+            _rng.SeedFromTime();
             _logger.Info("Starting new battle", "Boot");
             await _battle.StartBattle(ct);
         }

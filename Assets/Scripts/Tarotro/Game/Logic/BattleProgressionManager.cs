@@ -2,18 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Tarotro.Game.Data;
+using Tarotro.Game.Logic.Rng;
 using Tarotro.Game.Utils;
 using VContainer;
-using Random = UnityEngine.Random;
 
 namespace Tarotro.Game.Logic {
     public class BattleProgressionManager {
         private readonly GameData _gameData;
+        private readonly GameRng _rng;
         private readonly IGameLogger _logger;
 
         [Inject]
-        public BattleProgressionManager(GameData gameData, IGameLogger logger) {
+        public BattleProgressionManager(GameData gameData, GameRng rng, IGameLogger logger) {
             _gameData = gameData;
+            _rng = rng;
             _logger = logger;
         }
 
@@ -60,7 +62,6 @@ namespace Tarotro.Game.Logic {
 
             if (circleData == null) {
                 _logger.Error($"Circle data not found for {circleType}", "BattleProgression");
-                // Return a default enemy or throw exception
                 return _gameData.Enemies.Values.FirstOrDefault();
             }
 
@@ -73,11 +74,10 @@ namespace Tarotro.Game.Logic {
 
             if (filteredEnemies.Count == 0) {
                 _logger.Error($"No enemies found for circle {circleType}, type {enemyType}", "BattleProgression");
-                // Return first available enemy as fallback
                 return _gameData.Enemies.Values.FirstOrDefault();
             }
 
-            return filteredEnemies[Random.Range(0, filteredEnemies.Count)];
+            return filteredEnemies[_rng.Range(RngChannel.EnemySelect, 0, filteredEnemies.Count)];
         }
 
         private float GetBlindMultiplier(EnemyType enemyType) {

@@ -1,23 +1,27 @@
 using System.Collections.Generic;
 using Tarotro.Game.Extensions;
+using Tarotro.Game.Logic.Rng;
 
 namespace Tarotro.Game.Logic {
     public class Deck {
         private List<CardModel> _cards;
         private List<CardModel> _drawPile;
         private List<CardModel> _discardPile;
+        private readonly GameRng _rng;
 
         public IReadOnlyList<CardModel> Cards => _cards;
         public IReadOnlyList<CardModel> DrawPile => _drawPile;
         public IReadOnlyList<CardModel> DiscardPile => _discardPile;
 
-        public Deck() {
+        public Deck(GameRng rng) {
+            _rng = rng;
             _cards = new List<CardModel>();
             _drawPile = new List<CardModel>();
             _discardPile = new List<CardModel>();
         }
 
-        public Deck(List<CardModel> cards, List<CardModel> drawPile, List<CardModel> discardPile) {
+        public Deck(GameRng rng, List<CardModel> cards, List<CardModel> drawPile, List<CardModel> discardPile) {
+            _rng = rng;
             _cards = cards;
             _drawPile = drawPile;
             _discardPile = discardPile;
@@ -44,7 +48,6 @@ namespace Tarotro.Game.Logic {
                 return card;
             }
 
-            // If no cards in draw pile, reshuffle discard pile
             if (_discardPile.Count > 0) {
                 Reshuffle();
                 return Draw();
@@ -68,11 +71,10 @@ namespace Tarotro.Game.Logic {
         }
 
         public void Shuffle() {
-            _cards.Shuffle();
+            _cards.Shuffle(_rng, RngChannel.Shuffle);
         }
 
         public void Reshuffle() {
-            // Move all discarded cards to draw pile and shuffle
             _drawPile.AddRange(_discardPile);
             _discardPile.Clear();
 
