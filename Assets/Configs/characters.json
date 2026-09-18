@@ -53,5 +53,10 @@
     "id": "memento_mori_skeleton",
     "nameLoc": "cahr_memento_mori_skeleton_name",
     "prefabPath": "Bundles/Characters/memento_mori_skeleton.prefab"
+  },
+  "burning_blue": {
+    "id": "burning_blue",
+    "nameLoc": "char_burning_blue_name",
+    "prefabPath": "Bundles/Characters/burning_blue.prefab"
   }
 }

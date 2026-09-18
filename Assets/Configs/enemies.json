@@ -1,19 +1,4 @@
 {
-  "demon_eye": {
-    "id": "demon_eye",
-    "type": "Common",
-    "damage": 10
-  },
-  "demon_mine": {
-    "id": "demon_mine",
-    "type": "Common",
-    "damage": 10
-  },
-  "large_skull": {
-    "id": "large_skull",
-    "type": "Boss",
-    "damage": 50
-  },
   "bloated": {
     "id": "bloated",
     "type": "Elite",
@@ -23,6 +8,21 @@
     "id": "burning",
     "type": "Elite",
     "damage": 40
+  },
+  "burning_blue": {
+    "id": "burning_blue",
+    "type": "Elite",
+    "damage": 40
+  },
+  "demon_eye": {
+    "id": "demon_eye",
+    "type": "Common",
+    "damage": 10
+  },
+  "demon_mine": {
+    "id": "demon_mine",
+    "type": "Common",
+    "damage": 10
   },
   "plague_fly": {
     "id": "plague_fly",
@@ -38,6 +38,11 @@
     "id": "burning_skull",
     "type": "Common",
     "damage": 20
+  },
+  "large_skull": {
+    "id": "large_skull",
+    "type": "Boss",
+    "damage": 50
   },
   "devil": {
     "id": "devil",
