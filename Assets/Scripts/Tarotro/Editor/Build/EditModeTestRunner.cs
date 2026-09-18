@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using UnityEditor;
 using UnityEditor.TestTools.TestRunner.Api;
 using UnityEngine;
 
 namespace Tarotro.Editor.Build {
     public static class EditModeTestRunner {
-        public static bool Run() {
+        public static void RunAsync(Action<bool> onComplete) {
             Debug.Log("[Build] Running EditMode tests...");
 
             var api = ScriptableObject.CreateInstance<TestRunnerApi>();
@@ -19,21 +19,24 @@ namespace Tarotro.Editor.Build {
 
             api.Execute(new ExecutionSettings(filter));
 
-            while (!listener.IsFinished) {
-                System.Threading.Thread.Sleep(100);
+            void Poll() {
+                if (!listener.IsFinished) return;
+                EditorApplication.update -= Poll;
+                api.UnregisterCallbacks(listener);
+
+                if (listener.FailedTests.Count > 0) {
+                    Debug.LogError($"[Build] {listener.FailedTests.Count} test(s) failed:");
+                    foreach (var name in listener.FailedTests)
+                        Debug.LogError($"[Build]   FAIL: {name}");
+                    onComplete(false);
+                    return;
+                }
+
+                Debug.Log($"[Build] All {listener.TotalCount} test(s) passed.");
+                onComplete(true);
             }
 
-            api.UnregisterCallbacks(listener);
-
-            if (listener.FailedTests.Count > 0) {
-                Debug.LogError($"[Build] {listener.FailedTests.Count} test(s) failed:");
-                foreach (var name in listener.FailedTests)
-                    Debug.LogError($"[Build]   FAIL: {name}");
-                return false;
-            }
-
-            Debug.Log($"[Build] All {listener.TotalCount} test(s) passed.");
-            return true;
+            EditorApplication.update += Poll;
         }
 
         private class BuildTestListener : ICallbacks {

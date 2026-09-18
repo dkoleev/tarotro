@@ -73,17 +73,20 @@ namespace Tarotro.Editor.Build {
                 return;
             }
 
-            if (!Build(list.windowsReleaseConfig))
-                EditorApplication.Exit(1);
+            Build(list.windowsReleaseConfig, success => {
+                if (!success)
+                    EditorApplication.Exit(1);
+            });
         }
 
-        public static bool Build(BuildConfig config) {
+        public static void Build(BuildConfig config, Action<bool> onComplete = null) {
             var variant = config.isDevelopment ? "Development" : "Release";
             Debug.Log($"[Build] Starting '{config.name}' ({variant})...");
 
             if (config.buildProfile == null) {
                 Debug.LogError($"[Build] No Build Profile assigned in '{config.name}'. Assign one in the Inspector.");
-                return false;
+                onComplete?.Invoke(false);
+                return;
             }
 
             var stopwatch = Stopwatch.StartNew();
@@ -91,10 +94,7 @@ namespace Tarotro.Editor.Build {
             if (config.saveBuildLog)
                 StartLogCapture();
 
-            bool success;
-            try {
-                success = RunPipeline(config);
-            } finally {
+            void CompleteBuild(bool success) {
                 stopwatch.Stop();
                 var elapsed = stopwatch.Elapsed;
                 Debug.Log($"[Build] Total pipeline time: {(int)elapsed.TotalMinutes}m {elapsed.Seconds}s");
@@ -103,23 +103,38 @@ namespace Tarotro.Editor.Build {
                     StopLogCapture();
                     SaveBuildLog(config);
                 }
+
+                if (success) {
+                    if (config.openFolderAfterBuild && !Application.isBatchMode)
+                        OpenBuildFolder(config);
+
+                    if (config.uploadToSteam)
+                        RunSteamUpload(config);
+                }
+
+                onComplete?.Invoke(success);
             }
 
-            if (success) {
-                if (config.openFolderAfterBuild && !Application.isBatchMode)
-                    OpenBuildFolder(config);
-
-                if (config.uploadToSteam)
-                    RunSteamUpload(config);
-            }
-
-            return success;
+            RunPipeline(config, CompleteBuild);
         }
 
-        private static bool RunPipeline(BuildConfig config) {
-            if (config.runTests && !EditModeTestRunner.Run())
-                return false;
+        private static void RunPipeline(BuildConfig config, Action<bool> onComplete) {
+            if (config.runTests) {
+                EditModeTestRunner.RunAsync(testsPassed => {
+                    if (!testsPassed) {
+                        onComplete(false);
+                        return;
+                    }
 
+                    onComplete(RunPipelinePostTests(config));
+                });
+                return;
+            }
+
+            onComplete(RunPipelinePostTests(config));
+        }
+
+        private static bool RunPipelinePostTests(BuildConfig config) {
             if (config.autoIncrementBuildNumber)
                 IncrementBuildNumber();
 
