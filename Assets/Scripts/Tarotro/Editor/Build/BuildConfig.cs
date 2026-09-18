@@ -24,6 +24,7 @@ namespace Tarotro.Editor.Build {
         public bool autoIncrementBuildNumber;
 
         [Header("Pre-Build Steps")]
+        public bool runTests = true;
         public bool validateConfigs = true;
         public bool buildAddressables = true;
         [Tooltip("Deletes the output folder before building to prevent stale files from previous builds.")]

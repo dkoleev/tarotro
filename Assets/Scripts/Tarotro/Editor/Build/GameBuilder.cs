@@ -117,6 +117,9 @@ namespace Tarotro.Editor.Build {
         }
 
         private static bool RunPipeline(BuildConfig config) {
+            if (config.runTests && !EditModeTestRunner.Run())
+                return false;
+
             if (config.autoIncrementBuildNumber)
                 IncrementBuildNumber();
 
