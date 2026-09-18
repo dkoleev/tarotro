@@ -1,4 +1,4 @@
-# Unity CI Build
+# Unity CI Build & Test
 # Requires GitHub Secrets:
 #   UNITY_LICENSE  - Unity license file content (Unity_lic.ulf)
 #   UNITY_EMAIL    - Unity account email
@@ -15,8 +15,41 @@ on:
     branches: [main]
 
 jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+
+      - uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-Test-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: Library-Test-
+
+      - uses: game-ci/unity-test-runner@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          unityVersion: 6000.6.0f1
+          testMode: EditMode
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Test-Results
+          path: artifacts
+          retention-days: 14
+
   build-windows:
     name: Build Windows
+    needs: test
     runs-on: ubuntu-latest
 
     steps:
