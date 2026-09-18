@@ -1,6 +1,7 @@
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Tarotro.Game.Core;
+using Tarotro.Game.Data.Save;
 using Tarotro.Game.Utils;
 using UnityEngine.SceneManagement;
 using VContainer;
@@ -11,13 +12,18 @@ namespace Tarotro.Game.Logic {
         private readonly SceneLoader _sceneLoader;
         private readonly Battle _battle;
         private readonly ConfigLoader _configLoader;
+        private readonly SaveManager _saveManager;
+        private readonly ScoreManager _scoreManager;
         private readonly IGameLogger _logger;
 
         [Inject]
-        public Boot(SceneLoader sceneLoader, Battle battle, ConfigLoader configLoader, IGameLogger logger) {
+        public Boot(SceneLoader sceneLoader, Battle battle, ConfigLoader configLoader,
+            SaveManager saveManager, ScoreManager scoreManager, IGameLogger logger) {
             _sceneLoader = sceneLoader;
             _battle = battle;
             _configLoader = configLoader;
+            _saveManager = saveManager;
+            _scoreManager = scoreManager;
             _logger = logger;
         }
 
@@ -31,7 +37,19 @@ namespace Tarotro.Game.Logic {
 #endif
             var levelScene = await _sceneLoader.LoadSceneAsync("Scenes/level_0.unity", LoadSceneMode.Additive, ct);
             SceneManager.SetActiveScene(levelScene.Scene);
-            _logger.Info("Level scene loaded, starting battle", "Boot");
+            _logger.Info("Level scene loaded", "Boot");
+
+            if (_saveManager.HasSave()) {
+                _logger.Info("Save file found, restoring game state", "Boot");
+                var saveData = await _saveManager.LoadAsync(ct);
+                if (saveData != null) {
+                    _scoreManager.SetScore(saveData.Score);
+                    await _battle.RestoreFromSave(saveData.Battle, ct);
+                    return;
+                }
+            }
+
+            _logger.Info("Starting new battle", "Boot");
             await _battle.StartBattle(ct);
         }
     }

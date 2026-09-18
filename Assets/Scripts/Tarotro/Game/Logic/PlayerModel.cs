@@ -3,13 +3,19 @@ using System.Collections.Generic;
 namespace Tarotro.Game.Logic {
     public class PlayerModel {
         public List<CardModel> Hand => _hand;
-        
+        public Deck Deck => _deck;
+
         private List<CardModel> _hand;
         private Deck _deck;
 
         public PlayerModel() {
             _hand = new List<CardModel>();
             _deck = new Deck();
+        }
+
+        public PlayerModel(List<CardModel> hand, Deck deck) {
+            _hand = hand;
+            _deck = deck;
         }
 
         public int PlayHand() {

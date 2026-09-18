@@ -5,6 +5,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using MessagePipe;
 using Tarotro.Game.Data;
+using Tarotro.Game.Data.Save;
 using Tarotro.Game.Messages;
 using Tarotro.Game.Presenters;
 using Tarotro.Game.Utils;
@@ -71,6 +72,45 @@ namespace Tarotro.Game.Logic {
             }
         }
 
+        public BattleSaveData CreateSaveSnapshot() {
+            var battleSave = new BattleSaveData {
+                CurrentCircleIndex = _currentCircleIndex,
+                CurrentCircle = _currentCircle?.Select(ToRoundSaveData).ToList(),
+                CurrentRound = _currentRoundData != null ? ToRoundSaveData(_currentRoundData) : null,
+                Player = CreatePlayerSnapshot(),
+                CurrentEnemy = _currentEnemy != null
+                    ? new EnemySaveData {
+                        EnemyId = _currentEnemy.Model.Id,
+                        CurrentHealth = _currentEnemy.Model.CurrentHealth
+                    }
+                    : null
+            };
+
+            _logger.Info("Save snapshot created", "Battle");
+            return battleSave;
+        }
+
+        public async UniTask RestoreFromSave(BattleSaveData saveData, CancellationToken ct = default) {
+            _logger.Info("Restoring battle from save", "Battle");
+            _cts = CancellationTokenSource.CreateLinkedTokenSource(ct);
+
+            _currentCircleIndex = saveData.CurrentCircleIndex;
+            _currentCircle = saveData.CurrentCircle?.Select(ToFightRoundData).ToList();
+            _currentRoundData = saveData.CurrentRound != null ? ToFightRoundData(saveData.CurrentRound) : null;
+
+            if (saveData.Player != null) {
+                RestorePlayer(saveData.Player);
+            } else {
+                CreatePlayer();
+            }
+
+            if (saveData.CurrentEnemy != null) {
+                await SpawnEnemy(saveData.CurrentEnemy.EnemyId, saveData.CurrentEnemy.CurrentHealth, ct);
+            }
+
+            _logger.Info($"Battle restored: circle index {_currentCircleIndex}, enemy {saveData.CurrentEnemy?.EnemyId ?? "none"}", "Battle");
+        }
+
         private void StartNextRound() {
             if (_currentRoundData is null) {
                 _currentRoundData = _progressionManager.GenerateRound(CircleType.Fraud, EnemyType.Common);
@@ -92,6 +132,21 @@ namespace Tarotro.Game.Logic {
 
         private void CreatePlayer() {
             _currentPlayer = new PlayerModel();
+        }
+
+        private void RestorePlayer(PlayerSaveData saveData) {
+            var hand = saveData.Hand?.Select(ToCardModel).ToList() ?? new List<CardModel>();
+            var deck = RestoreDeck(saveData.Deck);
+            _currentPlayer = new PlayerModel(hand, deck);
+        }
+
+        private Deck RestoreDeck(DeckSaveData saveData) {
+            if (saveData == null) return new Deck();
+
+            var cards = saveData.Cards?.Select(ToCardModel).ToList() ?? new List<CardModel>();
+            var drawPile = saveData.DrawPile?.Select(ToCardModel).ToList() ?? new List<CardModel>();
+            var discardPile = saveData.DiscardPile?.Select(ToCardModel).ToList() ?? new List<CardModel>();
+            return new Deck(cards, drawPile, discardPile);
         }
 
         private async UniTask CreateDesk() {
@@ -218,6 +273,53 @@ namespace Tarotro.Game.Logic {
             // Clear any remaining references
             _currentEnemy = null;
             _currentPlayer = null;
+        }
+
+        private PlayerSaveData CreatePlayerSnapshot() {
+            if (_currentPlayer == null) return null;
+
+            return new PlayerSaveData {
+                Hand = _currentPlayer.Hand?.Select(ToCardSaveData).ToList(),
+                Deck = new DeckSaveData {
+                    Cards = _currentPlayer.Deck.Cards.Select(ToCardSaveData).ToList(),
+                    DrawPile = _currentPlayer.Deck.DrawPile.Select(ToCardSaveData).ToList(),
+                    DiscardPile = _currentPlayer.Deck.DiscardPile.Select(ToCardSaveData).ToList()
+                }
+            };
+        }
+
+        private static CardSaveData ToCardSaveData(CardModel card) {
+            return new CardSaveData {
+                Id = card.Id,
+                Name = card.Name,
+                Damage = card.Damage,
+                Cost = card.Cost,
+                Description = card.Description
+            };
+        }
+
+        private static CardModel ToCardModel(CardSaveData save) {
+            return new CardModel(save.Id, save.Name, save.Damage, save.Cost, save.Description);
+        }
+
+        private static FightRoundSaveData ToRoundSaveData(FightRoundData round) {
+            return new FightRoundSaveData {
+                Circle = round.Circle,
+                CircleStep = round.CircleStep,
+                EnemyType = round.EnemyType,
+                TargetScore = round.TargetScore,
+                EnemyId = round.EnemyId
+            };
+        }
+
+        private static FightRoundData ToFightRoundData(FightRoundSaveData save) {
+            return new FightRoundData {
+                Circle = save.Circle,
+                CircleStep = save.CircleStep,
+                EnemyType = save.EnemyType,
+                TargetScore = save.TargetScore,
+                EnemyId = save.EnemyId
+            };
         }
     }
 }
