@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Tarotro.Game.Logic.Rng;
 
 namespace Tarotro.Game.Logic {
     public class PlayerModel {
@@ -8,9 +9,9 @@ namespace Tarotro.Game.Logic {
         private List<CardModel> _hand;
         private Deck _deck;
 
-        public PlayerModel() {
+        public PlayerModel(GameRng rng) {
             _hand = new List<CardModel>();
-            _deck = new Deck();
+            _deck = new Deck(rng);
         }
 
         public PlayerModel(List<CardModel> hand, Deck deck) {
@@ -19,15 +20,13 @@ namespace Tarotro.Game.Logic {
         }
 
         public int PlayHand() {
-            // Calculate damage based on cards in hand
             var totalDamage = 0;
             foreach (var card in _hand) {
                 if (card != null) {
-                    totalDamage += card.Damage; // assuming CardModel has a Damage property
+                    totalDamage += card.Damage;
                 }
             }
 
-            // Clear the hand after playing
             _hand.Clear();
 
             return totalDamage;

@@ -12,6 +12,9 @@ namespace Tarotro.Game.Data.Save {
 
         [MemoryPackOrder(2)]
         public int Score { get; set; }
+
+        [MemoryPackOrder(3)]
+        public RngSaveData Rng { get; set; }
     }
 
     [MemoryPackable(GenerateType.VersionTolerant)]

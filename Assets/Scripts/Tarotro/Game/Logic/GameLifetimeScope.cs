@@ -1,6 +1,7 @@
 using MessagePipe;
 using Tarotro.Game.Core;
 using Tarotro.Game.Data;
+using Tarotro.Game.Logic.Rng;
 using Tarotro.Game.Messages;
 using Tarotro.Game.Utils;
 using VContainer;
@@ -24,6 +25,7 @@ namespace Tarotro.Game.Logic {
             builder.Register<AutoSaveHandler>(Lifetime.Singleton);
             builder.Register<ConfigLoader>(Lifetime.Singleton);
             builder.Register<GameData>(Lifetime.Singleton);
+            builder.Register<GameRng>(Lifetime.Singleton);
             
             builder.RegisterBuildCallback(container => container.Resolve<AutoSaveHandler>());
 
