@@ -40,15 +40,14 @@ namespace Tarotro.Game.Logic {
                 builder.RegisterInstance(MotionTuning.Default);
             builder.Register<EventQueue>(Lifetime.Singleton);
             builder.Register<MotionSystem>(Lifetime.Singleton);
-            builder.RegisterComponentInHierarchy<GameLoopRunner>();
-            
+            builder.Register<GameLoopRunner>(Lifetime.Singleton)
+                .As<ITickable, IPostLateTickable>();
+
             builder.RegisterBuildCallback(container => container.Resolve<AutoSaveHandler>());
             builder.RegisterBuildCallback(container => {
                 var cardHand = container.Resolve<CardHand>();
                 var runner = container.Resolve<GameLoopRunner>();
                 cardHand.SetViewCallbacks(runner.RegisterView, runner.UnregisterView);
-                if (runner.HandRoot != null)
-                    cardHand.SetHandRoot(runner.HandRoot);
             });
 
 #if UNITY_EDITOR || DEBUG
