@@ -46,7 +46,6 @@ namespace Tarotro.Game.Logic {
         private int _softLimit = 8;
 
         public const string CardPrefabPath = "Bundles/Cards/card.prefab";
-        public const string CardSpritePath = "Bundles/Cards/Sprites/{0}";
 
         public IReadOnlyList<CardSlot> Slots => _slots;
         public int Count => _slots.Count;
@@ -185,8 +184,7 @@ namespace Tarotro.Game.Logic {
 
         private async UniTaskVoid LoadCardSprite(CardSlot slot, string spritePath) {
             try {
-                var path = string.Format(CardSpritePath, spritePath);
-                var handle = Addressables.LoadAssetAsync<Sprite>(path);
+                var handle = Addressables.LoadAssetAsync<Sprite>(spritePath);
                 var sprite = await handle.ToUniTask();
                 if (slot.View != null)
                     slot.View.SetSprite(sprite);
