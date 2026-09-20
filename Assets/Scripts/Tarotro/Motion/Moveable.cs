@@ -158,37 +158,47 @@ namespace Tarotro.Motion
 
         private void MovePosition(in MotionFrame f)
         {
-            bool moving = T.X != VT.X || T.Y != VT.Y
+            float ux = VT.X - T.X;
+            float uy = VT.Y - T.Y;
+
+            bool moving = ux != 0f || uy != 0f
                           || Mathf.Abs(_velocity.x) > Tune.SnapDistance
                           || Mathf.Abs(_velocity.y) > Tune.SnapDistance;
             if (!moving) return;
 
             var tune = Tune;
-            float e = f.ExpPosition;
-            float pull = (1f - e) * tune.Stiffness * f.MoveDelta;
+            float omega = tune.Stiffness * 2f;
+            float dt = f.MoveDelta;
+            float e = Mathf.Exp(-omega * dt);
+            float odt = omega * dt;
 
-            _velocity.x = e * _velocity.x + (T.X - VT.X) * pull;
-            _velocity.y = e * _velocity.y + (T.Y - VT.Y) * pull;
+            float newUx = (ux + (_velocity.x + omega * ux) * dt) * e;
+            float newUy = (uy + (_velocity.y + omega * uy) * dt) * e;
+
+            _velocity.x = (_velocity.x * (1f - odt) - omega * omega * ux * dt) * e;
+            _velocity.y = (_velocity.y * (1f - odt) - omega * omega * uy * dt) * e;
 
             float sq = _velocity.x * _velocity.x + _velocity.y * _velocity.y;
-            if (sq > f.MaxStep * f.MaxStep)
+            float maxSpeed = tune.MaxSpeed;
+            if (sq > maxSpeed * maxSpeed)
             {
-                float mag = Mathf.Sqrt(sq);
-                _velocity.x = f.MaxStep * _velocity.x / mag;
-                _velocity.y = f.MaxStep * _velocity.y / mag;
+                float inv = maxSpeed / Mathf.Sqrt(sq);
+                _velocity.x *= inv;
+                _velocity.y *= inv;
             }
 
+            VT.X = T.X + newUx;
+            VT.Y = T.Y + newUy;
+
             Stationary = false;
-            VT.X += _velocity.x;
-            VT.Y += _velocity.y;
 
             float snap = tune.SnapDistance;
-            if (Mathf.Abs(VT.X - T.X) < snap && Mathf.Abs(_velocity.x) < snap)
+            if (Mathf.Abs(newUx) < snap && Mathf.Abs(_velocity.x) < snap)
             {
                 VT.X = T.X;
                 _velocity.x = 0f;
             }
-            if (Mathf.Abs(VT.Y - T.Y) < snap && Mathf.Abs(_velocity.y) < snap)
+            if (Mathf.Abs(newUy) < snap && Mathf.Abs(_velocity.y) < snap)
             {
                 VT.Y = T.Y;
                 _velocity.y = 0f;
@@ -199,9 +209,7 @@ namespace Tarotro.Motion
         {
             var tune = Tune;
 
-            float speedLean = f.MoveDelta > 0f
-                ? tune.RotationFromSpeed * _velocity.x / f.MoveDelta
-                : 0f;
+            float speedLean = tune.RotationFromSpeed * _velocity.x;
 
             float desired = T.R + speedLean + _juiceRotation * tune.JuiceRotationGain;
 
