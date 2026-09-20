@@ -73,6 +73,8 @@ Tarotro/
 - Use DOTween for animations
 - Use Avocado.Toolbox.GameLogger instead of Debug. Always use second parameter logCategory in GameLogger. Example: `GameLogger.Info($"Item with guid {guid} unequipped.", "Category");`
 - **Data classes should only contain data** - no business logic methods. Classes in `Configs/` folder (like `FightData`, `EnemyData`, `LevelData`) should only have properties and simple getters. All calculation/logic methods belong in `Logic/` layer (managers, models, etc.)
+- **`[SerializeField]` naming** - Use camelCase without underscore prefix: `[SerializeField] private float roomWidth;` not `[SerializeField] private float _roomWidth;`
+- **Always use braces for single-line expressions** - `if`, `for`, `foreach`, `while` bodies must be wrapped in `{}` even when they contain a single statement
 
 ### File Organization
 - Keep related functionality in dedicated folders

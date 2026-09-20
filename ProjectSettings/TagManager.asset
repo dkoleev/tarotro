@@ -44,6 +44,9 @@ TagManager:
   - name: enemy
     uniqueID: 2357869393
     locked: 0
+  - name: player
+    uniqueID: 652207181
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []
