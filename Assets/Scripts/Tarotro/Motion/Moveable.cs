@@ -104,7 +104,7 @@ namespace Tarotro.Motion
             _juicing = true;
             _juiceScaleAmount = amt;
             _juiceRotationAmount = rotationAmount
-                ?? ((Random.value < 0.5f ? 1f : -1f) * tune.JuiceRotationRatio * amt);
+                ?? ((UnityEngine.Random.value < 0.5f ? 1f : -1f) * tune.JuiceRotationRatio * amt);
             _juiceStart = now;
             _juiceEnd = now + tune.JuiceDuration;
             _juiceScale = 0f;

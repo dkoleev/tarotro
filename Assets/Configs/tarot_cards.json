@@ -4,153 +4,153 @@
     "index": 0,
     "value": 10,
     "nameLoc": "fool",
-    "spritePath": "fool"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_0_fool.png"
   },
   "magician": {
     "id": "magician",
     "index": 1,
     "value": 20,
     "nameLoc": "magician",
-    "spritePath": "magician"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_1_magician.png"
   },
   "high_priestess": {
     "id": "high_priestess",
     "index": 2,
     "value": 30,
     "nameLoc": "high_priestess",
-    "spritePath": "high_priestess"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_2_high_priestess.png"
   },
   "empress": {
     "id": "empress",
     "index": 3,
     "value": 40,
     "nameLoc": "empress",
-    "spritePath": "empress"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_3_empress.png"
   },
   "emperor": {
     "id": "emperor",
     "index": 4,
     "value": 50,
     "nameLoc": "emperor",
-    "spritePath": "emperor"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_4_empreror.png"
   },
   "hierophant": {
     "id": "hierophant",
     "index": 5,
     "value": 60,
     "nameLoc": "hierophant",
-    "spritePath": "hierophant"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_5_hierophant.png"
   },
   "lovers": {
     "id": "lovers",
     "index": 6,
     "value": 70,
     "nameLoc": "lovers",
-    "spritePath": "lovers"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_6_lovers.png"
   },
   "chariot": {
     "id": "chariot",
     "index": 7,
     "value": 80,
     "nameLoc": "chariot",
-    "spritePath": "chariot"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_7_chariot.png"
   },
   "strength": {
     "id": "strength",
     "index": 8,
     "value": 90,
     "nameLoc": "strength",
-    "spritePath": "strength"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_8_strength.png"
   },
   "hermit": {
     "id": "hermit",
     "index": 9,
     "value": 100,
     "nameLoc": "hermit",
-    "spritePath": "hermit"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_9_hermit.png"
   },
   "wheel_of_fortune": {
     "id": "wheel_of_fortune",
     "index": 10,
     "value": 110,
     "nameLoc": "wheel_of_fortune",
-    "spritePath": "wheel_of_fortune"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_10_wheel_of_fortune.png"
   },
   "justice": {
     "id": "justice",
     "index": 11,
     "value": 120,
     "nameLoc": "justice",
-    "spritePath": "justice"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_11_justice.png"
   },
   "hanged_men": {
     "id": "hanged_men",
     "index": 12,
     "value": 130,
     "nameLoc": "hanged_men",
-    "spritePath": "hanged_men"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_12_hanged_man.png"
   },
   "death": {
     "id": "death",
     "index": 13,
     "value": 140,
     "nameLoc": "death",
-    "spritePath": "death"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_13_death.png"
   },
   "temperance": {
     "id": "temperance",
     "index": 14,
     "value": 150,
     "nameLoc": "temperance",
-    "spritePath": "temperance"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_14_temperance.png"
   },
   "devil": {
     "id": "devil",
     "index": 15,
     "value": 160,
     "nameLoc": "devil",
-    "spritePath": "devil"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_15_devil.png"
   },
   "tower": {
     "id": "tower",
     "index": 16,
     "value": 170,
     "nameLoc": "tower",
-    "spritePath": "tower"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_16_tower.png"
   },
   "star": {
     "id": "star",
     "index": 17,
     "value": 180,
     "nameLoc": "star",
-    "spritePath": "star"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_17_star.png"
   },
   "moon": {
     "id": "moon",
     "index": 18,
     "value": 190,
     "nameLoc": "moon",
-    "spritePath": "moon"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_18_moon.png"
   },
   "sun": {
     "id": "sun",
     "index": 19,
     "value": 200,
     "nameLoc": "sun",
-    "spritePath": "sun"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_19_sun.png"
   },
   "judgment": {
     "id": "judgment",
     "index": 20,
     "value": 210,
     "nameLoc": "judgment",
-    "spritePath": "judgment"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_20_judgement.png"
   },
   "world": {
     "id": "world",
     "index": 21,
     "value": 220,
     "nameLoc": "world",
-    "spritePath": "world"
+    "spritePath": "Bundles/Cards/sprites/cards_opt_1/card_21_world.png"
   }
 }

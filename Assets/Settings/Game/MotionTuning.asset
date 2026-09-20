@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367d499bfc0c6c349bce2b6f47242926, type: 3}
+  m_Name: MotionTuning
+  m_EditorClassIdentifier: Assembly-CSharp::Tarotro.Motion.MotionTuning
+  PositionRate: 50
+  ScaleRate: 60
+  RotationRate: 190
+  Stiffness: 35
+  MaxSpeed: 70
+  MaxMoveDelta: 0.05
+  SnapDistance: 0.01
+  SnapAngle: 0.001
+  SnapScale: 0.001
+  SizeRate: 8
+  RotationFromSpeed: 0.015
+  HoverScaleBonus: 0.05
+  DragScaleBonus: 0.1
+  JuiceDuration: 0.4
+  JuiceDefaultAmount: 0.4
+  JuiceScaleFrequency: 50.8
+  JuiceRotationFrequency: 40.8
+  JuiceRotationRatio: 0.6
+  JuicePreSquash: 0.6
+  JuiceRotationGain: 2
+  ParallaxStrength: 1.5
+  ReducedMotion: 0
