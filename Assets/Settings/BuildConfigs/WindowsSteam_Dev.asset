@@ -19,6 +19,7 @@ MonoBehaviour:
   subFolder: Windows
   executableName: Tarotro.exe
   autoIncrementBuildNumber: 0
+  runTests: 0
   validateConfigs: 1
   buildAddressables: 1
   cleanBeforeBuild: 0
