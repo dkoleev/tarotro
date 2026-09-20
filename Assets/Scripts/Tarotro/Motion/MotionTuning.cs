@@ -16,7 +16,7 @@ namespace Tarotro.Motion
         public float RotationRate = 190f;
 
         [Header("Position integrator")]
-        [Tooltip("Pull toward the target. Source: (T - VT) * 35 * dt")]
+        [Tooltip("Spring half-frequency. The critically damped spring uses omega = Stiffness * 2.")]
         public float Stiffness = 35f;
 
         [Tooltip("Units per second. Source: 70 * move_dt")]
