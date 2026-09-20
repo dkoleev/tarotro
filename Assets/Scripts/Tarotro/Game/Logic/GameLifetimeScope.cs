@@ -32,6 +32,7 @@ namespace Tarotro.Game.Logic {
             builder.Register<ConfigLoader>(Lifetime.Singleton);
             builder.Register<GameData>(Lifetime.Singleton);
             builder.Register<GameRng>(Lifetime.Singleton);
+            builder.Register<CardHand>(Lifetime.Singleton);
 
             if (motionTuning != null)
                 builder.RegisterInstance(motionTuning);
@@ -42,6 +43,10 @@ namespace Tarotro.Game.Logic {
             builder.RegisterComponentInHierarchy<GameLoopRunner>();
             
             builder.RegisterBuildCallback(container => container.Resolve<AutoSaveHandler>());
+            builder.RegisterBuildCallback(container => {
+                var cardHand = container.Resolve<CardHand>();
+                cardHand.SetRunner(container.Resolve<GameLoopRunner>());
+            });
 
 #if UNITY_EDITOR || DEBUG
             builder.Register<DevConsoleCommands>(Lifetime.Singleton);

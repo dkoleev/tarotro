@@ -74,6 +74,12 @@ namespace Tarotro.Game.Logic {
             _cards.Shuffle(_rng, RngChannel.Shuffle);
         }
 
+        public void InitializeDrawPile() {
+            _drawPile.Clear();
+            _drawPile.AddRange(_cards);
+            _drawPile.Shuffle(_rng, RngChannel.Shuffle);
+        }
+
         public void Reshuffle() {
             _drawPile.AddRange(_discardPile);
             _discardPile.Clear();

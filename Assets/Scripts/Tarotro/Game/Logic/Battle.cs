@@ -37,6 +37,7 @@ namespace Tarotro.Game.Logic {
         private readonly BattleProgressionManager _progressionManager;
         private readonly GameRng _rng;
         private readonly IGameLogger _logger;
+        private readonly CardHand _cardHand;
         private EnemyWrapper _currentEnemy;
         private PlayerModel _currentPlayer;
         private CancellationTokenSource _cts;
@@ -45,12 +46,13 @@ namespace Tarotro.Game.Logic {
         private List<FightRoundData> _currentCircle;
 
         [Inject]
-        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, GameRng rng, IGameLogger logger) {
+        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, GameRng rng, IGameLogger logger, CardHand cardHand) {
             _enemyDiedPub = enemyDiedPub;
             _gameData = gameData;
             _progressionManager = progressionManager;
             _rng = rng;
             _logger = logger;
+            _cardHand = cardHand;
         }
 
         public async UniTask StartBattle(CancellationToken ct = default) {
@@ -152,12 +154,19 @@ namespace Tarotro.Game.Logic {
         }
 
         private async UniTask CreateDesk() {
-            // Initialize player's starting hand
-            // This would typically involve drawing initial cards from the deck
-            _logger.Info("Creating player desk", "Battle");
+            _logger.Info("Creating player deck from tarot cards", "Battle");
 
-            // Initialize with a basic hand of cards
-            // In a real implementation, this would draw cards from the player's deck
+            foreach (var tarotCard in _gameData.TarotCards.Values) {
+                _currentPlayer.Deck.AddCard(new CardModel(tarotCard));
+            }
+
+            _currentPlayer.Deck.InitializeDrawPile();
+
+            var drawCount = _gameData.Battle.playHandSize;
+            _currentPlayer.DrawHand(drawCount);
+
+            await _cardHand.DealCards(_currentPlayer.Hand);
+            _logger.Info($"Dealt {drawCount} cards to player hand", "Battle");
         }
 
         public async UniTask SpawnRandomEnemy(int health, CancellationToken ct = default) {
