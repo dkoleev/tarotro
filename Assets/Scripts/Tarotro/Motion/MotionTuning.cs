@@ -6,13 +6,10 @@ namespace Tarotro.Motion
     public sealed class MotionTuning : ScriptableObject
     {
         [Header("Smoothing rates (higher = snappier)")]
-        [Tooltip("Position. Source: exp(-50 * dt)")]
-        public float PositionRate = 50f;
-
-        [Tooltip("Scale. Source: exp(-60 * dt)")]
+        [Tooltip("Scale exponential smoothing rate.")]
         public float ScaleRate = 60f;
 
-        [Tooltip("Rotation. Source: exp(-190 * dt). Much stiffer than position.")]
+        [Tooltip("Rotation exponential smoothing rate.")]
         public float RotationRate = 190f;
 
         [Header("Position integrator")]

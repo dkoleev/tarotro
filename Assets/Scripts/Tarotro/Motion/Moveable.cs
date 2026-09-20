@@ -27,20 +27,16 @@ namespace Tarotro.Motion
 
     public readonly struct MotionFrame
     {
-        public readonly float ExpPosition;
         public readonly float ExpScale;
         public readonly float ExpRotation;
         public readonly float MoveDelta;
-        public readonly float MaxStep;
         public readonly float RealTime;
 
         public MotionFrame(float unscaledDt, float realTime, MotionTuning t)
         {
-            ExpPosition = Mathf.Exp(-t.PositionRate * unscaledDt);
             ExpScale    = Mathf.Exp(-t.ScaleRate * unscaledDt);
             ExpRotation = Mathf.Exp(-t.RotationRate * unscaledDt);
             MoveDelta   = Mathf.Min(t.MaxMoveDelta, unscaledDt);
-            MaxStep     = t.MaxSpeed * MoveDelta;
             RealTime    = realTime;
         }
     }
@@ -51,8 +47,6 @@ namespace Tarotro.Motion
         public Transform2D VT;
 
         private Vector2 _velocity;
-        private float _velocityScale;
-        private float _velocityRotation;
 
         public bool Hovered;
         public bool Dragged;
@@ -82,8 +76,6 @@ namespace Tarotro.Motion
             T = t;
             VT = t;
             _velocity = Vector2.zero;
-            _velocityScale = 0f;
-            _velocityRotation = 0f;
         }
 
         public void HardSetPosition(float x, float y)
@@ -210,22 +202,16 @@ namespace Tarotro.Motion
             var tune = Tune;
 
             float speedLean = tune.RotationFromSpeed * _velocity.x;
-
             float desired = T.R + speedLean + _juiceRotation * tune.JuiceRotationGain;
 
-            if (desired != VT.R || Mathf.Abs(_velocityRotation) > tune.SnapAngle)
+            if (Mathf.Abs(desired - VT.R) < tune.SnapAngle)
             {
-                Stationary = false;
-                _velocityRotation = f.ExpRotation * _velocityRotation
-                                    + (1f - f.ExpRotation) * (desired - VT.R);
-                VT.R += _velocityRotation;
+                VT.R = desired;
+                return;
             }
 
-            if (Mathf.Abs(VT.R - T.R) < tune.SnapAngle && Mathf.Abs(_velocityRotation) < tune.SnapAngle)
-            {
-                VT.R = T.R;
-                _velocityRotation = 0f;
-            }
+            Stationary = false;
+            VT.R += (1f - f.ExpRotation) * (desired - VT.R);
         }
 
         private void MoveScale(in MotionFrame f)
@@ -238,13 +224,14 @@ namespace Tarotro.Motion
 
             float desired = T.Scale + interaction + _juiceScale;
 
-            if (desired != VT.Scale || Mathf.Abs(_velocityScale) > tune.SnapScale)
+            if (Mathf.Abs(desired - VT.Scale) < tune.SnapScale)
             {
-                Stationary = false;
-                _velocityScale = f.ExpScale * _velocityScale
-                                 + (1f - f.ExpScale) * (desired - VT.Scale);
-                VT.Scale += _velocityScale;
+                VT.Scale = desired;
+                return;
             }
+
+            Stationary = false;
+            VT.Scale += (1f - f.ExpScale) * (desired - VT.Scale);
         }
 
         private void MoveSize(in MotionFrame f)
