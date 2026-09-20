@@ -30,8 +30,13 @@ namespace Tarotro.Runtime
         {
             float dt = Time.unscaledDeltaTime;
             Queue.Tick(dt);
-            if (CardHand != null) CardHand.Tick();
+            CardHand.Tick();
             Motion.Tick(dt);
+        }
+
+        private void OnDestroy()
+        {
+            _views.Clear();
         }
 
         private void LateUpdate()

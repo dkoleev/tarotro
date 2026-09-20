@@ -108,6 +108,10 @@ namespace Tarotro.Game.Logic {
                 CreatePlayer();
             }
 
+            if (_currentPlayer?.Hand != null && _currentPlayer.Hand.Count > 0) {
+                await _cardHand.DealCards(_currentPlayer.Hand, ct);
+            }
+
             if (saveData.CurrentEnemy != null) {
                 await SpawnEnemy(saveData.CurrentEnemy.EnemyId, saveData.CurrentEnemy.CurrentHealth, ct);
             }
