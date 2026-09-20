@@ -41,10 +41,15 @@ namespace Tarotro.Game.Presenters {
         public const string CardPrefabPath = "Bundles/Cards/card.prefab";
 
         [Inject]
-        public CardHandPresenter(CardHand cardHand, EventQueue queue, IGameLogger logger) {
+        public CardHandPresenter(CardHand cardHand, EventQueue queue, IGameLogger logger, CardHandConfig config = null) {
             _cardHand = cardHand;
             _queue = queue;
             _logger = logger;
+
+            if (config != null) {
+                Configure(config.HandArea, config.DeckPosition, config.DiscardPosition,
+                    config.cardWidth, config.cardHeight, config.softLimit);
+            }
         }
 
         public void SetViewCallbacks(Action<MoveableView> register, Action<MoveableView> unregister) {

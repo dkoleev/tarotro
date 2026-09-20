@@ -19,6 +19,7 @@ using Tarotro.Game.Dev;
 namespace Tarotro.Game.Logic {
     public class GameLifetimeScope : LifetimeScope {
         [SerializeField] private MotionTuning motionTuning;
+        [SerializeField] private CardHandConfig cardHandConfig;
 
         protected override void Configure(IContainerBuilder builder) {
             builder.RegisterEntryPoint<Boot>();
@@ -40,6 +41,9 @@ namespace Tarotro.Game.Logic {
                 builder.RegisterInstance(motionTuning);
             else
                 builder.RegisterInstance(MotionTuning.Default);
+
+            if (cardHandConfig != null)
+                builder.RegisterInstance(cardHandConfig);
             builder.Register<EventQueue>(Lifetime.Singleton);
             builder.Register<MotionSystem>(Lifetime.Singleton);
             builder.Register<GameLoopRunner>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
