@@ -11,6 +11,7 @@ namespace Tarotro.Runtime
     public sealed class GameLoopRunner : MonoBehaviour
     {
         [SerializeField] private float _roomWidth = 20f;
+        [SerializeField] private Transform _handRoot;
 
         private readonly List<MoveableView> _views = new List<MoveableView>(256);
 
@@ -22,6 +23,8 @@ namespace Tarotro.Runtime
         {
             Motion.RoomWidth = _roomWidth;
         }
+
+        public Transform HandRoot => _handRoot;
 
         public void RegisterView(MoveableView view) => _views.Add(view);
         public void UnregisterView(MoveableView view) => _views.Remove(view);

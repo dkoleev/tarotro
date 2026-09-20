@@ -47,6 +47,8 @@ namespace Tarotro.Game.Logic {
                 var cardHand = container.Resolve<CardHand>();
                 var runner = container.Resolve<GameLoopRunner>();
                 cardHand.SetViewCallbacks(runner.RegisterView, runner.UnregisterView);
+                if (runner.HandRoot != null)
+                    cardHand.SetHandRoot(runner.HandRoot);
             });
 
 #if UNITY_EDITOR || DEBUG
