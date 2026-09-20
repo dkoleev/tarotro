@@ -16,10 +16,7 @@ namespace Tarotro.Motion
         [Tooltip("Spring half-frequency. The critically damped spring uses omega = Stiffness * 2.")]
         public float Stiffness = 35f;
 
-        [Tooltip("Units per second. Source: 70 * move_dt")]
-        public float MaxSpeed = 70f;
-
-        [Tooltip("Movement dt is clamped to this. Source: min(1/20, real_dt)")]
+        [Tooltip("Movement dt is clamped to this to prevent huge simulation steps.")]
         public float MaxMoveDelta = 1f / 20f;
 
         [Tooltip("Below this distance AND speed, the visual transform snaps to the target.")]
