@@ -6,15 +6,21 @@ namespace Tarotro.Motion
     public sealed class MotionTuning : ScriptableObject
     {
         [Header("Smoothing rates (higher = snappier)")]
+        [Tooltip("Position EMA velocity decay rate.")]
+        public float PositionRate = 50f;
+
         [Tooltip("Scale exponential smoothing rate.")]
         public float ScaleRate = 60f;
 
         [Tooltip("Rotation exponential smoothing rate.")]
         public float RotationRate = 190f;
 
-        [Header("Position integrator")]
-        [Tooltip("Spring half-frequency. The critically damped spring uses omega = Stiffness * 2.")]
+        [Header("Position")]
+        [Tooltip("Velocity gain applied to position error per second.")]
         public float Stiffness = 35f;
+
+        [Tooltip("Maximum velocity magnitude per frame.")]
+        public float MaxSpeed = 70f;
 
         [Tooltip("Movement dt is clamped to this to prevent huge simulation steps.")]
         public float MaxMoveDelta = 1f / 20f;
