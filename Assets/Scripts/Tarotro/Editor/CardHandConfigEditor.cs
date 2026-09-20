@@ -112,7 +112,7 @@ namespace Tarotro.Editor
             var size = new Vector3(w, h, 0f);
 
             Handles.color = fill;
-            Handles.DrawSolidRectangleAndOutline(
+            Handles.DrawSolidRectangleWithOutline(
                 GetRectVerts(center, size),
                 fill, outline);
 
@@ -137,7 +137,7 @@ namespace Tarotro.Editor
             var center = new Vector3(cx, cy, 0f);
             var size = new Vector3(w, h, 0f);
 
-            Handles.DrawSolidRectangleAndOutline(
+            Handles.DrawSolidRectangleWithOutline(
                 GetRectVerts(center, size),
                 fill, outline);
 

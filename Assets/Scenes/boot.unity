@@ -247,6 +247,7 @@ MonoBehaviour:
   autoRun: 1
   autoInjectGameObjects: []
   motionTuning: {fileID: 11400000, guid: 393bb38303bafbb468b00c2f32aad883, type: 2}
+  cardHandConfig: {fileID: 11400000, guid: 1cd833c5bb91fa249872e62f9a84b7b3, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

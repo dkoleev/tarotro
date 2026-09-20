@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367d499bfc0c6c349bce2b6f47242926, type: 3}
   m_Name: MotionTuning
   m_EditorClassIdentifier: Assembly-CSharp::Tarotro.Motion.MotionTuning
-  PositionRate: 50
+  PositionRate: 41
   ScaleRate: 60
   RotationRate: 190
   Stiffness: 35

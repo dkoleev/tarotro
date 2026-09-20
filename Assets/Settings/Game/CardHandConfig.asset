@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b7097521c937ec40a0151398c458596, type: 3}
+  m_Name: CardHandConfig
+  m_EditorClassIdentifier: Assembly-CSharp::Tarotro.Motion.CardHandConfig
+  handX: -5
+  handY: -0.5
+  handWidth: 10
+  handHeight: 2.5
+  cardWidth: 1.2
+  cardHeight: 1.8
+  softLimit: 8
+  deckX: 3.57
+  deckY: 0.12
+  discardX: 18
+  discardY: 4
+  flipY: 1
