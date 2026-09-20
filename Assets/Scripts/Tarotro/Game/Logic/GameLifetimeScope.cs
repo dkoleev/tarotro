@@ -3,6 +3,7 @@ using Tarotro.Game.Core;
 using Tarotro.Game.Data;
 using Tarotro.Game.Logic.Rng;
 using Tarotro.Game.Messages;
+using Tarotro.Game.Presenters;
 using Tarotro.Game.Utils;
 using Tarotro.Motion;
 using Tarotro.Runtime;
@@ -33,6 +34,7 @@ namespace Tarotro.Game.Logic {
             builder.Register<GameData>(Lifetime.Singleton);
             builder.Register<GameRng>(Lifetime.Singleton);
             builder.Register<CardHand>(Lifetime.Singleton);
+            builder.Register<CardHandPresenter>(Lifetime.Singleton);
 
             if (motionTuning != null)
                 builder.RegisterInstance(motionTuning);
@@ -45,9 +47,9 @@ namespace Tarotro.Game.Logic {
 
             builder.RegisterBuildCallback(container => container.Resolve<AutoSaveHandler>());
             builder.RegisterBuildCallback(container => {
-                var cardHand = container.Resolve<CardHand>();
+                var cardHandPresenter = container.Resolve<CardHandPresenter>();
                 var runner = container.Resolve<GameLoopRunner>();
-                cardHand.SetViewCallbacks(runner.RegisterView, runner.UnregisterView);
+                cardHandPresenter.SetViewCallbacks(runner.RegisterView, runner.UnregisterView);
             });
 
 #if UNITY_EDITOR || DEBUG
