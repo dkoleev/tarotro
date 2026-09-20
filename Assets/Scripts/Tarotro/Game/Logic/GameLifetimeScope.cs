@@ -4,6 +4,10 @@ using Tarotro.Game.Data;
 using Tarotro.Game.Logic.Rng;
 using Tarotro.Game.Messages;
 using Tarotro.Game.Utils;
+using Tarotro.Motion;
+using Tarotro.Runtime;
+using Tarotro.Sequencing;
+using UnityEngine;
 using VContainer;
 using VContainer.Unity;
 #if UNITY_EDITOR || DEBUG
@@ -13,9 +17,11 @@ using Tarotro.Game.Dev;
 
 namespace Tarotro.Game.Logic {
     public class GameLifetimeScope : LifetimeScope {
+        [SerializeField] private MotionTuning motionTuning;
+
         protected override void Configure(IContainerBuilder builder) {
             builder.RegisterEntryPoint<Boot>();
-            
+
             builder.Register<GameLogger>(Lifetime.Singleton).As<IGameLogger>();
             builder.Register<SceneLoader>(Lifetime.Singleton);
             builder.Register<Battle>(Lifetime.Singleton);
@@ -26,6 +32,14 @@ namespace Tarotro.Game.Logic {
             builder.Register<ConfigLoader>(Lifetime.Singleton);
             builder.Register<GameData>(Lifetime.Singleton);
             builder.Register<GameRng>(Lifetime.Singleton);
+
+            if (motionTuning != null)
+                builder.RegisterInstance(motionTuning);
+            else
+                builder.RegisterInstance(MotionTuning.Default);
+            builder.Register<EventQueue>(Lifetime.Singleton);
+            builder.Register<MotionSystem>(Lifetime.Singleton);
+            builder.RegisterComponentInHierarchy<GameLoopRunner>();
             
             builder.RegisterBuildCallback(container => container.Resolve<AutoSaveHandler>());
 
