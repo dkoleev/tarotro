@@ -45,7 +45,8 @@ namespace Tarotro.Game.Logic {
             builder.RegisterBuildCallback(container => container.Resolve<AutoSaveHandler>());
             builder.RegisterBuildCallback(container => {
                 var cardHand = container.Resolve<CardHand>();
-                cardHand.SetRunner(container.Resolve<GameLoopRunner>());
+                var runner = container.Resolve<GameLoopRunner>();
+                cardHand.SetViewCallbacks(runner.RegisterView, runner.UnregisterView);
             });
 
 #if UNITY_EDITOR || DEBUG

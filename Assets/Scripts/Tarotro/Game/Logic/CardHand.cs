@@ -7,7 +7,6 @@ using Tarotro.Game.Presenters;
 using Tarotro.Game.Utils;
 using Tarotro.Game.View;
 using Tarotro.Motion;
-using Tarotro.Runtime;
 using Tarotro.Sequencing;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -33,7 +32,8 @@ namespace Tarotro.Game.Logic {
         private readonly List<Moveable> _moveables = new List<Moveable>();
         private readonly List<bool> _highlights = new List<bool>();
 
-        private GameLoopRunner _runner;
+        private Action<MoveableView> _registerView;
+        private Action<MoveableView> _unregisterView;
         private GameObject _cardPrefab;
         private AsyncOperationHandle<GameObject> _prefabHandle;
         private bool _prefabLoaded;
@@ -58,8 +58,9 @@ namespace Tarotro.Game.Logic {
             _logger = logger;
         }
 
-        public void SetRunner(GameLoopRunner runner) {
-            _runner = runner;
+        public void SetViewCallbacks(Action<MoveableView> register, Action<MoveableView> unregister) {
+            _registerView = register;
+            _unregisterView = unregister;
         }
 
         public void Configure(
@@ -168,8 +169,7 @@ namespace Tarotro.Game.Logic {
             _motion.Register(moveable);
             moveableView.Bind(moveable);
 
-            if (_runner != null)
-                _runner.RegisterView(moveableView);
+            _registerView?.Invoke(moveableView);
 
             var presenter = new CardPresenter(model, view);
 
@@ -207,9 +207,7 @@ namespace Tarotro.Game.Logic {
         private void DestroySlot(CardSlot slot) {
             slot.Presenter.Dispose();
             _motion.Unregister(slot.Moveable);
-
-            if (_runner != null)
-                _runner.UnregisterView(slot.MoveableView);
+            _unregisterView?.Invoke(slot.MoveableView);
 
             if (slot.GameObject != null)
                 UnityEngine.Object.Destroy(slot.GameObject);
