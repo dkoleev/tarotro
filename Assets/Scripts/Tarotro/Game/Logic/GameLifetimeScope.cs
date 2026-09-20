@@ -42,8 +42,7 @@ namespace Tarotro.Game.Logic {
                 builder.RegisterInstance(MotionTuning.Default);
             builder.Register<EventQueue>(Lifetime.Singleton);
             builder.Register<MotionSystem>(Lifetime.Singleton);
-            builder.Register<GameLoopRunner>(Lifetime.Singleton)
-                .As<ITickable, IPostLateTickable>();
+            builder.Register<GameLoopRunner>(Lifetime.Singleton).AsSelf().AsImplementedInterfaces();
 
             builder.RegisterBuildCallback(container => container.Resolve<AutoSaveHandler>());
             builder.RegisterBuildCallback(container => {
