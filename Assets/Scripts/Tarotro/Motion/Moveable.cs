@@ -170,15 +170,6 @@ namespace Tarotro.Motion
             _velocity.x = (_velocity.x * (1f - odt) - omega * omega * ux * dt) * e;
             _velocity.y = (_velocity.y * (1f - odt) - omega * omega * uy * dt) * e;
 
-            float sq = _velocity.x * _velocity.x + _velocity.y * _velocity.y;
-            float maxSpeed = tune.MaxSpeed;
-            if (sq > maxSpeed * maxSpeed)
-            {
-                float inv = maxSpeed / Mathf.Sqrt(sq);
-                _velocity.x *= inv;
-                _velocity.y *= inv;
-            }
-
             VT.X = T.X + newUx;
             VT.Y = T.Y + newUy;
 
