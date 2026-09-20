@@ -1,4 +1,5 @@
 using System;
+using Tarotro.Game.Data;
 
 namespace Tarotro.Game.Logic {
     public class CardModel {
@@ -7,8 +8,8 @@ namespace Tarotro.Game.Logic {
         public int Damage { get; set; }
         public int Cost { get; set; }
         public string Description { get; set; }
+        public string SpritePath { get; set; }
 
-        // Default constructor
         public CardModel() {
             Id = Guid.NewGuid().ToString();
         }
@@ -19,6 +20,13 @@ namespace Tarotro.Game.Logic {
             Damage = damage;
             Cost = cost;
             Description = description;
+        }
+
+        public CardModel(TarotCardData data) {
+            Id = Guid.NewGuid().ToString();
+            Name = data.nameLoc;
+            Damage = data.value;
+            SpritePath = data.spritePath;
         }
     }
 }

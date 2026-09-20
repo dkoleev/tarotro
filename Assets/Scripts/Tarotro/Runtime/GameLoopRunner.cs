@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Tarotro.Game.Logic;
 using Tarotro.Motion;
 using Tarotro.Sequencing;
 using UnityEngine;
@@ -15,6 +16,7 @@ namespace Tarotro.Runtime
 
         [Inject] public EventQueue Queue { get; private set; }
         [Inject] public MotionSystem Motion { get; private set; }
+        [Inject] public CardHand CardHand { get; private set; }
 
         private void Start()
         {
@@ -28,6 +30,7 @@ namespace Tarotro.Runtime
         {
             float dt = Time.unscaledDeltaTime;
             Queue.Tick(dt);
+            if (CardHand != null) CardHand.Tick();
             Motion.Tick(dt);
         }
 
