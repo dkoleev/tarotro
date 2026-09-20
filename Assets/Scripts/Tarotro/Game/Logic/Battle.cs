@@ -37,7 +37,7 @@ namespace Tarotro.Game.Logic {
         private readonly BattleProgressionManager _progressionManager;
         private readonly GameRng _rng;
         private readonly IGameLogger _logger;
-        private readonly CardHand _cardHand;
+        private readonly CardHandPresenter _cardHandPresenter;
         private EnemyWrapper _currentEnemy;
         private PlayerModel _currentPlayer;
         private CancellationTokenSource _cts;
@@ -46,13 +46,13 @@ namespace Tarotro.Game.Logic {
         private List<FightRoundData> _currentCircle;
 
         [Inject]
-        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, GameRng rng, IGameLogger logger, CardHand cardHand) {
+        public Battle(IPublisher<EnemyDiedMessage> enemyDiedPub, GameData gameData, BattleProgressionManager progressionManager, GameRng rng, IGameLogger logger, CardHandPresenter cardHandPresenter) {
             _enemyDiedPub = enemyDiedPub;
             _gameData = gameData;
             _progressionManager = progressionManager;
             _rng = rng;
             _logger = logger;
-            _cardHand = cardHand;
+            _cardHandPresenter = cardHandPresenter;
         }
 
         public async UniTask StartBattle(CancellationToken ct = default) {
@@ -109,7 +109,7 @@ namespace Tarotro.Game.Logic {
             }
 
             if (_currentPlayer?.Hand != null && _currentPlayer.Hand.Count > 0) {
-                await _cardHand.DealCards(_currentPlayer.Hand, ct);
+                await _cardHandPresenter.DealCards(_currentPlayer.Hand, ct);
             }
 
             if (saveData.CurrentEnemy != null) {
@@ -169,7 +169,7 @@ namespace Tarotro.Game.Logic {
             var drawCount = _gameData.Battle.playHandSize;
             _currentPlayer.DrawHand(drawCount);
 
-            await _cardHand.DealCards(_currentPlayer.Hand);
+            await _cardHandPresenter.DealCards(_currentPlayer.Hand);
             _logger.Info($"Dealt {drawCount} cards to player hand", "Battle");
         }
 
