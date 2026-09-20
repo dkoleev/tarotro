@@ -30,7 +30,6 @@ namespace Tarotro.Game.Presenters {
 
         private Action<MoveableView> _registerView;
         private Action<MoveableView> _unregisterView;
-        private Transform _handRoot;
         private GameObject _cardPrefab;
         private AsyncOperationHandle<GameObject> _prefabHandle;
         private bool _prefabLoaded;
@@ -55,10 +54,6 @@ namespace Tarotro.Game.Presenters {
         public void SetViewCallbacks(Action<MoveableView> register, Action<MoveableView> unregister) {
             _registerView = register;
             _unregisterView = unregister;
-        }
-
-        public void SetHandRoot(Transform root) {
-            _handRoot = root;
         }
 
         public void Configure(
@@ -154,9 +149,7 @@ namespace Tarotro.Game.Presenters {
         }
 
         private CardViewBinding CreateViewBinding(CardHand.CardSlot slot) {
-            var go = _handRoot != null
-                ? UnityEngine.Object.Instantiate(_cardPrefab, _handRoot)
-                : UnityEngine.Object.Instantiate(_cardPrefab);
+            var go = UnityEngine.Object.Instantiate(_cardPrefab);
             var view = go.GetComponent<CardView>();
             var moveableView = go.GetComponent<MoveableView>();
 
