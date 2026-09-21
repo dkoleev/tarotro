@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Tarotro.Motion
+namespace Tarotro.Game.Logic.Motion
 {
     public static class HandLayout
     {

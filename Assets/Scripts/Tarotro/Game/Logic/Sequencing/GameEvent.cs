@@ -1,6 +1,6 @@
 using System;
 
-namespace Tarotro.Sequencing
+namespace Tarotro.Game.Logic.Sequencing
 {
     public enum EventTrigger
     {

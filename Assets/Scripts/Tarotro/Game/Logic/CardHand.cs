@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using Tarotro.Motion;
+using Tarotro.Game.Logic.Motion;
 using VContainer;
 
 namespace Tarotro.Game.Logic {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Tarotro.Motion
+namespace Tarotro.Game.Logic.Motion
 {
     [DisallowMultipleComponent]
     public sealed class MoveableView : MonoBehaviour

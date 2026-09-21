@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace Tarotro.Motion
+namespace Tarotro.Game.Logic.Motion
 {
     [Serializable]
     public struct Transform2D

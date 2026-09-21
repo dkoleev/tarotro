@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Tarotro.Motion
+namespace Tarotro.Game.Logic.Motion
 {
     [CreateAssetMenu(menuName = "Tarotro/Card Hand Config", fileName = "CardHandConfig")]
     public sealed class CardHandConfig : ScriptableObject

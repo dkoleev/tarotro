@@ -1,10 +1,9 @@
 using System.Collections.Generic;
-using Tarotro.Game.Logic;
-using Tarotro.Motion;
-using Tarotro.Sequencing;
+using Tarotro.Game.Logic.Motion;
+using Tarotro.Game.Logic.Sequencing;
 using VContainer.Unity;
 
-namespace Tarotro.Runtime
+namespace Tarotro.Game.Logic
 {
     public sealed class GameLoopRunner : ITickable, IPostLateTickable
     {

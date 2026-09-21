@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Tarotro.Sequencing
+namespace Tarotro.Game.Logic.Sequencing
 {
     public static class Lane
     {

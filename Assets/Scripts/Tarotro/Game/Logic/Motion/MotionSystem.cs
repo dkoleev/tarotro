@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Tarotro.Motion
+namespace Tarotro.Game.Logic.Motion
 {
     public sealed class MotionSystem
     {

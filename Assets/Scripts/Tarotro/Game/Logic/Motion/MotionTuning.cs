@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Tarotro.Motion
+namespace Tarotro.Game.Logic.Motion
 {
     [CreateAssetMenu(menuName = "Tarotro/Motion Tuning", fileName = "MotionTuning")]
     public sealed class MotionTuning : ScriptableObject

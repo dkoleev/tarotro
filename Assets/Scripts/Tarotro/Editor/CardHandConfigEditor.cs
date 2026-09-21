@@ -1,4 +1,4 @@
-using Tarotro.Motion;
+using Tarotro.Game.Logic.Motion;
 using UnityEditor;
 using UnityEngine;
 
