@@ -166,7 +166,7 @@ namespace Tarotro.Game.Logic {
 
             _currentPlayer.Deck.InitializeDrawPile();
 
-            var drawCount = _gameData.Battle.playHandSize;
+            var drawCount = _gameData.Battle.spreadDefaultSize;
             _currentPlayer.DrawHand(drawCount);
 
             await _cardHandPresenter.DealCards(_currentPlayer.Hand);
