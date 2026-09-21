@@ -28,10 +28,13 @@ namespace Tarotro.Motion
 
         public void Clear() => _moveables.Clear();
 
-        public void Tick(float unscaledDeltaTime)
+        public void AdvanceTime(float unscaledDeltaTime)
         {
             RealTime += unscaledDeltaTime;
+        }
 
+        public void Tick(float unscaledDeltaTime)
+        {
             var frame = new MotionFrame(unscaledDeltaTime, RealTime, _tuning);
             float room = RoomWidth;
 

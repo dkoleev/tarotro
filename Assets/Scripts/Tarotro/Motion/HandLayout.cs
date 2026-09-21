@@ -56,7 +56,7 @@ namespace Tarotro.Motion
                           + sway * IdleBobAmount * Mathf.Sin(IdleBobFrequency * realTime + x)
                           + arc;
 
-                card.T.X = x + card.ShadowParallax / 30f;
+                card.T.X = x;
                 card.T.Y = y;
                 card.T.R = rot;
             }
