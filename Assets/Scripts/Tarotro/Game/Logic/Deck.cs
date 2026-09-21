@@ -83,8 +83,7 @@ namespace Tarotro.Game.Logic {
         public void Reshuffle() {
             _drawPile.AddRange(_discardPile);
             _discardPile.Clear();
-
-            Shuffle();
+            _drawPile.Shuffle(_rng, RngChannel.Shuffle);
         }
 
         public bool IsEmpty() {

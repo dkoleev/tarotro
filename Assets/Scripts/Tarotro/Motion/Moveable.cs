@@ -201,7 +201,9 @@ namespace Tarotro.Motion
         {
             var tune = Tune;
 
-            float speedLean = tune.RotationFromSpeed * _velocity.x / f.MoveDelta;
+            float speedLean = f.MoveDelta > 0f
+                ? tune.RotationFromSpeed * _velocity.x / f.MoveDelta
+                : 0f;
             float desired = T.R + speedLean + _juiceRotation * tune.JuiceRotationGain;
 
             if (Mathf.Abs(desired - VT.R) < tune.SnapAngle)
