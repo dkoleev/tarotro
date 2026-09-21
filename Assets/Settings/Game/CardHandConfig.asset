@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b7097521c937ec40a0151398c458596, type: 3}
   m_Name: CardHandConfig
   m_EditorClassIdentifier: Assembly-CSharp::Tarotro.Motion.CardHandConfig
-  handX: -5
-  handY: -0.5
-  handWidth: 10
+  handX: -2.99
+  handY: -0.42
+  handWidth: 6
   handHeight: 2.5
-  cardWidth: 1.2
-  cardHeight: 1.8
+  cardWidth: 0.65
+  cardHeight: 1
   softLimit: 8
   deckX: 3.57
   deckY: 0.12
