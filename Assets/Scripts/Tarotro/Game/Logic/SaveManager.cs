@@ -7,6 +7,9 @@ using Tarotro.Game.Data.Save;
 using Tarotro.Game.Utils;
 using UnityEngine;
 using VContainer;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace Tarotro.Game.Logic {
     public class SaveManager {
@@ -14,6 +17,10 @@ namespace Tarotro.Game.Logic {
         private const string SaveFileName = "save.bin";
         private const string TempSuffix = ".tmp";
         private const string BackupSuffix = ".bak";
+
+#if UNITY_EDITOR
+        public const string DisableSaveEditorPrefKey = "Tarotro_DisableSaveSystem";
+#endif
 
         private readonly IGameLogger _logger;
 
@@ -26,7 +33,22 @@ namespace Tarotro.Game.Logic {
             _logger = logger;
         }
 
+        public bool IsSaveDisabled {
+            get {
+#if UNITY_EDITOR
+                return EditorPrefs.GetBool(DisableSaveEditorPrefKey, false);
+#else
+                return false;
+#endif
+            }
+        }
+
         public async UniTask<bool> SaveAsync(GameSaveData data, CancellationToken ct = default) {
+            if (IsSaveDisabled) {
+                _logger.Info("Save system disabled, skipping save", "Save");
+                return true;
+            }
+
             data.Version = SaveVersion;
 
             try {
@@ -50,6 +72,11 @@ namespace Tarotro.Game.Logic {
         }
         
         public bool Save(GameSaveData data) {
+            if (IsSaveDisabled) {
+                _logger.Info("Save system disabled, skipping save", "Save");
+                return true;
+            }
+
             data.Version = SaveVersion;
 
             try {
@@ -74,6 +101,11 @@ namespace Tarotro.Game.Logic {
 
 
         public async UniTask<GameSaveData> LoadAsync(CancellationToken ct = default) {
+            if (IsSaveDisabled) {
+                _logger.Info("Save system disabled, skipping load", "Save");
+                return null;
+            }
+
             var data = await TryLoadFile(SavePath, ct);
             if (data != null) return data;
 
@@ -86,6 +118,10 @@ namespace Tarotro.Game.Logic {
         }
 
         public bool HasSave() {
+            if (IsSaveDisabled) {
+                return false;
+            }
+
             return File.Exists(SavePath) || File.Exists(BackupPath);
         }
 

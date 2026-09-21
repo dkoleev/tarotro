@@ -44,6 +44,22 @@ namespace Tarotro.Editor {
             EditorUtility.RevealInFinder(File.Exists(savePath) ? savePath : Application.persistentDataPath);
         }
 
+        [MenuItem("Tarotro/Save/Disable Save System")]
+        private static void ToggleDisableSave() {
+            var disabled = !IsSaveDisabled;
+            EditorPrefs.SetBool(Tarotro.Game.Logic.SaveManager.DisableSaveEditorPrefKey, disabled);
+            Debug.Log($"Save System: {(disabled ? "DISABLED" : "ENABLED")}");
+        }
+
+        [MenuItem("Tarotro/Save/Disable Save System", true)]
+        private static bool ToggleDisableSaveValidate() {
+            Menu.SetChecked("Tarotro/Save/Disable Save System", IsSaveDisabled);
+            return true;
+        }
+
+        private static bool IsSaveDisabled =>
+            EditorPrefs.GetBool(Tarotro.Game.Logic.SaveManager.DisableSaveEditorPrefKey, false);
+
         private void OnEnable() {
             _savePath = Path.Combine(Application.persistentDataPath, SaveFileName);
             _backupPath = _savePath + BackupSuffix;
@@ -96,6 +112,11 @@ namespace Tarotro.Editor {
 
         private void DrawToolbar() {
             EditorGUILayout.Space(4);
+
+            if (IsSaveDisabled) {
+                EditorGUILayout.HelpBox("Save system is DISABLED. Saving, loading, and auto-save are skipped.", MessageType.Warning);
+            }
+
             using (new EditorGUILayout.HorizontalScope()) {
                 if (GUILayout.Button("Refresh", GUILayout.Width(70))) {
                     LoadSave();
@@ -117,6 +138,12 @@ namespace Tarotro.Editor {
 
                 if (GUILayout.Button("Open Folder", GUILayout.Width(85))) {
                     OpenSaveLocation();
+                }
+
+                var toggleLabel = IsSaveDisabled ? "Enable Save" : "Disable Save";
+                if (GUILayout.Button(toggleLabel, GUILayout.Width(95))) {
+                    ToggleDisableSave();
+                    Repaint();
                 }
             }
 
