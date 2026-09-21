@@ -49,10 +49,18 @@ namespace Tarotro.Game.Logic {
         }
 
         public void CommitSlot(CardSlot slot) {
-            _motion.Register(slot.Moveable);
+            PrepareSlot(slot);
+            ActivateSlot(slot);
+        }
+
+        public void PrepareSlot(CardSlot slot) {
             _slots.Add(slot);
             _moveables.Add(slot.Moveable);
             _highlights.Add(false);
+        }
+
+        public void ActivateSlot(CardSlot slot) {
+            _motion.Register(slot.Moveable);
         }
 
         public void RemoveCard(int index) {
