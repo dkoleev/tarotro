@@ -66,6 +66,21 @@ namespace Tarotro.Game.Logic {
             _highlights.RemoveAt(index);
         }
 
+        public void DetachSlot(CardSlot slot) {
+            var index = _slots.IndexOf(slot);
+            if (index < 0) {
+                return;
+            }
+
+            _slots.RemoveAt(index);
+            _moveables.RemoveAt(index);
+            _highlights.RemoveAt(index);
+        }
+
+        public void UnregisterMoveable(Moveable moveable) {
+            _motion.Unregister(moveable);
+        }
+
         public void Clear() {
             foreach (var slot in _slots) {
                 _motion.Unregister(slot.Moveable);

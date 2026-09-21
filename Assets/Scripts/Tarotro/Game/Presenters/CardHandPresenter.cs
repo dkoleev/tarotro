@@ -111,17 +111,29 @@ namespace Tarotro.Game.Presenters {
 
         public void DiscardAll() {
             var count = _viewBindings.Count;
-            for (var i = 0; i < count; i++) {
-                var binding = _viewBindings[i];
-                var index = i;
-                binding.Slot.Moveable.T = _discardPosition;
+            if (count == 0) {
+                return;
+            }
 
-                _queue.Add(GameEvent.After(0.04f * index, () => {
+            var discarding = new List<CardViewBinding>(_viewBindings);
+
+            foreach (var binding in discarding) {
+                _cardHand.DetachSlot(binding.Slot);
+                binding.Slot.Moveable.T = _discardPosition;
+            }
+
+            for (var i = 0; i < discarding.Count; i++) {
+                var binding = discarding[i];
+                _queue.Add(GameEvent.After(0.04f * i, () => {
                     binding.Slot.Moveable.JuiceUp(0.2f);
                 }));
             }
 
             _queue.Add(GameEvent.After(0.04f * count + 0.5f, () => {
+                foreach (var binding in discarding) {
+                    _cardHand.UnregisterMoveable(binding.Slot.Moveable);
+                }
+
                 DestroyAllViewBindings();
                 _cardHand.Clear();
             }));

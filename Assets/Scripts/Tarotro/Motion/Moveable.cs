@@ -36,11 +36,12 @@ namespace Tarotro.Motion
 
         public MotionFrame(float unscaledDt, float realTime, MotionTuning t)
         {
-            ExpPosition = Mathf.Exp(-t.PositionRate * unscaledDt);
-            ExpScale    = Mathf.Exp(-t.ScaleRate * unscaledDt);
-            ExpRotation = Mathf.Exp(-t.RotationRate * unscaledDt);
-            MoveDelta   = Mathf.Min(t.MaxMoveDelta, unscaledDt);
-            MaxVelocity = t.MaxSpeed * MoveDelta;
+            float dt = Mathf.Min(t.MaxMoveDelta, unscaledDt);
+            ExpPosition = Mathf.Exp(-t.PositionRate * dt);
+            ExpScale    = Mathf.Exp(-t.ScaleRate * dt);
+            ExpRotation = Mathf.Exp(-t.RotationRate * dt);
+            MoveDelta   = dt;
+            MaxVelocity = t.MaxSpeed * dt;
             RealTime    = realTime;
         }
     }

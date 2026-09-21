@@ -27,6 +27,7 @@ namespace Tarotro.Runtime
         {
             float dt = UnityEngine.Time.unscaledDeltaTime;
             _queue.Tick(dt);
+            _motion.AdvanceTime(dt);
             _cardHand.Tick();
             _motion.Tick(dt);
         }
