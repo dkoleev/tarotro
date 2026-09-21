@@ -20,6 +20,7 @@ namespace Tarotro.Game.Presenters {
             public CardView View;
             public MoveableView MoveableView;
             public GameObject GameObject;
+            public AsyncOperationHandle<Sprite>? SpriteHandle;
         }
 
         private readonly CardHand _cardHand;
@@ -124,18 +125,17 @@ namespace Tarotro.Game.Presenters {
 
             for (var i = 0; i < discarding.Count; i++) {
                 var binding = discarding[i];
-                _queue.Add(GameEvent.After(0.04f * i, () => {
+                _queue.Add(GameEvent.After(0.04f, () => {
                     binding.Slot.Moveable.JuiceUp(0.2f);
                 }));
             }
 
-            _queue.Add(GameEvent.After(0.04f * count + 0.5f, () => {
+            _queue.Add(GameEvent.After(0.5f, () => {
                 foreach (var binding in discarding) {
                     _cardHand.UnregisterMoveable(binding.Slot.Moveable);
                 }
 
                 DestroyAllViewBindings();
-                _cardHand.Clear();
             }));
 
             _logger.Info("Discarding hand", "CardHandPresenter");
@@ -184,7 +184,10 @@ namespace Tarotro.Game.Presenters {
                 var handle = Addressables.LoadAssetAsync<Sprite>(spritePath);
                 var sprite = await handle.ToUniTask();
                 if (binding.View != null) {
+                    binding.SpriteHandle = handle;
                     binding.View.SetSprite(sprite);
+                } else {
+                    Addressables.Release(handle);
                 }
             } catch (Exception e) {
                 _logger.Warning($"Failed to load card sprite '{spritePath}': {e.Message}", "CardHandPresenter");
@@ -202,6 +205,10 @@ namespace Tarotro.Game.Presenters {
         private void DestroyViewBinding(CardViewBinding binding) {
             binding.Presenter.Dispose();
             _unregisterView?.Invoke(binding.MoveableView);
+
+            if (binding.SpriteHandle.HasValue && binding.SpriteHandle.Value.IsValid()) {
+                Addressables.Release(binding.SpriteHandle.Value);
+            }
 
             if (binding.GameObject != null) {
                 UnityEngine.Object.Destroy(binding.GameObject);

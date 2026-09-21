@@ -27,12 +27,14 @@ namespace Tarotro.Game.Logic {
                 }
             }
 
+            _deck.DiscardHand(_hand);
             _hand.Clear();
 
             return totalDamage;
         }
 
         public void DiscardHand() {
+            _deck.DiscardHand(_hand);
             _hand.Clear();
         }
 
