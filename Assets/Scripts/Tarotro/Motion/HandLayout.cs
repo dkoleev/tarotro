@@ -25,22 +25,24 @@ namespace Tarotro.Motion
             bool reducedMotion = false,
             float fanStrength = FanRotation)
         {
-            int n = cards.Count;
-            if (n == 0) return;
+            var cardsCount = cards.Count;
+            if (cardsCount == 0) {
+                return;
+            }
 
-            int maxCards = Mathf.Max(n, softLimit);
+            var maxCards = Mathf.Max(cardsCount, softLimit);
             float span = Mathf.Max(maxCards - 1, 1);
             float sway = reducedMotion ? 0f : 1f;
 
-            for (int k = 0; k < n; k++)
+            for (int k = 0; k < cardsCount; k++)
             {
                 var card = cards[k];
                 float i = k + 1;
 
-                float fan = fanStrength * (-n / 2f - 0.5f + i) / n;
+                float fan = fanStrength * (-cardsCount / 2f - 0.5f + i) / cardsCount;
 
                 float x = area.X
-                          + (area.W - cardWidth) * ((i - 1) / span - 0.5f * (n - maxCards) / span)
+                          + (area.W - cardWidth) * ((i - 1) / span - 0.5f * (cardsCount - maxCards) / span)
                           + 0.5f * (cardWidth - card.T.W);
 
                 float rot = fan + sway * IdleRotationAmount * Mathf.Sin(IdleRotationFrequency * realTime + x);
@@ -49,7 +51,7 @@ namespace Tarotro.Motion
                     ? HighlightLift * card.T.H
                     : 0f;
 
-                float arc = Mathf.Abs(0.5f * (-n / 2f + i - 0.5f) / n) - 0.2f;
+                float arc = Mathf.Abs(0.5f * (-cardsCount / 2f + i - 0.5f) / cardsCount) - 0.2f;
 
                 float y = area.Y + area.H * 0.5f - card.T.H * 0.5f
                           - lift

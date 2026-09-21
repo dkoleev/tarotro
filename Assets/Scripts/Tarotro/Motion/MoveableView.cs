@@ -29,13 +29,18 @@ namespace Tarotro.Motion
         public void Apply()
         {
             var m = Moveable;
-            if (m == null) return;
+            if (m == null) {
+                return;
+            }
 
             var vt = m.VT;
 
-            float cx = vt.X + vt.W * 0.5f;
-            float cy = vt.Y + vt.H * 0.5f;
-            if (_flipY) cy = -cy;
+            var cx = vt.X + vt.W * 0.5f;
+            var cy = vt.Y + vt.H * 0.5f;
+            
+            if (_flipY) {
+                cy = -cy;
+            }
 
             _target.localPosition = new Vector3(cx, cy, _target.localPosition.z);
             _target.localRotation = Quaternion.Euler(0f, 0f, (_flipY ? -1f : 1f) * vt.R * Mathf.Rad2Deg);
