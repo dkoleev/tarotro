@@ -91,6 +91,8 @@ namespace Tarotro.Game.Presenters {
                 var slot = _cardHand.CreateSlot(model);
                 var binding = CreateViewBinding(slot);
                 slot.Moveable.HardSet(_deckPosition);
+                _cardHand.PrepareSlot(slot);
+                _viewBindings.Add(binding);
                 pending.Add(binding);
 
                 if (!string.IsNullOrEmpty(model.SpritePath)) {
@@ -101,8 +103,7 @@ namespace Tarotro.Game.Presenters {
             for (var i = 0; i < pending.Count; i++) {
                 var binding = pending[i];
                 _queue.Add(GameEvent.After(0.06f, () => {
-                    _cardHand.CommitSlot(binding.Slot);
-                    _viewBindings.Add(binding);
+                    _cardHand.ActivateSlot(binding.Slot);
                     binding.Slot.Moveable.JuiceUp(0.3f);
                 }));
             }
