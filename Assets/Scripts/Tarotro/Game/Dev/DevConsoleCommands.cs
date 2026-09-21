@@ -6,6 +6,7 @@ using QFSW.QC;
 using Tarotro.Game.Data;
 using Tarotro.Game.Logic;
 using Tarotro.Game.Utils;
+using UnityEngine;
 using VContainer;
 
 namespace Tarotro.Game.Dev {
