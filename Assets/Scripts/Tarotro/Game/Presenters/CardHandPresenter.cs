@@ -89,8 +89,8 @@ namespace Tarotro.Game.Presenters {
 
             foreach (var model in cards) {
                 var slot = _cardHand.CreateSlot(model);
-                var binding = CreateViewBinding(slot);
                 slot.Moveable.HardSet(_deckPosition);
+                var binding = CreateViewBinding(slot);
                 _cardHand.PrepareSlot(slot);
                 _viewBindings.Add(binding);
                 pending.Add(binding);

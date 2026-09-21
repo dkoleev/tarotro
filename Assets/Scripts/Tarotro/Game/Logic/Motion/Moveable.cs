@@ -96,14 +96,15 @@ namespace Tarotro.Game.Logic.Motion
             if (tune.ReducedMotion) return;
 
             float amt = amount ?? tune.JuiceDefaultAmount;
-            float now = realTime ?? _lastRealTime;
 
             _juicing = true;
             _juiceScaleAmount = amt;
             _juiceRotationAmount = rotationAmount
                 ?? ((UnityEngine.Random.value < 0.5f ? 1f : -1f) * tune.JuiceRotationRatio * amt);
+
+            float now = realTime ?? (_lastRealTime > 0f ? _lastRealTime : -1f);
             _juiceStart = now;
-            _juiceEnd = now + tune.JuiceDuration;
+            _juiceEnd = now >= 0f ? now + tune.JuiceDuration : -1f;
             _juiceScale = 0f;
             _juiceRotation = 0f;
 
@@ -129,6 +130,12 @@ namespace Tarotro.Game.Logic.Motion
         private void MoveJuice(float realTime)
         {
             if (!_juicing) return;
+
+            if (_juiceStart < 0f)
+            {
+                _juiceStart = realTime;
+                _juiceEnd = realTime + Tune.JuiceDuration;
+            }
 
             if (_juiceEnd < realTime)
             {
@@ -202,7 +209,8 @@ namespace Tarotro.Game.Logic.Motion
             var tune = Tune;
 
             float speedLean = f.MoveDelta > 0f
-                ? tune.RotationFromSpeed * _velocity.x / f.MoveDelta
+                ? Mathf.Clamp(tune.RotationFromSpeed * _velocity.x / f.MoveDelta,
+                    -tune.MaxSpeedLean, tune.MaxSpeedLean)
                 : 0f;
             float desired = T.R + speedLean + _juiceRotation * tune.JuiceRotationGain;
 

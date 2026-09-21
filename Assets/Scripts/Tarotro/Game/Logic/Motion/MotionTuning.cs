@@ -39,6 +39,9 @@ namespace Tarotro.Game.Logic.Motion
         [Tooltip("How much horizontal speed tilts the object. Source: 0.015 * vel.x / dt")]
         public float RotationFromSpeed = 0.015f;
 
+        [Tooltip("Maximum lean angle in radians from horizontal speed.")]
+        public float MaxSpeedLean = 0.2f;
+
         [Header("Interaction zoom")]
         public float HoverScaleBonus = 0.05f;
         public float DragScaleBonus = 0.1f;
